@@ -1,7 +1,7 @@
 
 public class Element {
 	private String Content;
-	private long Hash;
+	private int ContentHash;
 	
     static{
         System.loadLibrary("Element");
@@ -9,7 +9,7 @@ public class Element {
 
     public Element (String Content) {
 		this.Content = Content;
-		Hash();
+		this.ContentHash = Hash(Content);
 	}
 	
 	public String GetContent () {
@@ -17,8 +17,8 @@ public class Element {
 	}
 	
 	public long GetHash () {
-		return Hash; 
+		return ContentHash; 
 	}
 	
-    private native void Hash();
+    private native int Hash (String str);
 }
