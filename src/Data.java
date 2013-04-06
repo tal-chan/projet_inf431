@@ -28,13 +28,23 @@ public class Data {
 		String content = new String();
 		try{
 			char c = (char)stream.read();
-			while(!((c>='0'&&c<='9')||(c>='a'&&c<='z')||(c>='A'&&c<='Z')||c=='-')){c=(char)stream.read();}
+			while(!((c>='0'&&c<='9')||(c>='a'&&c<='z')||(c>='A'&&c<='Z')||c=='-')){
+				c=(char)stream.read();
+			}
 			while((c>='0'&&c<='9')||(c>='a'&&c<='z')||(c>='A'&&c<='Z')||c=='-'){
+				if (c>='A' && c<='Z') {
+					c += 32;
+				}
 				content = content+c;
 				c = (char)stream.read();
 			}
 			
-		} catch(IOException e){throw new EndFileException("reached end of file");}
+		} catch(IOException e){
+			if (content.length() != 0) {
+				return new Element(content);
+			}
+			throw new EndFileException("reached end of file");
+		}
 		return new Element(content);
 	}
 }

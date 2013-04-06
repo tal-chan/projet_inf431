@@ -1,5 +1,6 @@
 
 public class EndFileException extends Exception {
-	EndFileException(String message){super(message);}
+	private static final long serialVersionUID = -5044326204859703533L;
 
+	EndFileException(String message){super(message);}
 }
