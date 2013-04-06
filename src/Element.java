@@ -16,7 +16,7 @@ public class Element {
 		return Content;
 	}
 	
-	public long GetHash () {
+	public int GetHash () {
 		return ContentHash; 
 	}
 	
