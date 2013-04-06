@@ -1,21 +1,24 @@
 
 public class Element {
 	private String Content;
-	private long Hash;
+	private int ContentHash;
 	
-	public Element (String Content) {
+    static{
+        System.loadLibrary("Element");
+    }
+
+    public Element (String Content) {
 		this.Content = Content;
+		this.ContentHash = Hash(Content);
 	}
 	
 	public String GetContent () {
 		return Content;
 	}
 	
-	public void SetHash (long Hash) {
-		this.Hash = Hash;
+	public long GetHash () {
+		return ContentHash; 
 	}
 	
-	public long GetHash () {
-		return Hash; 
-	}
+    private native int Hash (String str);
 }
