@@ -3,19 +3,22 @@ public class Element {
 	private String Content;
 	private long Hash;
 	
-	public Element (String Content) {
+    static{
+        System.loadLibrary("Element");
+    }
+
+    public Element (String Content) {
 		this.Content = Content;
+		Hash();
 	}
 	
 	public String GetContent () {
 		return Content;
 	}
 	
-	public void SetHash (long Hash) {
-		this.Hash = Hash;
-	}
-	
 	public long GetHash () {
 		return Hash; 
 	}
+	
+    private native void Hash();
 }
