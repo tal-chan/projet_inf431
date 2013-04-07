@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -32,7 +31,7 @@ public class Data {
 	/*
 	 * Init - Puts the cursor at the beginning of the data source.
 	 */
-	private void Init () throws IOException  {
+	void Init () throws IOException  {
 		if (this.type==FILE){
 			this.stream = new BufferedReader(new FileReader(name));
 		}
@@ -50,7 +49,7 @@ public class Data {
 		return (char)c;
 	}
 
-	private Element nextElement () throws NoMoreElement, IOException {
+	Element nextElement () throws NoMoreElement, IOException {
 		String content = new String();
 		try{
 			char c = readChar();
@@ -75,7 +74,7 @@ public class Data {
 	}
 	
 	/*
-	 * locate - Locates a hash in a sorted ArrayList
+	 * locate - Locates a hash in a sorted ArrayList with a predictive dichotomic algorithm.
 	 */
 	private int locate (List<Integer> list, int hash) {
 		if (list.size() == 0) {
@@ -117,7 +116,7 @@ public class Data {
 	}
 	
 	/*
-	 * count - Precise count of the number of distinct elements of the data stream.
+	 * count - Precise count of the number of distinct elements of the data chunk.
 	 */
 	public int count () throws IOException {
 		List<Integer> list = new ArrayList<Integer>();
@@ -139,68 +138,4 @@ public class Data {
 		
 		return list.size();
 	}
-
-	/*
-	 * hyperLogLog - Quick count of the number of distinct elements of the data stream.
-	 */
-	public double hyperLogLog () throws IOException {
-		return hyperLogLog(11);
-	}
-	public double hyperLogLog (int b) throws IOException {
-		if ((b<4) || (b>16)) {
-			System.out.printf("Error! In function hyperLogLog : Parameter b out of range.\n");
-			return 0;
-		}
-		
-		int m = 1<<b;
-		byte[] M = new byte[m];
-		for (int i=0; i<m; i++) {
-			M[i] = -1;
-		}
-		
-		Init();
-		int mask=m-1;
-		try {
-			for(;;) {
-				Element el = nextElement();
-				int hash = el.GetHash();
-				
-				int group = hash & mask;
-				hash >>>= b;
-			
-				int tmp_mask = 1;
-				byte num_zeros = 0;
-				for (; (b+num_zeros<32) && ((tmp_mask&hash)==0); tmp_mask=(tmp_mask<<1)+1, num_zeros++) {}
-				
-				if (M[group] < num_zeros + 1) {
-					M[group] = (byte) (num_zeros + 1);
-				}				
-			}
-		} catch (NoMoreElement e) {}
-		
-		double alpha;
-		switch (b) {
-			case 4:
-				alpha = 0.673;
-				break;
-			case 5:
-				alpha = 0.697;
-				break;
-			case 6:
-				alpha = 0.709;
-				break;
-			default:
-				alpha = 0.7213/(1+(1.079/m)); 
-		}
-
-		float tmp = 0;
-		for (int i=0; i<m; i++) {
-			if (M[i] >= 0) {
-				tmp += Math.pow(2, -M[i]);
-			}
-		}
-		
-		return alpha * (double)m * (double)m / tmp;
-	}
-
 }

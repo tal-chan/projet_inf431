@@ -7,7 +7,7 @@ public class Test {
 		Data shakespeare = new Data(name, Data.FILE);
 		System.out.printf("precise count : %d\n", shakespeare.count());
 		for (int b=4; b<=16; b++) {
-			System.out.printf("hyper log log count, b=%d : %f\n", b, shakespeare.hyperLogLog(b));
+			System.out.printf("hyper log log count, b=%d : %f\n", b, new FingerPrint(shakespeare, b).hyperLogLog());
 		}
 		/*
 		for (int i=0; i<=30; i++){
