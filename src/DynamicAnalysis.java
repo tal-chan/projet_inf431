@@ -28,7 +28,7 @@ public class DynamicAnalysis {
 	 * 
 	 * Note : with this implementation, the stream must not exceed 2^31-1 elements.
 	 */
-	public DynamicAnalysis (Data d, int b, int W, int nbr) {
+	public DynamicAnalysis (Data d, int b, int W, int nbr) throws IOException {
 		if ((b<4) || (b>16)) {
 			throw new IllegalArgumentException("In function DynamicAnalysis : Parameter b out of range.");
 		}
@@ -47,14 +47,14 @@ public class DynamicAnalysis {
 		}
 		memory = new double[nbr];
 		
-		d.Init();
+		d.init();
 	}
 	
 	/*
 	 * newElement - Function to be called when a new element is available. The dynamic fingerprint is
 	 * 		updated.
 	 */
-	public void newElement () {
+	public void newElement () throws Data.NoMoreElement, IOException {
 		Element el = d.nextElement();
 		int hash = el.GetHash();
 

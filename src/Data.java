@@ -27,8 +27,7 @@ public class Data {
 		NoMoreElement(String message){super(message);}
 	}
 
-	
-	Element FirstElement(int k) throws IOException, NoMoreElement {
+	void init() throws IOException {
 		if (this.type==FILE){
 			this.stream = new BufferedReader(new FileReader(name));
 		}
@@ -36,6 +35,10 @@ public class Data {
 			URL url = new URL(name);
 			this.stream = new BufferedReader(new InputStreamReader(url.openStream()));
 		}
+	}
+	
+	Element FirstElement(int k) throws IOException, NoMoreElement {
+		init();
 		String content = new String();
 		for (int i=0;i<k;i++){
 			content = content+readWord();
