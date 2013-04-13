@@ -21,6 +21,9 @@ public class Data {
 		this.type = type;
 	}
 	
+	public String getName(){
+		return name;
+	}
 
 	public static class NoMoreElement extends Exception {
 		private static final long serialVersionUID = -7666683929533309641L;
