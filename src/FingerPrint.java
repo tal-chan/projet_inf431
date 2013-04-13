@@ -4,6 +4,8 @@ import java.io.IOException;
 public class FingerPrint {
 	int b;
 	byte[] M;
+	double alpha;
+	int m;
 	
 	/*
 	 * fingerPrint - Computes the statistical fingerprint of a big data chunk.
@@ -19,11 +21,24 @@ public class FingerPrint {
 		}
 		
 		this.b = b;
-		
-		int m = 1<<b;
-		byte[] M = new byte[m];
+		m = 1<<b;
+		M = new byte[m];
 		for (int i=0; i<m; i++) {
 			M[i] = -1;
+		}
+		
+		switch (b) {
+			case 4:
+				alpha = 0.673;
+				break;
+			case 5:
+				alpha = 0.697;
+				break;
+			case 6:
+				alpha = 0.709;
+				break;
+			default:
+				alpha = 0.7213/(1+(1.079/m)); 
 		}
 		
 		d.Init();
@@ -45,8 +60,6 @@ public class FingerPrint {
 				}				
 			}
 		} catch (Data.NoMoreElement e) {}
-		
-		this.M = M;
 	}
 	
 	/*
@@ -76,23 +89,6 @@ public class FingerPrint {
 	 * hyperLogLog - Quick count of the number of distinct elements of the data chunk from its fingerprint.
 	 */
 	public double hyperLogLog () {
-		int m = 1<<b;
-
-		double alpha;
-		switch (b) {
-			case 4:
-				alpha = 0.673;
-				break;
-			case 5:
-				alpha = 0.697;
-				break;
-			case 6:
-				alpha = 0.709;
-				break;
-			default:
-				alpha = 0.7213/(1+(1.079/m)); 
-		}
-
 		float tmp = 0;
 		for (int i=0; i<m; i++) {
 			if (M[i] >= 0) {
