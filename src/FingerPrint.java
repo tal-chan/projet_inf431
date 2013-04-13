@@ -47,14 +47,7 @@ public class FingerPrint {
 
 		int mask=m-1;
 		try {
-			for(int i=0;;i++) {
-				Element el;
-				if (i==0){
-					el=d.FirstElement(k);
-				}
-				else {
-					el = d.nextElement();
-				}
+			for(Element el = d.FirstElement(k);;el=d.nextElement()) {
 				int hash = el.GetHash();
 				
 				int group = hash & mask;

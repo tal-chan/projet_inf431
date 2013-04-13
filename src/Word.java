@@ -1,5 +1,5 @@
 /*
- * Decides whether or not a char represents a letter
+ * Defines whether or not a char represents a letter
  * in the broad sense (i.e : as opposed to a separator)
  */
 public class Word {

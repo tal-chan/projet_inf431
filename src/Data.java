@@ -26,6 +26,10 @@ public class Data {
 		private static final long serialVersionUID = -7666683929533309641L;
 		NoMoreElement(String message){super(message);}
 	}
+	
+	/*
+	 * init - Initializes the cursor position to the beginning of the file.
+	 */
 
 	void init() throws IOException {
 		if (this.type==FILE){
@@ -36,6 +40,12 @@ public class Data {
 			this.stream = new BufferedReader(new InputStreamReader(url.openStream()));
 		}
 	}
+	/*
+	 * FirstElement - initializes the cursor position to the beginning of the file
+	 * and returns the first element of the text.
+	 * 
+	 * k - number of words consecutive words in each element.
+	 */
 	
 	Element FirstElement(int k) throws IOException, NoMoreElement {
 		init();
@@ -47,7 +57,10 @@ public class Data {
 		
 	}
 	
-
+	/*
+	 * readChar - reads a single character from the file.
+	 */
+	
 	private char readChar() throws EOFException, IOException {
 		int c = stream.read();
 		if (c==-1) {
@@ -55,6 +68,10 @@ public class Data {
 		}
 		return (char)c;
 	}
+	
+	/*
+	 * readWord - reads a single word from the file.
+	 */
 	
 	private String readWord() throws NoMoreElement, IOException {
 		String content = new String();
@@ -79,6 +96,12 @@ public class Data {
 		}
 		return content;
 	}
+	
+	/*
+	 * nextElement - reads the nex element in the file.
+	 * e - the last element read.
+	 * 
+	 */
 	
 	Element nextElement () throws NoMoreElement, IOException{
 		return new Element(readWord(),1);
