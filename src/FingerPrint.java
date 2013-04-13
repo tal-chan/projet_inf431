@@ -113,17 +113,30 @@ public class FingerPrint {
 		return ((this.hyperLogLog()+fp.hyperLogLog())/fp_union.hyperLogLog()) - 1;
 	}
 	
+	/*
+	 * extractData - reading files from a directory or URL lists and storing in a Data[]
+	 */
+	
 	public Data[] extractData(String name){
-			File directory = new File(name);
-			File[] files = directory.listFiles();
-			int l = files.length;
-			Data[] data = new Data[l];
-			for (int i=0;i<l;i++){
-				data[i] = new Data(files[i].getAbsolutePath(),Data.FILE);
-			}
-			return data;
+		File directory = new File(name);
+		File[] files = directory.listFiles();
+		int l = files.length;
+		Data[] data = new Data[l];
+		for (int i=0;i<l;i++){
+			data[i] = new Data(files[i].getAbsolutePath(),Data.FILE);
+		}
+		return data;
 	}
 	
+	public Data[] extractData(String[] url){
+		int l = url.length;
+		Data[] data = new Data[l];
+		for (int i=0;i<l;i++){
+			data[i] = new Data(url[i],Data.URL);
+		}
+		return data;
+	}
+		
 	public FingerPrint[] fingerprints(Data[] data, int k, int b) throws IOException{
 		int l = data.length;
 		FingerPrint[] fgprints = new FingerPrint[l];
@@ -132,6 +145,10 @@ public class FingerPrint {
 		}
 		return fgprints;
 	}
+	
+	/*
+	 * similarities - compares a set of fingerprints two at a time.
+	 */
 	
 	public double [][] similarities(FingerPrint[] fp){
 		int l = fp.length;
