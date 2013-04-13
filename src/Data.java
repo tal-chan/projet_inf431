@@ -28,10 +28,7 @@ public class Data {
 	}
 
 	
-	/*
-	 * Init - Puts the cursor at the beginning of the data source.
-	 */
-	void Init () throws IOException  {
+	Element FirstElement(int k) throws IOException, NoMoreElement {
 		if (this.type==FILE){
 			this.stream = new BufferedReader(new FileReader(name));
 		}
@@ -39,8 +36,15 @@ public class Data {
 			URL url = new URL(name);
 			this.stream = new BufferedReader(new InputStreamReader(url.openStream()));
 		}
+		String content = new String();
+		for (int i=0;i<k;i++){
+			content = content+readWord();
+		}
+		return new Element (content,k);
+		
 	}
 	
+
 	private char readChar() throws EOFException, IOException {
 		int c = stream.read();
 		if (c==-1) {
@@ -48,15 +52,15 @@ public class Data {
 		}
 		return (char)c;
 	}
-
-	Element nextElement () throws NoMoreElement, IOException {
+	
+	private String readWord() throws NoMoreElement, IOException {
 		String content = new String();
 		try{
 			char c = readChar();
-			while(!((c>='0'&&c<='9')||(c>='a'&&c<='z')||(c>='A'&&c<='Z')||c=='-')){
+			while(!Word.isLetter(c)){
 				c=readChar();
 			}
-			while((c>='0'&&c<='9')||(c>='a'&&c<='z')||(c>='A'&&c<='Z')||c=='-'){
+			while(Word.isLetter(c)){
 				if (c>='A' && c<='Z') {
 					c += 32;
 				}
@@ -66,15 +70,27 @@ public class Data {
 
 		} catch(EOFException e){
 			if (content.length() != 0) {
-				return new Element(content);
+				return content;
 			}
 			throw new NoMoreElement("reached end of file");
 		}
-		return new Element(content);
+		return content;
+	}
+	
+	Element nextElement () throws NoMoreElement, IOException{
+		return new Element(readWord(),1);
+	}
+
+	Element nextElement (Element e) throws NoMoreElement, IOException {
+		int k = e.GetNbWords();
+		if (k<2){return nextElement();}
+		String s = e.removeFirstWord();
+		s=s+readWord();
+		return new Element(s, k);		
 	}
 	
 	/*
-	 * locate - Locates a hash in a sorted ArrayList with a predictive dichotomic algorithm.
+	 * locate - Locates a hash in a sorted ArrayList with a predictive dichotomous algorithm.
 	 */
 	private int locate (List<Integer> list, int hash) {
 		if (list.size() == 0) {
@@ -120,10 +136,14 @@ public class Data {
 	 */
 	public int count () throws IOException {
 		List<Integer> list = new ArrayList<Integer>();
-		Init();
 		try {
-			for(;;) {
-				Element el = nextElement();
+			for(int i=0;;i++) {
+				Element el;
+				if (i==0) {
+					el = FirstElement(1);
+				} else  {
+					el = nextElement();
+				}
 				int hash = el.GetHash();
 				int pos = locate (list, hash);
 				if ((pos == list.size()) || (list.get(pos) != hash)) {
