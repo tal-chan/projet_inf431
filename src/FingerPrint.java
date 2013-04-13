@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 
 
@@ -110,6 +111,40 @@ public class FingerPrint {
 		FingerPrint fp_union = new FingerPrint (this, fp);
 		
 		return ((this.hyperLogLog()+fp.hyperLogLog())/fp_union.hyperLogLog()) - 1;
+	}
+	
+	public Data[] extractData(String name){
+			File directory = new File(name);
+			File[] files = directory.listFiles();
+			int l = files.length;
+			Data[] data = new Data[l];
+			for (int i=0;i<l;i++){
+				data[i] = new Data(files[i].getAbsolutePath(),Data.FILE);
+			}
+			return data;
+	}
+	
+	public FingerPrint[] fingerprints(Data[] data, int k, int b) throws IOException{
+		int l = data.length;
+		FingerPrint[] fgprints = new FingerPrint[l];
+		for (int i=0;i<l;i++){
+			fgprints[i] = new FingerPrint (data[i],b,k);
+		}
+		return fgprints;
+	}
+	
+	public double [][] similarities(FingerPrint[] fp){
+		int l = fp.length;
+		double [][] sim = new double [l][l];
+		for (int i=0;i<l;i++){
+			sim[i][i]=1;
+			for (int j=0;j<i;j++){
+				sim[i][j]=sim[j][i]=fp[i].similarity(fp[j]);
+			}
+		}
+				
+		return sim;
+		
 	}
 
 }
