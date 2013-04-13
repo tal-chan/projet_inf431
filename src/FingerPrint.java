@@ -6,21 +6,25 @@ public class FingerPrint {
 	byte[] M;
 	double alpha;
 	int m;
+	int k;
 	
 	/*
 	 * fingerPrint - Computes the statistical fingerprint of a big data chunk.
 	 * 
 	 * b - fingerprint precision (4<=b<=16).
+	 * 
+	 * k - number of words in shingles
 	 */
-	public FingerPrint (Data d) throws IOException {
-		this (d, 11);
+	public FingerPrint (Data d, int k) throws IOException {
+		this (d, 11,k);
 	}
-	public FingerPrint (Data d, int b) throws IOException {
+	public FingerPrint (Data d, int b, int k) throws IOException {
 		if ((b<4) || (b>16)) {
 			throw new IllegalArgumentException("In function hyperLogLog : Parameter b out of range.");
 		}
 		
 		this.b = b;
+		this.k = k;
 		m = 1<<b;
 		M = new byte[m];
 		for (int i=0; i<m; i++) {
@@ -40,12 +44,17 @@ public class FingerPrint {
 			default:
 				alpha = 0.7213/(1+(1.079/m)); 
 		}
-		
-		d.Init();
+
 		int mask=m-1;
 		try {
-			for(;;) {
-				Element el = d.nextElement();
+			for(int i=0;;i++) {
+				Element el;
+				if (i==0){
+					el=d.FirstElement(k);
+				}
+				else {
+					el = d.nextElement();
+				}
 				int hash = el.GetHash();
 				
 				int group = hash & mask;
