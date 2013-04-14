@@ -5,7 +5,7 @@ public class Element {
 	private int NbWords;
 	
     static{
-        System.loadLibrary("Element");
+        System.loadLibrary("libElement");
     }
 
     public Element (String Content) {

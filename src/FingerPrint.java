@@ -70,13 +70,16 @@ public class FingerPrint {
 	 * 	the same precision from each chunk.
 	 */
 	public FingerPrint(FingerPrint fp1, FingerPrint fp2) {
-		if (fp1.b != fp2.b) {
-			throw new IllegalArgumentException("In function FingerPrint(FingerPrint, FingerPrint) : Different b attributes.");		
+		if (fp1.b != fp2.b && fp1.k != fp1.k) {
+			throw new IllegalArgumentException("In function FingerPrint(FingerPrint, FingerPrint) : Different b or k attributes.");		
 		}
 		
 		this.b = fp1.b;
-		
-		int m = 1<<b;
+		this.k = fp1.k;
+		this.alpha = fp1.alpha;
+
+		m = 1<<b;
+
 		this.M = new byte[m];
 		
 		for (int i=0; i<m; i++) {
@@ -86,6 +89,11 @@ public class FingerPrint {
 				this.M[i] = fp2.M[i];
 			}			
 		}
+		
+		for (int i=0; i<m; i++) {
+			System.out.printf("(%d,%d,%d)", fp1.M[i], fp2.M[i], this.M[i]);
+		}
+		System.out.printf ("\n");
 	}
 	
 	/*
@@ -109,15 +117,21 @@ public class FingerPrint {
 	 */
 	public double similarity(FingerPrint fp) {
 		FingerPrint fp_union = new FingerPrint (this, fp);
-		
-		return ((this.hyperLogLog()+fp.hyperLogLog())/fp_union.hyperLogLog()) - 1;
+		double thishll = this.hyperLogLog();
+		double fphll = fp.hyperLogLog();
+		double union = fp_union.hyperLogLog();
+		if ((((thishll+fphll)/union) - 1)<0)  {
+			System.out.println ("***************************************************************");
+			System.out.printf ("this : %f, fp : %f, union : %f\n", thishll, fphll, union);
+		}
+		return (((thishll+fphll)/union) - 1);
 	}
 	
 	/*
 	 * extractData - reading files from a directory or URL lists and storing in a Data[]
 	 */
 	
-	private Data[] extractData(String name){
+	public static Data[] extractData(String name){
 		File directory = new File(name);
 		File[] files = directory.listFiles();
 		int l = files.length;
@@ -128,7 +142,7 @@ public class FingerPrint {
 		return data;
 	}
 	
-	private Data[] extractData(String[] url){
+	public static Data[] extractData(String[] url){
 		int l = url.length;
 		Data[] data = new Data[l];
 		for (int i=0;i<l;i++){
@@ -137,7 +151,7 @@ public class FingerPrint {
 		return data;
 	}
 		
-	private FingerPrint[] fingerprints(Data[] data, int k, int b) throws IOException{
+	public static FingerPrint[] fingerprints(Data[] data, int k, int b) throws IOException{
 		int l = data.length;
 		FingerPrint[] fgprints = new FingerPrint[l];
 		for (int i=0;i<l;i++){
@@ -150,13 +164,14 @@ public class FingerPrint {
 	 * similarities - compares a set of fingerprints two at a time.
 	 */
 	
-	public double [][] similarities(FingerPrint[] fp){
+	public static double [][] similarities(FingerPrint[] fp){
 		int l = fp.length;
 		double [][] sim = new double [l][l];
 		for (int i=0;i<l;i++){
 			sim[i][i]=1;
 			for (int j=0;j<i;j++){
-				sim[i][j]=sim[j][i]=fp[i].similarity(fp[j]);
+				sim[i][j]=fp[i].similarity(fp[j]);
+				sim[j][i]=sim[i][j];
 			}
 		}
 				
