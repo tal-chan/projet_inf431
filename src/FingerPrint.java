@@ -126,30 +126,7 @@ public class FingerPrint {
 		}
 		return (((thishll+fphll)/union) - 1);
 	}
-	
-	/*
-	 * extractData - reading files from a directory or URL lists and storing in a Data[]
-	 */
-	
-	public static Data[] extractData(String name){
-		File directory = new File(name);
-		File[] files = directory.listFiles();
-		int l = files.length;
-		Data[] data = new Data[l];
-		for (int i=0;i<l;i++){
-			data[i] = new Data(files[i].getAbsolutePath(),Data.FILE);
-		}
-		return data;
-	}
-	
-	public static Data[] extractData(String[] url){
-		int l = url.length;
-		Data[] data = new Data[l];
-		for (int i=0;i<l;i++){
-			data[i] = new Data(url[i],Data.URL);
-		}
-		return data;
-	}
+
 		
 	public static FingerPrint[] fingerprints(Data[] data, int k, int b) throws IOException{
 		int l = data.length;
@@ -180,7 +157,7 @@ public class FingerPrint {
 	}
 	
 	public void similarPairs(String directory,int k, int b, double th) throws IOException{
-		Data[] data = extractData(directory);
+		Data[] data = Data.extractData(directory);
 		double[][] sim = similarities(fingerprints(data,k,b));
 		int l = sim.length;
 		for (int i=0;i<l;i++){

@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,6 +44,31 @@ public class Data {
 			this.stream = new BufferedReader(new InputStreamReader(url.openStream()));
 		}
 	}
+	
+	/*
+	 * extractData - reading files from a directory or URL lists and storing in a Data[]
+	 */
+	
+	public static Data[] extractData(String name){
+		File directory = new File(name);
+		File[] files = directory.listFiles();
+		int l = files.length;
+		Data[] data = new Data[l];
+		for (int i=0;i<l;i++){
+			data[i] = new Data(files[i].getAbsolutePath(),Data.FILE);
+		}
+		return data;
+	}
+	
+	public static Data[] extractData(String[] url){
+		int l = url.length;
+		Data[] data = new Data[l];
+		for (int i=0;i<l;i++){
+			data[i] = new Data(url[i],Data.URL);
+		}
+		return data;
+	}
+	
 	/*
 	 * FirstElement - initializes the cursor position to the beginning of the file
 	 * and returns the first element of the text.

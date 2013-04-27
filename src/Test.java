@@ -14,7 +14,7 @@ public class Test {
 		System.out.println(fp.similarity(fp2));*/
 		
 		
-		Data[] data = FingerPrint.extractData(name);
+		Data[] data = Data.extractData(name);
 		double[][] sim = FingerPrint.similarities(FingerPrint.fingerprints(data,1,11));
 		int l = sim.length;
 		for(int i=0;i<l;i++){
