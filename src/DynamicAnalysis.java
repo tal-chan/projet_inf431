@@ -18,7 +18,7 @@ public class DynamicAnalysis {
 	
 	/*
 	 * DynamicAnalysis - Initializes a dynamic statistical fingerprint of a big data stream. A sudden
-	 * 		change in that finderprint is an indicator of an attack. The object stores an history of
+	 * 		change in that finderprint is an indicator of an attack. The object stores a history of
 	 * 		a measure on that dynamic fingerprint (the estimated cardinal of the different elements
 	 * 		encountered within the window) in order to detect such changes.
 	 * 
