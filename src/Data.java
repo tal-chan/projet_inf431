@@ -127,7 +127,7 @@ public class Data {
 	}
 	
 	/*
-	 * nextElement - reads the nex element in the file.
+	 * nextElement - reads the next element in the file.
 	 * e - the last element read.
 	 * 
 	 */
