@@ -87,7 +87,7 @@ public class HashTest {
 			for(;;){
 				int hash = data.nextElement().GetHash();
 				if (hash>= lowBound && hash < lowBound+range){
-					count[hash+lowBound]++;
+					count[hash-lowBound]++;
 				}
 			}
 
@@ -96,8 +96,7 @@ public class HashTest {
 		try{
 			for(int i=lowBound;i<range+lowBound;i++){
 				int c = count[i-lowBound];
-				for(int j=0;j<c;j++) writer.write("*");
-				writer.write("\n");
+				writer.write(i+"\t"+c+"\n");
 			}
 
 		}finally{ try {writer.close();} catch (Exception ex) {}
@@ -112,6 +111,15 @@ public class HashTest {
 	public static void main(String[] args) throws IOException {
 		String name = "vocab.txt";
 		String outFile = "histogram.txt";
-		histogram(name,-1000000,200000,outFile);
+		/*Data data = new Data(name, Data.FILE);
+		data.init();
+		try {
+			for(;;){
+				int hash = data.nextElement().GetHash();
+				System.out.println(hash);
+				}
+		} catch (Data.NoMoreElement e) {}
+		*/
+		histogram(name,-223722832,20000000,outFile);
 	}
 }
