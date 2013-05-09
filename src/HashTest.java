@@ -52,6 +52,7 @@ public class HashTest {
 	 * extractWords - extracting distinct words from a text file.
 	 * This is to create relevant data to test the hash function
 	 */
+	
 	public static void extractWords(String inFile, String outFile) throws IOException{
 		Data data = new Data(inFile,Data.FILE);
 		List<String> list = new ArrayList<String>();
@@ -77,23 +78,40 @@ public class HashTest {
 		}
 
 	}
-
-	public static void main(String[] args) throws IOException {
-
-		/*String inFile = "C:/Users/Chantal Ding/Dropbox/INF431_Projet_chaton/Complete.txt";
-		//String inFile = "C:/Users/Chantal Ding/Dropbox/INF431_Projet_chaton/Texts/allswell.txt";
-		String outFile = "vocab.txt";
-		extractWords(inFile,outFile);
-		*/
-
-		/*Data data = new Data(name,Data.FILE);
-		Map <Integer,Integer> count = new HashMap<Integer,Integer>();
+	
+	public static void histogram (String name, int lowBound, int range,String outFile)throws IOException{
+		Data data = new Data(name, Data.FILE);
+		int[] count = new int[range];
+		data.init();
 		try {
-			for(Element el = data.FirstElement(1);;el=data.nextElement()) {
-				int hash = el.GetHash();
+			for(;;){
+				int hash = data.nextElement().GetHash();
+				if (hash>= lowBound && hash < lowBound+range){
+					count[hash+lowBound]++;
+				}
 			}
 
-		} catch (Data.NoMoreElement e) {}*/
+		} catch (Data.NoMoreElement e) {}
+		Writer writer =  new OutputStreamWriter(new FileOutputStream(outFile));
+		try{
+			for(int i=lowBound;i<range+lowBound;i++){
+				int c = count[i-lowBound];
+				for(int j=0;j<c;j++) writer.write("*");
+				writer.write("\n");
+			}
 
+		}finally{ try {writer.close();} catch (Exception ex) {}
+		}
+		
+	}
+
+	/*
+	 * Testing the hash function with Shakespeare's vocabulary
+	 */
+	
+	public static void main(String[] args) throws IOException {
+		String name = "vocab.txt";
+		String outFile = "histogram.txt";
+		histogram(name,-1000000,200000,outFile);
 	}
 }
