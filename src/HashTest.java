@@ -4,15 +4,18 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 
 public class HashTest {
-
+	
 	/*
-	 *  In construction...
+	 * N - number of words in Shakespeare's vocabulary (Complete works). For testing purposes.
 	 */
-
+	
+	static int N = 22929;
+	
 	/*
 	 * locate - Locates a String in a sorted ArrayList with a predictive dichotomous algorithm.
 	 */
@@ -79,7 +82,67 @@ public class HashTest {
 
 	}
 	
-	public static void histogram (String name, int lowBound, int range,String outFile)throws IOException{
+	/*
+	 * hashCount - counting the hash values hit discriminating by the 12 least significant bits
+	 */
+	
+	public static int[] hashCount(String name) throws IOException{
+		Data data = new Data(name, Data.FILE);
+		int mask=0xfff;
+		int[]count = new int[mask+1];
+		data.init();
+		try {
+			for(;;){
+				int hash = data.nextElement().GetHash();
+				count[hash&mask]++;
+			}
+
+		} catch (Data.NoMoreElement e) {}
+		return count;
+	}
+	
+	/*
+	 * randomCount - simulating a uniform repartition of hash values.
+	 */
+	
+	public static int[] randomCount(){
+		Random gen = new Random();
+		int[] count = new int[0x1000];
+		for (int i=0;i<N;i++){
+			int random = gen.nextInt(0x1000);
+			count[random]++;
+		}
+		return count;
+	}
+	
+	/*
+	 *chi2 - calculating the chi2 test of a set of data 
+	 */
+	
+	public static double chi2(int[] sample){
+		int n=sample.length;
+		double theory = N/(double)n;
+		double res = 0;
+		for (int i=0;i<n;i++){
+			res+=((double)sample[i]-theory)*((double)sample[i]-theory);
+		}
+		return res/theory;
+	}
+	
+	/*
+	 * averageRandomChi2 - calculating the average chi2 for a pseudo-randomly
+	 * generated set of data over n repeated experiences. 
+	 */
+
+	public static double averageRandomChi2 (int n){
+		double res=0;
+		for (int i=0;i<n;i++){
+			res+=chi2(randomCount());
+		}
+		return res/n;
+	}
+	
+	/*public static void histogram (String name, int lowBound, int range,String outFile)throws IOException{
 		Data data = new Data(name, Data.FILE);
 		int[] count = new int[range];
 		data.init();
@@ -102,7 +165,7 @@ public class HashTest {
 		}finally{ try {writer.close();} catch (Exception ex) {}
 		}
 		
-	}
+	}*/
 
 	/*
 	 * Testing the hash function with Shakespeare's vocabulary
@@ -110,7 +173,8 @@ public class HashTest {
 	
 	public static void main(String[] args) throws IOException {
 		String name = "vocab.txt";
-		String outFile = "histogram.txt";
+		//String outFile = "histogram.txt";
+		//Data data = new Data(name, Data.FILE);
 		/*Data data = new Data(name, Data.FILE);
 		data.init();
 		try {
@@ -120,6 +184,19 @@ public class HashTest {
 				}
 		} catch (Data.NoMoreElement e) {}
 		*/
-		histogram(name,-223722832,20000000,outFile);
+		//histogram(name,-223722832,20000000,outFile);
+		int[] count = hashCount(name);
+		System.out.println(chi2(count));
+		System.out.println(averageRandomChi2(1000));
+		/*Writer writer =  new OutputStreamWriter(new FileOutputStream(outFile));
+		try{
+			for(int i=0;i<count.length;i++){
+				int c = count[i];
+				for(int j=0;j<c;j++) writer.write("*");
+				writer.write("\r\n");
+			}
+
+		}finally{ try {writer.close();} catch (Exception ex) {}
+		}*/
 	}
 }
