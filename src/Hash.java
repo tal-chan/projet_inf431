@@ -8,12 +8,11 @@ import java.util.Random;
 
 
 
-public class HashTest {
+public class Hash {
 	
 	/*
 	 * N - number of words in Shakespeare's vocabulary (Complete works). For testing purposes.
-	 */
-	
+	 */	
 	static int N = 22929;
 	
 	/*
