@@ -231,6 +231,7 @@ public class HashTest {
 		double mean_delay = (double)(realDelay-referenceDelay) / ((double)N*nbr) *1000000;
 		
 		System.out.println ("Mean time of hash function's execution : " + mean_delay + "ns.");
+		// 492ns with nbr = 10000
 		
 		return mean_delay;
 	}
