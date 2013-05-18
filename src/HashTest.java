@@ -8,17 +8,17 @@ import java.util.Random;
 
 
 
-public class Hash {
-	
+public class HashTest {
+
 	/*
 	 * N - number of words in Shakespeare's vocabulary (Complete works). For testing purposes.
 	 */	
 	static int N = 22929;
-	
+
 	/*
-	 * locate - Locates a String in a sorted ArrayList with a predictive dichotomous algorithm.
+	 * locateString - Locates a String in a sorted ArrayList with a dichotomous algorithm.
 	 */
-	static int locate (List<String> list, String s) {
+	static int locateString (List<String> list, String s) {
 		if (list.size() == 0) {
 			return 0;
 		}
@@ -53,8 +53,7 @@ public class Hash {
 	/*
 	 * extractWords - extracting distinct words from a text file.
 	 * This is to create relevant data to test the hash function
-	 */
-	
+	 */	
 	public static void extractWords(String inFile, String outFile) throws IOException{
 		Data data = new Data(inFile,Data.FILE);
 		List<String> list = new ArrayList<String>();
@@ -63,7 +62,7 @@ public class Hash {
 			for(;;){
 				Element el = data.nextElement();
 				String word = el.GetContent();
-				int pos = locate(list,word);
+				int pos = locateString(list,word);
 				if ((pos == list.size()) || (!list.get(pos).equals(word))) {
 					list.add(pos, word);
 				}
@@ -80,11 +79,10 @@ public class Hash {
 		}
 
 	}
-	
+
 	/*
 	 * hashCount - counting the hash values hit discriminating by the 12 least significant bits
-	 */
-	
+	 */	
 	public static int[] hashCount(String name) throws IOException{
 		Data data = new Data(name, Data.FILE);
 		int mask=0xfff;
@@ -99,11 +97,10 @@ public class Hash {
 		} catch (Data.NoMoreElement e) {}
 		return count;
 	}
-	
+
 	/*
 	 * randomCount - simulating a uniform repartition of hash values.
-	 */
-	
+	 */	
 	public static int[] randomCount(){
 		Random gen = new Random();
 		int[] count = new int[0x1000];
@@ -113,11 +110,10 @@ public class Hash {
 		}
 		return count;
 	}
-	
+
 	/*
-	 *chi2 - calculating the chi2 test of a set of data 
-	 */
-	
+	 * chi2 - calculating the chi2 test of a set of data 
+	 */	
 	public static double chi2(int[] sample){
 		int n=sample.length;
 		double theory = N/(double)n;
@@ -127,12 +123,11 @@ public class Hash {
 		}
 		return res/theory;
 	}
-	
+
 	/*
 	 * averageRandomChi2 - calculating the average chi2 for a pseudo-randomly
 	 * generated set of data over n repeated experiences. 
 	 */
-
 	public static double averageRandomChi2 (int n){
 		double res=0;
 		for (int i=0;i<n;i++){
@@ -140,8 +135,9 @@ public class Hash {
 		}
 		return res/n;
 	}
-	
-	/*public static void histogram (String name, int lowBound, int range,String outFile)throws IOException{
+
+	/*
+	public static void histogram (String name, int lowBound, int range,String outFile)throws IOException{
 		Data data = new Data(name, Data.FILE);
 		int[] count = new int[range];
 		data.init();
@@ -163,13 +159,12 @@ public class Hash {
 
 		}finally{ try {writer.close();} catch (Exception ex) {}
 		}
-		
+
 	}*/
 
 	/*
 	 * Testing the hash function with Shakespeare's vocabulary
-	 */
-	
+	 *	
 	public static void main(String[] args) throws IOException {
 		String name = "vocab.txt";
 		//String outFile = "histogram.txt";
@@ -182,7 +177,7 @@ public class Hash {
 				System.out.println(hash);
 				}
 		} catch (Data.NoMoreElement e) {}
-		*/
+	 *
 		//histogram(name,-223722832,20000000,outFile);
 		int[] count = hashCount(name);
 		System.out.println(chi2(count));
@@ -196,6 +191,52 @@ public class Hash {
 			}
 
 		}finally{ try {writer.close();} catch (Exception ex) {}
-		}*/
+		}*
+	}*/
+	
+	/*
+	 * time - Evaluates the time took by the hash calculation.
+	 */
+	static double time () throws IOException {
+		int nbr = 10000;
+		
+		long t0 = System.currentTimeMillis();
+		Data data1 = new Data("vocab.txt", Data.FILE);
+		data1.init();
+		try {
+			for(;;){
+				String str;
+				Element el = data1.nextElement();
+				str = el.GetContent();
+				for (int i=0;i<nbr; i++) {}
+			}
+
+		} catch (Data.NoMoreElement e) {}
+		long referenceDelay = System.currentTimeMillis() - t0;
+
+		t0 = System.currentTimeMillis();
+		Data data2 = new Data("vocab.txt", Data.FILE);
+		data2.init();
+		try {
+			for(;;){
+				String str;
+				Element el = data2.nextElement();
+				str = el.GetContent();
+				for (int i=0;i<nbr; i++) { Element.Hash(str); }
+			}
+
+		} catch (Data.NoMoreElement e) {}
+		long realDelay = System.currentTimeMillis() - t0;
+		
+		double mean_delay = (double)(realDelay-referenceDelay) / ((double)N*nbr) *1000000;
+		
+		System.out.println ("Mean time of hash function's execution : " + mean_delay + "ns.");
+		
+		return mean_delay;
+	}
+	
+
+	public static void main(String[] args) throws IOException {
+		time();
 	}
 }
