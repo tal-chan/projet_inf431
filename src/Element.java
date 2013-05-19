@@ -5,9 +5,11 @@ public class Element {
 	private int NbWords;
 	
     static{
-        System.loadLibrary("libElement");
+        System.loadLibrary("Element");
     }
-
+	
+    static native int Hash (String str);
+ 
     public Element (String Content) {
 		this.Content = Content;
 		this.ContentHash = Hash(Content);
@@ -30,9 +32,7 @@ public class Element {
 	public int GetHash () {
 		return ContentHash; 
 	}
-	
-    private native int Hash (String str);
-    
+	   
     protected String removeFirstWord() throws IllegalArgumentException{
     	if (NbWords<2){throw new IllegalArgumentException("In function removeFirstWord : no word to remove");}
     	int i = 0;
