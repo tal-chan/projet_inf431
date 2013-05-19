@@ -1,5 +1,12 @@
 /*
- * SamplingBag - auxiliary data structure implementing
+ * SamplingBag - auxiliary data structure implementing sampling algorithm.
+ * size - desired sampling size
+ * zeroes - minimum number of zeroes on the right for hash values in the bag
+ * sorted - first half of the bag, containing elements with exactly zeroes zeroes.
+ * This is a sorted array.
+ * ns - number of elements stored in sorted.
+ * unsorted - second half of the bag, containing elements with strictly more than zeroes zeroes.
+ * nu - number of elements stored in unsorted.
  */
 public class SamplingBag {
 	int size;
@@ -22,18 +29,22 @@ public class SamplingBag {
 		mask = (mask<<1) + 1;
 	}
 	/*
-	 * shiftSorted - 
+	 * shiftSorted - shifts all elements of sorted with index >=i to the right
 	 */
 	private void shiftSorted(int i){
 		for(int j = ns-1;j>i;j--){
 			sorted[j]=sorted[--j];
 		}
 	}
+	/*
+	 * shiftUnsorted - shifts all elements of unsorted with index >i to the left,
+	 * deleting unsorted[i]
+	 */
 	private void shiftUnsorted(int i){
 		for(int j=i;j<nu-1;j++) unsorted[j]=unsorted[++j];
 	}
 	/*
-	 * sortedInsert - 
+	 * insertSorted - inserts e in the sorted array, deleting the last element if necessary.
 	 */
 	private boolean insertSorted(Element e){
 		int hash = e.GetHash();
@@ -47,7 +58,9 @@ public class SamplingBag {
 		return true;
 	}
 	/*
-	 * sortedTryInsert -
+	 * sortedTryInsert - if sorted is not full (i.e. ns<size), inserts e in sorted.
+	 * Otherwise, e is inserted only if its hash is lower than the maximum hash stored in sorted,
+	 * deleting the last element of the array.
 	 */
 	private void tryInsertSorted(Element e){
 		int hash = e.GetHash();
@@ -55,7 +68,9 @@ public class SamplingBag {
 		if (ns<size&&insertSorted(e)) ns++;
 		else if (hash<maxHash) insertSorted(e);
 	}
-	
+	/*
+	 * purgeAndTransfer - empties sorted and transfers eligible elements from unsorted to sorted
+	 */
 	private void purgeAndTransfer(){
 		ns=0;
 		for(int i=0;i<size;i++){
@@ -76,6 +91,10 @@ public class SamplingBag {
 		}
 		unsorted[nu++]=e;
 	}
+	/*
+	 * tryInsert - tries to insert an element in the bag. If the bag is full (i.e. if nu=size)
+	 * then zeroes and mask are incremented, and the bag purged accordingly. 
+	 */
 	public void tryInsert(Element e){
 		int hash = e.GetHash();
 		if ((hash&mask)==0){
