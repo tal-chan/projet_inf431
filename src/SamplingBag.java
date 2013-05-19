@@ -108,4 +108,14 @@ public class SamplingBag {
 			}
 		}
 	}
+	public Element[] getContent(){
+		Element[] res = new Element[size];
+		for (int i=0;i<nu;i++){
+			res[i]=unsorted[i];
+		}
+		for (int j=0;j<size-nu&&j<ns;j++){
+			res[j+nu]=sorted[j];
+		}
+		return res;
+	}
 }
