@@ -32,11 +32,4 @@ public class Element {
 	public int GetHash () {
 		return ContentHash; 
 	}
-	   
-    protected String removeFirstWord() throws IllegalArgumentException{
-    	if (NbWords<2){throw new IllegalArgumentException("In function removeFirstWord : no word to remove");}
-    	int i = 0;
-    	while(Word.isLetter(Content.charAt(i))){i++;}
-    	return Content.substring(i+1);    	
-    }
 }
