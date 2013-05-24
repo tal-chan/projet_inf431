@@ -48,7 +48,7 @@ public class FingerPrint {
 	 * newElement - Function to call to inspect a new element. The fingerprint is
 	 * 		updated.
 	 */
-	public void newElement (Data d) throws Data.NoMoreElement, IOException {
+	public void newElement (Data d) throws IOException {
 		Element el = d.nextElement();
 		int hash = el.GetHash();
 

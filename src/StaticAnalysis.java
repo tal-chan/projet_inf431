@@ -33,12 +33,11 @@ public class StaticAnalysis extends FingerPrint {
 	}
 
 	public void compute (Data d) throws IOException {
-		try {
+		
 			d.init();
-			for(;;) {
+			while(d.hasNext()) {
 				newElement(d);
 			}
-		} catch (Data.NoMoreElement e) {}
 	}
 
 	

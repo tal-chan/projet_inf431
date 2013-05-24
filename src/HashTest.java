@@ -58,17 +58,16 @@ public class HashTest {
 		Data data = new Data(inFile,Data.FILE);
 		List<String> list = new ArrayList<String>();
 		data.init();
-		try {
-			for(;;){
-				Element el = data.nextElement();
-				String word = el.GetContent();
-				int pos = locateString(list,word);
-				if ((pos == list.size()) || (!list.get(pos).equals(word))) {
-					list.add(pos, word);
-				}
+		while(data.hasNext()){
+			Element el = data.nextElement();
+			String word = el.GetContent();
+			int pos = locateString(list,word);
+			if ((pos == list.size()) || (!list.get(pos).equals(word))) {
+				list.add(pos, word);
 			}
+		}
 
-		} catch (Data.NoMoreElement e) {}
+
 		Writer writer =  new OutputStreamWriter(new FileOutputStream(outFile));
 		try{
 			for(String s:list){
@@ -88,13 +87,11 @@ public class HashTest {
 		int mask=0xfff;
 		int[]count = new int[mask+1];
 		data.init();
-		try {
-			for(;;){
+		
+			while(data.hasNext()){
 				int hash = data.nextElement().GetHash();
 				count[hash&mask]++;
 			}
-
-		} catch (Data.NoMoreElement e) {}
 		return count;
 	}
 
@@ -193,49 +190,43 @@ public class HashTest {
 		}finally{ try {writer.close();} catch (Exception ex) {}
 		}*
 	}*/
-	
+
 	/*
 	 * time - Evaluates the time took by the hash calculation.
 	 */
 	static double time () throws IOException {
 		int nbr = 10000;
-		
+
 		long t0 = System.currentTimeMillis();
 		Data data1 = new Data("vocab.txt", Data.FILE);
 		data1.init();
-		try {
-			for(;;){
+		while(data1.hasNext()){
 				String str;
 				Element el = data1.nextElement();
 				str = el.GetContent();
 				for (int i=0;i<nbr; i++) {}
 			}
-
-		} catch (Data.NoMoreElement e) {}
 		long referenceDelay = System.currentTimeMillis() - t0;
 
 		t0 = System.currentTimeMillis();
 		Data data2 = new Data("vocab.txt", Data.FILE);
 		data2.init();
-		try {
-			for(;;){
+		while(data2.hasNext()){
 				String str;
 				Element el = data2.nextElement();
 				str = el.GetContent();
 				for (int i=0;i<nbr; i++) { Element.Hash(str); }
 			}
-
-		} catch (Data.NoMoreElement e) {}
 		long realDelay = System.currentTimeMillis() - t0;
-		
+
 		double mean_delay = (double)(realDelay-referenceDelay) / ((double)N*nbr) *1000000;
-		
+
 		System.out.println ("Mean time of hash function's execution : " + mean_delay + "ns.");
 		// 492ns with nbr = 10000
-		
+
 		return mean_delay;
 	}
-	
+
 
 	public static void main(String[] args) throws IOException {
 		time();
