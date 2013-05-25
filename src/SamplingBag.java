@@ -32,8 +32,8 @@ public class SamplingBag {
 	 * shiftSorted - shifts all elements of sorted with index >=i to the right
 	 */
 	private void shiftSorted(int i){
-		for(int j = ns-1;j>i;j--){
-			sorted[j]=sorted[--j];
+		for(int j = size-1;j>i;j--){
+			sorted[j]=sorted[j-1];
 		}
 	}
 	/*
@@ -41,16 +41,24 @@ public class SamplingBag {
 	 * deleting unsorted[i]
 	 */
 	private void shiftUnsorted(int i){
-		for(int j=i;j<nu-1;j++) unsorted[j]=unsorted[++j];
+		for(int j=i;j<nu-1;j++) unsorted[j]=unsorted[j+1];
 	}
 	/*
 	 * insertSorted - inserts e in the sorted array, deleting the last element if necessary.
 	 */
 	private boolean insertSorted(Element e){
 		int hash = e.GetHash();
+		if (ns==0) { //dealing with empty array
+			sorted[0]=e;
+			return true;
+		}
 		int i=0;
 		while (i<ns&&hash>sorted[i].GetHash()){
 			i++;
+		}
+		if (i==ns){
+			sorted[i]=e;
+			return true;
 		}
 		if (hash==sorted[i].GetHash()||i==size) return false;
 		shiftSorted(i);
@@ -64,22 +72,28 @@ public class SamplingBag {
 	 */
 	private void tryInsertSorted(Element e){
 		int hash = e.GetHash();
-		int maxHash = sorted[size-1].GetHash();
-		if (ns<size&&insertSorted(e)) ns++;
-		else if (hash<maxHash) insertSorted(e);
+		if (ns<size){
+			if(insertSorted(e)) ns++;
+		}
+		else {
+			int maxHash = sorted[size-1].GetHash();
+			if (hash<maxHash) insertSorted(e);
+		}
 	}
 	/*
 	 * purgeAndTransfer - empties sorted and transfers eligible elements from unsorted to sorted
 	 */
 	private void purgeAndTransfer(){
 		ns=0;
-		for(int i=0;i<size;i++){
+		int i = 0;
+		while(i<nu){
 			Element e=unsorted[i];
 			if ((e.GetHash()&(mask+1))!=0){
 				tryInsertSorted(e);
 				shiftUnsorted(i);
 				nu--;
 			}
+			else i++;
 		}
 	}
 	/*

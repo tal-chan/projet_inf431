@@ -34,6 +34,7 @@ public class MyReader {
 	public void init(InputStream source){
 		scan = new Scanner(source);
 		isFirst = true;
+		setDelimiters();
 	}
 	/*
 	 * setDelimiters - sets element delimiters according to data type given in settings.
@@ -41,7 +42,7 @@ public class MyReader {
 	public void setDelimiters(){
 		switch(set.type){
 		case Settings.TEXT:
-			scan.useDelimiter("\\s+|[,?;.:!']|-{2,}");
+			scan.useDelimiter("\\s+|[\\s+,?;.:!']|-{2,}");
 			break;
 		default:
 			break;
@@ -74,8 +75,8 @@ public class MyReader {
 			while(i<k){
 				String tmp = scan.next();
 				if (tmp.length()>0){
-					i++;
 					prev[i]=tmp;
+					i++;
 				}
 			}
 			String s = prevToString();

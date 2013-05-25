@@ -15,4 +15,8 @@ public class Settings {
 		type = TEXT;
 		k = 1;
 	}
+	public Settings(int type, int k){
+		this.type = type;
+		this.k = k;
+	}
 }
