@@ -3,6 +3,7 @@ import java.io.IOException;
 /*
  * Sampling - taking a sample of representative elements.
  */
+
 public class Sampling {
 	Data input;
 	int size;

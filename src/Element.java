@@ -2,6 +2,7 @@
 public class Element {
 	private String Content;
 	private int ContentHash;
+	private int count = 0;
 	
     static{
         System.loadLibrary("Element");
@@ -20,5 +21,11 @@ public class Element {
 	
 	public int GetHash () {
 		return ContentHash; 
+	}
+	public int getCount() {
+		return count;
+	}
+	public void incrCount(){
+		count ++;
 	}
 }

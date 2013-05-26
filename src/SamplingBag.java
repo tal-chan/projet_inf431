@@ -25,13 +25,13 @@ public class SamplingBag {
 	/*
 	 * incrMask - increments mask
 	 */
-	private void incrMask(){
+	protected void incrMask(){
 		mask = (mask<<1) + 1;
 	}
 	/*
 	 * shiftSorted - shifts all elements of sorted with index >=i to the right
 	 */
-	private void shiftSorted(int i){
+	protected void shiftSorted(int i){
 		for(int j = size-1;j>i;j--){
 			sorted[j]=sorted[j-1];
 		}
@@ -40,13 +40,13 @@ public class SamplingBag {
 	 * shiftUnsorted - shifts all elements of unsorted with index >i to the left,
 	 * deleting unsorted[i]
 	 */
-	private void shiftUnsorted(int i){
+	protected void shiftUnsorted(int i){
 		for(int j=i;j<nu-1;j++) unsorted[j]=unsorted[j+1];
 	}
 	/*
 	 * insertSorted - inserts e in the sorted array, deleting the last element if necessary.
 	 */
-	private boolean insertSorted(Element e){
+	protected boolean insertSorted(Element e){
 		int hash = e.GetHash();
 		if (ns==0) { //dealing with empty array
 			sorted[0]=e;
@@ -70,7 +70,7 @@ public class SamplingBag {
 	 * Otherwise, e is inserted only if its hash is lower than the maximum hash stored in sorted,
 	 * deleting the last element of the array.
 	 */
-	private void tryInsertSorted(Element e){
+	protected void tryInsertSorted(Element e){
 		int hash = e.GetHash();
 		if (ns<size){
 			if(insertSorted(e)) ns++;
@@ -83,7 +83,7 @@ public class SamplingBag {
 	/*
 	 * purgeAndTransfer - empties sorted and transfers eligible elements from unsorted to sorted
 	 */
-	private void purgeAndTransfer(){
+	protected void purgeAndTransfer(){
 		ns=0;
 		int i = 0;
 		while(i<nu){
@@ -99,7 +99,7 @@ public class SamplingBag {
 	/*
 	 * insertUnsorted - inserts e in unsorted. Assumes that unsorted is not full, i.e. nu<size.
 	 */
-	private void insertUnsorted (Element e){
+	protected void insertUnsorted (Element e){
 		for (int i=0;i<nu;i++){
 			if (e.GetHash()==unsorted[i].GetHash())return;
 		}
