@@ -2,7 +2,6 @@
 public class Element {
 	private String Content;
 	private int ContentHash;
-	private int NbWords;
 	
     static{
         System.loadLibrary("Element");
@@ -15,16 +14,6 @@ public class Element {
 		this.ContentHash = Hash(Content);
 	}
     
-    public Element(String s, int k){
-    	Content = s;
-    	NbWords = k;
-    	ContentHash = Hash(Content);
-    }
-    
-    public int GetNbWords(){
-    	return NbWords;
-    }
-	
 	public String GetContent () {
 		return Content;
 	}
