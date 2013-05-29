@@ -42,7 +42,7 @@ public class MyReader {
 	public void setDelimiters(){
 		switch(set.type){
 		case Settings.TEXT:
-			scan.useDelimiter("\\s+|[\\s+,?;.:!']|-{2,}");
+			scan.useDelimiter("\\W");
 			break;
 		default:
 			break;
@@ -72,7 +72,7 @@ public class MyReader {
 		int k = set.k;
 		if (isFirst){ //first time calling next(), initializing prev.
 			int i=0;
-			while(i<k){
+			while(i<k&&scan.hasNext()){
 				String tmp = scan.next();
 				if (tmp.length()>0){
 					prev[i]=tmp;
@@ -85,10 +85,10 @@ public class MyReader {
 		}
 		//next() has already been called once, only one element to read in the stream.
 		String tmp = scan.next();
-		while(tmp.length()==0)tmp=scan.next();
+		while(tmp.length()==0&&scan.hasNext())tmp=scan.next();
 		shiftPrev();
 		prev[k-1]=tmp;
-		tmp = prevToString();
+		tmp = prevToString().toLowerCase();
 		return new Element(tmp);
 		
 	}

@@ -54,7 +54,7 @@ public class HashTest {
 	 * extractWords - extracting distinct words from a text file.
 	 * This is to create relevant data to test the hash function
 	 */	
-	public static void extractWords(String inFile, String outFile) throws IOException{
+	public static int extractWords(String inFile, String outFile) throws IOException{
 		Data data = new Data(inFile,Data.FILE);
 		List<String> list = new ArrayList<String>();
 		data.init();
@@ -76,6 +76,7 @@ public class HashTest {
 
 		}finally{ try {writer.close();} catch (Exception ex) {}
 		}
+		return list.size();
 
 	}
 
