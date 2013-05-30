@@ -95,7 +95,7 @@ public class StaticAnalysis extends FingerPrint {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		String name = "Texts/Complete.txt";
+		String name = "Texts/fravia/pages.txt";
 		Data data = new Data(name, Data.FILE);
 		long t0, t1;
 		
@@ -105,7 +105,7 @@ public class StaticAnalysis extends FingerPrint {
 		System.out.printf("Execution took %fms\n", (double)(t1-t0));
 		t0=t1;
 		
-		for (int b=4; b<=16; b++) {
+		for (int b=13; b<=16; b++) {
 			StaticAnalysis test = new StaticAnalysis(data, b);
 			System.out.printf("Estimated number of different words for b=%d : %f.\n", b, test.hyperLogLog());		
 

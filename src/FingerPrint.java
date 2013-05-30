@@ -67,12 +67,15 @@ public class FingerPrint {
 
 	/*
 	 * hyperLogLog - Quick count of the number of distinct elements of the data chunk from its fingerprint.
+	 * 	return a negative number if b is too high
 	 */
 	public double hyperLogLog () {
 		float tmp = 0;
 		for (int i=0; i<m; i++) {
 			if (M[i] >= 0) {
 				tmp += Math.pow(2, -M[i]);
+			} else {
+				return -1;
 			}
 		}
 
