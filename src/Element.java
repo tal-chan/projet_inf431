@@ -28,4 +28,7 @@ public class Element {
 	public void incrCount(){
 		count ++;
 	}
+	public void decrCount(){
+		count --;
+	}
 }
