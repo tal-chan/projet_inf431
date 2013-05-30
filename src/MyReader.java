@@ -79,18 +79,20 @@ public class MyReader {
 					i++;
 				}
 			}
-			String s = prevToString();
+			String s = prevToString().toLowerCase();
 			isFirst=false;
 			return new Element(s);
 		}
 		//next() has already been called once, only one element to read in the stream.
 		String tmp = scan.next();
 		while(tmp.length()==0&&scan.hasNext())tmp=scan.next();
-		shiftPrev();
-		prev[k-1]=tmp;
+		if(tmp.length()>0){
+			shiftPrev();
+			prev[k-1]=tmp;
+		}
 		tmp = prevToString().toLowerCase();
 		return new Element(tmp);
-		
+
 	}
-	
+
 }
