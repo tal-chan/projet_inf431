@@ -42,7 +42,7 @@ public class MyReader {
 	public void setDelimiters(){
 		switch(set.type){
 		case Settings.TEXT:
-			scan.useDelimiter("\\W");
+			scan.useDelimiter("[\\s!\"#\\$%\\&\'\\(\\)\\*\\+,-./:;\\<\\=\\>\\?@\\[\\]\\^_`\\{\\|\\}~]");
 			break;
 		default:
 			break;
