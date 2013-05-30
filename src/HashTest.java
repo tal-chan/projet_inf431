@@ -81,17 +81,16 @@ public class HashTest {
 	}
 
 	/*
-	 * hashCount - counting the hash values hit discriminating by the 12 least significant bits
+	 * hashCount - counting the hash values hit discriminating with the remainder modulo n.
 	 */	
-	public static int[] hashCount(String name) throws IOException{
+	public static int[] hashCount(String name, int n) throws IOException{
 		Data data = new Data(name, Data.FILE);
-		int mask=0xfff;
-		int[]count = new int[mask+1];
+		int[]count = new int[n];
 		data.init();
 
 		while(data.hasNext()){
 			int hash = data.nextElement().GetHash();
-			count[hash&mask]++;
+			count[((hash%n)+n)%n]++;
 		}
 		return count;
 	}
@@ -99,11 +98,11 @@ public class HashTest {
 	/*
 	 * randomCount - simulating a uniform repartition of hash values.
 	 */	
-	public static int[] randomCount(){
+	public static int[] randomCount(int n){
 		Random gen = new Random();
-		int[] count = new int[0x1000];
+		int[] count = new int[n];
 		for (int i=0;i<N;i++){
-			int random = gen.nextInt(0x1000);
+			int random = gen.nextInt(n);
 			count[random]++;
 		}
 		return count;
@@ -124,14 +123,14 @@ public class HashTest {
 
 	/*
 	 * averageRandomChi2 - calculating the average chi2 for a pseudo-randomly
-	 * generated set of data over n repeated experiences. 
+	 * generated set of data of length n over k repeated experiences. 
 	 */
-	public static double averageRandomChi2 (int n){
+	public static double averageRandomChi2 (int k, int n){
 		double res=0;
-		for (int i=0;i<n;i++){
-			res+=chi2(randomCount());
+		for (int i=0;i<k;i++){
+			res+=chi2(randomCount(n));
 		}
-		return res/n;
+		return res/k;
 	}
 
 
@@ -173,18 +172,16 @@ public class HashTest {
 
 
 	public static void main(String[] args) throws IOException {
-
 		String name = "vocab.txt";
 		Data data = new Data(name, Data.FILE);
+		int nbr = 4000;
+		
 		data.init();
 		while(data.hasNext()){
 			int hash = data.nextElement().GetHash();
-			System.out.println(hash);
 		}
-		int[] count = hashCount(name);
+		int[] count = hashCount(name, nbr);
 		System.out.println(chi2(count));
-		System.out.println(averageRandomChi2(1000));
-		
-		time();
+		System.out.println(averageRandomChi2(1000, nbr));
 	}
 }

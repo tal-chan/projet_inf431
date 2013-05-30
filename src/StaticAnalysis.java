@@ -2,11 +2,13 @@ import java.io.IOException;
 
 
 public class StaticAnalysis extends FingerPrint {
-	public StaticAnalysis(Data d) {
+	public StaticAnalysis(Data d) throws IOException {
 		super();
+		this.compute(d);
 	}
-	public StaticAnalysis(Data d, int b) {
+	public StaticAnalysis(Data d, int b) throws IOException {
 		super(b);
+		this.compute(d);
 	}
 	
 	/*
@@ -33,7 +35,6 @@ public class StaticAnalysis extends FingerPrint {
 	}
 
 	public void compute (Data d) throws IOException {
-		
 			d.init();
 			while(d.hasNext()) {
 				newElement(d);
@@ -92,5 +93,25 @@ public class StaticAnalysis extends FingerPrint {
 			}
 		}
 	}
+	
+	public static void main(String[] args) throws IOException {
+		String name = "Texts/Complete.txt";
+		Data data = new Data(name, Data.FILE);
+		long t0, t1;
+		
+		t0 = System.currentTimeMillis();
+		System.out.printf("Exact number of different words : %d.\n", data.count());
+		t1 = System.currentTimeMillis();
+		System.out.printf("Execution took %fms\n", (double)(t1-t0));
+		t0=t1;
+		
+		for (int b=4; b<=16; b++) {
+			StaticAnalysis test = new StaticAnalysis(data, b);
+			System.out.printf("Estimated number of different words for b=%d : %f.\n", b, test.hyperLogLog());		
 
+			t1 = System.currentTimeMillis();
+			System.out.printf("Execution took %fms\n", (double)(t1-t0));
+			t0=t1;
+		}	
+	}
 }
