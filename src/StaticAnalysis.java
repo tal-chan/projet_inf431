@@ -80,8 +80,11 @@ public class StaticAnalysis extends FingerPrint {
 
 		return sim;
 	}
-
-	static public void similarPairs(String directory, int b, int k) throws IOException{
+	/*
+	 * similarPairs - prints out the similarity between files in a directory,
+	 * comparing them two at a time.
+	 */
+	public static void similarPairs(String directory, int b, int k) throws IOException{
 		Data[] data = Data.extractData(directory, new Settings(Settings.TEXT, k));
 		double[][] sim = groupSimilarities(groupStaticAnalysis(data, b));
 		int l = sim.length;
@@ -92,7 +95,7 @@ public class StaticAnalysis extends FingerPrint {
 		}
 	}
 	
-	public static void testHyperLogLog(String[] args) throws IOException {
+	private static void testHyperLogLog(String[] args) throws IOException {
 		String name = "Texts/fravia/pages.txt";
 		Data data = new Data(name, Data.FILE);
 		long t0, t1;
@@ -114,7 +117,7 @@ public class StaticAnalysis extends FingerPrint {
 	}
 
 
-	public static void testSimilarities(String[] args) throws IOException {
+	private static void testSimilarities(String[] args) throws IOException {
 		similarPairs("Texts/chunks", 10, 3);
 	}
 	

@@ -1,4 +1,6 @@
-
+/*
+ * CountingBag - 
+ */
 public class CountingBag extends SamplingBag {
 	public CountingBag(int k){
 		super(k);

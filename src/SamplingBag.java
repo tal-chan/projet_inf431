@@ -23,6 +23,12 @@ public class SamplingBag {
 		zeroes=mask=ns=nu= 0;
 	}
 	/*
+	 * init - initializing the bag.
+	 */
+	public void init(){
+		zeroes=mask=ns=nu= 0;
+	}
+	/*
 	 * incrMask - increments mask
 	 */
 	protected void incrMask(){

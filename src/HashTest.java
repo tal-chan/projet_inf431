@@ -169,8 +169,15 @@ public class HashTest {
 
 		return mean_delay;
 	}
-
-
+	/*
+	 * createVocab - for testing purposes : creating a list of shakespeare's vocabulary.
+	 */
+	public static void createVocab() throws IOException{
+		String name = "Texts/Shakespeare/";
+		String file = "Complete.txt";
+		String output = "vocab.txt";
+		System.out.println(HashTest.extractWords(name+file, output));
+	}
 	public static void main(String[] args) throws IOException {
 		String name = "vocab.txt";
 		Data data = new Data(name, Data.FILE);

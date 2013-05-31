@@ -4,14 +4,27 @@ import java.io.IOException;
  * Icebergs - Extracting elements that appear with higher frequency than a given threshold  
  */
 public class Icebergs {
-	public static void shiftRight(Element[] array, int i){
+	/*
+	 * shiftRight - shifts the elements of the array to the right,
+	 * in order to insert a new element at index i
+	 */
+	private static void shiftRight(Element[] array, int i){
 		for (int j=array.length-1;j>i;j--) array[j]=array[j-1];
 	}
-	public static void shiftLeft(Element[] array, int i){
+	/*
+	 * shiftLeft - shifts the elements of the array to the left,
+	 * deleting the element at index i.
+	 */
+	private static void shiftLeft(Element[] array, int i){
 		for (int j = i;j<array.length-1;j++) array[j] = array[j+1];
 		array[array.length-1]=null;
 	}
-	public static boolean offerElement(Element[] array, Element e,int size){
+	/*
+	 * offerElement - inserts an element in a sorted Element array.
+	 * returns true if number of distinct elements has increased after insertion,
+	 * i.e. the element was not already in the array.
+	 */
+	private static boolean offerElement(Element[] array, Element e,int size){
 		if (size==0){ //dealing with empty array
 			array[0] = e;
 			return true;
@@ -59,5 +72,9 @@ public class Icebergs {
 		for (Element e : res){
 			if (e!=null)System.out.println(e.GetContent());
 		}
+	}
+	public static void main(String[] args) throws IOException{
+		Data data = new Data("http://www.enseignement.polytechnique.fr/informatique/INF431/",Data.URL);
+		Icebergs.printIcebergs(data,0.05);
 	}
 }

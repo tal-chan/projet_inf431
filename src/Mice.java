@@ -15,11 +15,21 @@ public class Mice {
 	public double getMiceProportion(int occurrences) throws IOException{
 		double res=0;
 		input.init();
+		bag.init();
 		while(input.hasNext()) bag.tryInsert(input.nextElement());
 		Element[] content = bag.getContent();
 		for (int i=0;i<size;i++){
 			if (content[i].getCount()+1==occurrences) res+=1;
 		}
 		return res /size;
+	}
+	public static void main(String[] args) throws IOException{
+		String name = "Texts/Shakespeare/other_pieces/";
+		String txt = "hamlet.txt";
+		Data input = new Data(name+txt,Data.FILE);
+		Mice mice = new Mice(input,1000);
+		for (int i = 1;i<10;i++){
+			System.out.println(mice.getMiceProportion(i));
+		}
 	}
 }

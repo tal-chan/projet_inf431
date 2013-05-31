@@ -15,6 +15,7 @@ public class Sampling {
 	}
 	public void printSample()throws IOException{
 		input.init();
+		bag.init();
 		while(input.hasNext()) bag.tryInsert(input.nextElement());
 		Element[] sample = bag.getContent();
 		for (int i=0;i<size;i++){
