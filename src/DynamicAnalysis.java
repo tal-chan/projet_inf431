@@ -78,9 +78,10 @@ public class DynamicAnalysis extends FingerPrint {
 
 		return alpha * (double)m * (double)m / tmp;
 	}
+
 	public static void main(String[] args) throws IOException{
-		String infile = "Texts/attaques/attaque_id.txt";
-		String outFile = "dynamicanalysis.csv";
+		String infile = "Texts/attaques/attaque_diff.txt";
+		String outFile = "Texts/attaques/attaque_id.csv";
 		Data input = new Data(infile,Data.FILE);
 		int b = 7;
 		int w = 10000;

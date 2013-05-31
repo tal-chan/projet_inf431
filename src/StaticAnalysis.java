@@ -81,8 +81,8 @@ public class StaticAnalysis extends FingerPrint {
 		return sim;
 	}
 
-	static public void similarPairs(String directory, int b) throws IOException{
-		Data[] data = Data.extractData(directory, new Settings(Settings.TEXT, 2));
+	static public void similarPairs(String directory, int b, int k) throws IOException{
+		Data[] data = Data.extractData(directory, new Settings(Settings.TEXT, k));
 		double[][] sim = groupSimilarities(groupStaticAnalysis(data, b));
 		int l = sim.length;
 		for (int i=0;i<l;i++){
@@ -113,9 +113,9 @@ public class StaticAnalysis extends FingerPrint {
 		}	
 	}
 
-	
+
 	public static void testSimilarities(String[] args) throws IOException {
-		similarPairs("Texts/chunks", 10);
+		similarPairs("Texts/chunks", 10, 3);
 	}
 	
 		
