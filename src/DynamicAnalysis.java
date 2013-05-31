@@ -32,7 +32,11 @@ public class DynamicAnalysis extends FingerPrint {
 		date = new int[m];
 		memory = new double[nbr];
 	}
-
+	public double[] getMemory() {
+		double[] res = new double[memory.length];
+		System.arraycopy(memory,0,res,0,memory.length);
+		return res;
+	}
 	/*
 	 * newElement - Function to call to inspect a new element. The fingerprint is
 	 * 		updated.
