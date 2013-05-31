@@ -30,7 +30,7 @@ public class Sampling {
 		String name = "Texts/Shakespeare/other_pieces/";
 		String txt = "macbeth.txt";
 		Data input = new Data(name+txt,Data.FILE);
-		Sampling sample = new Sampling (input,15);
+		Sampling sample = new Sampling (input,6);
 		sample.printSample();
 	}
 }

@@ -78,7 +78,7 @@ public class Icebergs {
 		}
 	}
 	public static void main(String[] args) throws IOException{
-		Data data = new Data("http://www.enseignement.polytechnique.fr/informatique/INF431/",Data.URL);
-		Icebergs.printIcebergs(data,0.05);
+		Data data = new Data("Texts/fravia/pages.txt",Data.FILE);
+		Icebergs.printIcebergs(data,0.005);
 	}
 }
