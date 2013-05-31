@@ -16,7 +16,7 @@ public class SamplingBag {
 	Element[] unsorted;
 	int ns;
 	int nu;
-	public SamplingBag(int k){
+	protected SamplingBag(int k){
 		size = k;
 		sorted = new Element[size];
 		unsorted = new Element[size];
@@ -25,7 +25,7 @@ public class SamplingBag {
 	/*
 	 * init - initializing the bag.
 	 */
-	public void init(){
+	protected void init(){
 		zeroes=mask=ns=nu= 0;
 	}
 	/*
@@ -115,7 +115,7 @@ public class SamplingBag {
 	 * tryInsert - tries to insert an element in the bag. If the bag is full (i.e. if nu=size)
 	 * then zeroes and mask are incremented, and the bag purged accordingly. 
 	 */
-	public void tryInsert(Element e){
+	protected void tryInsert(Element e){
 		int hash = e.GetHash();
 		if ((hash&mask)==0){
 			if ((hash&(mask+1))!=0) tryInsertSorted(e);
@@ -128,7 +128,7 @@ public class SamplingBag {
 			}
 		}
 	}
-	public Element[] getContent(){
+	protected Element[] getContent(){
 		Element[] res = new Element[size];
 		for (int i=0;i<nu;i++){
 			res[i]=unsorted[i];

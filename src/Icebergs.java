@@ -41,6 +41,10 @@ public class Icebergs {
 		array[i]=e;
 		return true;
 	}
+	/*
+	 * extract - implementing Karp et alii algorithm to extract icebergs
+	 * theta - minimal frequency desired for the icebergs
+	 */
 	public static Element [] extract(Data input, double theta) throws IOException{
 		int capacity = (int) Math.ceil(1/theta);
 		int size = 0;

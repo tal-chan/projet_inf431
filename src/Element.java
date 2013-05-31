@@ -15,19 +15,19 @@ public class Element {
 	
     static native int Hash (String str);
  
-    public Element (String Content) {
+    protected Element (String Content) {
 		this.Content = Content;
 		this.ContentHash = Hash(Content);
 	}
     
-	public String GetContent () {
+    protected String GetContent () {
 		return Content;
 	}
 	
-	public int GetHash () {
+    protected int GetHash () {
 		return ContentHash; 
 	}
-	public int getCount() {
+    protected int getCount() {
 		return count;
 	}
 	protected void incrCount(){

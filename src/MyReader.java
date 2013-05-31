@@ -12,18 +12,19 @@ public class MyReader {
 	String[] prev;
 	Boolean isFirst;
 	Settings set;
-	public MyReader(InputStream source, Settings s){
+	
+	protected MyReader(InputStream source, Settings s){
 		scan = new Scanner(source);
 		isFirst = true;
 		set = s;
 		prev = new String[set.k];
 	}
-	public MyReader(Settings s){
+	protected MyReader(Settings s){
 		isFirst = true;
 		set = s;
 		prev = new String[set.k];
 	}
-	public MyReader(){
+	protected MyReader(){
 		isFirst = true;
 		set = new Settings();
 		prev = new String[set.k];
@@ -31,15 +32,16 @@ public class MyReader {
 	/*
 	 * init - Initializes the cursor position to the beginning of the file.
 	 */
-	public void init(InputStream source){
+	protected void init(InputStream source){
 		scan = new Scanner(source);
 		isFirst = true;
 		setDelimiters();
 	}
 	/*
 	 * setDelimiters - sets element delimiters according to data type given in settings.
+	 * NOTE : type LOG is not implemented, and will just set the delimiters to default value from Scanner class. 
 	 */
-	public void setDelimiters(){
+	private void setDelimiters(){
 		switch(set.type){
 		case Settings.TEXT:
 			scan.useDelimiter("[\\s!\"#\\$%\\&\'\\(\\)\\*\\+,-./:;\\<\\=\\>\\?@\\[\\]\\^_`\\{\\|\\}~]");
@@ -48,7 +50,7 @@ public class MyReader {
 			break;
 		}
 	}
-	public boolean hasNext(){
+	protected boolean hasNext(){
 		return scan.hasNext();
 	}
 	/*
@@ -68,7 +70,7 @@ public class MyReader {
 	/*
 	 * next - returns the next element read in data stream
 	 */
-	public Element next(){
+	protected Element next(){
 		int k = set.k;
 		if (isFirst){ //first time calling next(), initializing prev.
 			int i=0;

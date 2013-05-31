@@ -13,7 +13,7 @@ public class HashTest {
 	/*
 	 * N - number of words in Shakespeare's vocabulary (Complete works). For testing purposes.
 	 */	
-	static int N = 22932;
+	static int N = 22929;
 
 	/*
 	 * locateString - Locates a String in a sorted ArrayList with a dichotomous algorithm.
