@@ -1,16 +1,19 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 
 
 public class DynamicAnalysis extends FingerPrint {
 	int W;
 	int nbr;
-	int mask;
 	int currentDate;
-	
+
 	int[] date;	
 	double[] memory;
-	
+
 	/*
 	 * DynamicAnalysis - Initializes a dynamic statistical fingerprint of a big data stream. A sudden
 	 * 		change in that finderprint is an indicator of an attack. The object stores a history of
@@ -32,7 +35,7 @@ public class DynamicAnalysis extends FingerPrint {
 		date = new int[m];
 		memory = new double[nbr];
 	}
-	
+
 	/*
 	 * newElement - Function to call to inspect a new element. The fingerprint is
 	 * 		updated.
@@ -52,11 +55,61 @@ public class DynamicAnalysis extends FingerPrint {
 			M[group] = (byte) (num_zeros + 1);
 			date[group] = currentDate;
 		}
-		
+
 		currentDate++;
-		
+
 		if (currentDate%(W/nbr) == 0) {
 			memory[(currentDate/(W/nbr))%nbr] = hyperLogLog();
 		}
+	}
+	@Override
+	public double hyperLogLog () {
+		float tmp = 0;
+		int notUpdated = 0;
+		for (int i=0; i<m; i++) {
+			if (M[i] >= 0&&currentDate-date[i]<=W) {
+				tmp += Math.pow(2, -M[i]);
+			} else {
+				notUpdated ++;
+			}
+		}
+		if (notUpdated > (double)(0.1*m)) {
+			return -1; //if too many groups remain without update
+		}
+
+		return alpha * (double)m * (double)m / tmp;
+	}
+	public static void main(String[] args) throws IOException{
+		String file = "Texts/fravia/pages.txt";
+		String outFile = "dynamicanalysis.csv";
+		Data input = new Data(file,Data.FILE);
+		input.init();
+		int words=0;
+		while(input.hasNext()){
+			input.nextElement();
+			words++;
+		}
+		System.out.println(words);
+		/*int b = 7;
+		int w = 10000;
+		int nbr = 1;
+		Writer writer =  new OutputStreamWriter(new FileOutputStream(outFile));
+		try {
+			input.init();
+			DynamicAnalysis da = new DynamicAnalysis(b,w,nbr);
+			int line = 0;
+			for(int j=0;j<5*da.W&&input.hasNext();j++){
+				for(int i=0;i<100;i++){
+					if (input.hasNext()) da.newElement(input);
+				}
+				writer.write(line+"\t"+da.hyperLogLog()+"\n");
+				
+				line ++;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+
 	}
 }
