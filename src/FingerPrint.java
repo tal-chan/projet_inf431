@@ -13,10 +13,10 @@ public class FingerPrint {
 	 * 
 	 * b - fingerprint precision (4<=b<=16).
 	 */
-	public FingerPrint () {
+	protected FingerPrint () {
 		this (11);
 	}
-	public FingerPrint (int b) {
+	protected FingerPrint (int b) {
 		if ((b<4) || (b>16)) {
 			throw new IllegalArgumentException("In function FingerPrint : Parameter b out of range.");
 		}
@@ -48,7 +48,7 @@ public class FingerPrint {
 	 * newElement - Function to call to inspect a new element.
 	 * The fingerprint is updated.
 	 */
-	public void newElement (Data d) throws IOException {
+	protected void newElement (Data d) throws IOException {
 		Element el = d.nextElement();
 		int hash = el.GetHash();
 
@@ -69,7 +69,7 @@ public class FingerPrint {
 	 * hyperLogLog - Quick count of the number of distinct elements of the data chunk from its fingerprint.
 	 * 	returns a negative number if b is too high
 	 */
-	public double hyperLogLog () {
+	protected double hyperLogLog () {
 		float tmp = 0;
 		for (int i=0; i<m; i++) {
 			if (M[i] >= 0) {

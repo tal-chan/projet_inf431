@@ -96,8 +96,7 @@ public class StaticAnalysis extends FingerPrint {
 	}
 	
 	private static void testHyperLogLog(String[] args) throws IOException {
-		String name = "Texts/fravia/pages.txt";
-		Data data = new Data(name, Data.FILE);
+		Data data = new Data(args[1], Data.FILE);
 		long t0, t1;
 		
 		t0 = System.currentTimeMillis();
@@ -123,6 +122,6 @@ public class StaticAnalysis extends FingerPrint {
 	
 		
 	public static void main(String[] args) throws IOException {
-		testSimilarities(args);
+		testHyperLogLog(args);
 	}
 }
