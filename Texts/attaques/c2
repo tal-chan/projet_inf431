@@ -1,0 +1,2129 @@
+         ret</pre>
+
+If you never programmed before, you could legitimately ask yourself why the hell we 
+have to show and update a window we have created a minute ago... see: ShowWindow 
+specifies <u><b>how</b></u> the window is to be shown... hide=0, normal=1, otherzoom=2, 
+maximize=3, otherunzoom=4, show=5 etc... therefore the value in esp+0C determines HOW 
+the windows will appear, and it has been already determined calling  WinMain, which 
+has following parameters: int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE 
+hPrevInstance, LPSTR lpCmdLine, int nCmdShow), the last  &quot;int&quot; one being the 
+nCmdShow... have a look in the code following the program entry point for this.<br>
+Once show, the window must be updated. The UpdateWindow function updates the client 
+area of our window by sending a WM_PAINT message to the window if the update region 
+for the window is not empty. The function sends a WM_PAINT message directly to the 
+window procedure, bypassing the application queue. If the update region is empty, 
+no message is sent.
+
+<br>
+We are now finished with the InitInstance procedure, have our nice main window, 
+must move on: back to WinMain!
+<pre>
+:WinMain continued
+:0040105F 8D44240C        lea eax, [esp + 0C] ;
+:00401063 6A00            push 00000000
+:00401065 6A00            push 00000000
+:00401067 8B3500B34400    mov esi, [0044B300]
+:0040106D 6A00            push 00000000
+:0040106F 50              push eax
+:00401070 FFD6            call esi
+:00401072 85C0            test eax, eax
+:00401074 742B            je 004010A1
+:00401076 8B3D94B24400    mov edi, [0044B294]
+:0040107C 8B1D8CB24400    mov ebx, [0044B28C]</pre>
+Well, we'll continue with another lesson, we have almost 50.000 bytes here!
+<hr>
+<font color="blue">(c) reverser+ 1997.</font> All rights reserved.
+   </pre>
+
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i><br><img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a href="filemon2.htm" tppabs="http://members.xoom.com/tsehp_/filemon2.htm" >filemon2</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a href="filemon3.htm" tppabs="http://members.xoom.com/tsehp_/filemon3.htm" >filemon3</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a href="filemon4.htm" tppabs="http://members.xoom.com/tsehp_/filemon4.htm" >filemon4</a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a href="filemon5.htm" tppabs="http://members.xoom.com/tsehp_/filemon5.htm" >filemon5</a>
+<br><br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage </a><img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"> 
+<a HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links </a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0">
+<a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity </a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays </a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools </a><img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails </a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mailreverser </a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">is reverse engineering legal? </a></center>
+<center><hr ALIGN="CENTER" WIDTH="100%" SIZE="2"></center>
+
+</body>
+</html>
+
+
+
+<HTML>
+<HEAD>
+
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><META Name="Voluntary Content Rating" content="it's reverser's: great!">
+<title>japacon.htm Reversing information (information cracking)</title>
+</HEAD>
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 ALINK=#405040 VLINK=#8850AA><CENTER>
+<center>
+<SCRIPT LANGUAGE="JavaScript">
+var now = new Date();
+var then = new Date("January 1, 2000");
+var gap = then.getTime() - now.getTime();
+gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+document.write("Only " + gap + " days \'till the new Millennium");
+</SCRIPT>
+<br><br>
+<a href="reveinfo.htm" tppabs="http://members.xoom.com/tsehp_/reveinfo.htm"><IMG SRC="images/reveinfo.gif" tppabs="http://members.xoom.com/tsehp_/images/reveinfo.gif" 
+ALT="reveinfo" ALIGN=center WIDTH=114 HEIGHT=43 BORDER=1 VSPACE=0 HSPACE=0></a><bR>
+<font color=gray><b>Back to Reversing Information</b></fonT>
+</center><br><bR>
+<center><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=6 WIDTH=503 ALT= red_ball><br><bR>
+
+<H3>
+A short introduction</H3></center></center><bR>
+As most readers of our <a href="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm">Reality cracking</a> section know, 
+many essays there are directed against advertisement and our 'consumistic' habits. 
+<bR>
+Simply stated, there's a lot of money being made and a lot of power being gathered 
+by the people that promote useless consumerism, and this determines a GREAT 
+part of the reality we live in. We pay for it in gradually limited 
+economic mobility, pollution, threats to our health and a declining 
+standard of living, as measured by the things that really matter.<bR>
+<bR>
+Now, see what I found for you: you'll read below a delightfully intriguing little 
+piece of reality... this has been published TODAY (6 October 1998) on the financial times...
+<br>
+I really don't need to add much... after all you are supposed 
+to be reversers, therefore enjoy! (and reverse!)
+<br><br>
+Hey, this is not taken from the Economist, but from the "Financial times" (on line edition). 
+You'll find both following articles at<bR>
+
+<a href="http://www.ft.com/" >http://www.ft.com</a>.
+<bR>
+<br>
+<center><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=6 WIDTH=503 ALT= red_ball><br><bR></center>
+<prE>
+Japan's antidote to depression ~ 6 October 1998
+
+By Paul Abrahams in Tokyo
+
+	Milton Friedman would be amused. The Nobel prize
+winning economist, who once joked that the fastest way to boost money
+supply was to throw dollar bills out of helicopters, may soon see a
+variant of this idea put to the test.
+
+The Japanese government said yesterday it was considering plans to
+hand out ¥30,000 (£130) gift vouchers to every one of the country's
+125m inhabitants.
+
+The government is also considering a "Happy Monday" scheme, which
+would turn an increasing number of Mondays into holidays in a bid to
+persuade consumers to go shopping instead of going to work.
+
+These are desperate times in Tokyo, as the government seeks to head
+off what some economists believe is an imminent depression.
+
+Yesterday, the Nikkei average of 225 leading shares fell another 2 per
+cent to 12,948, its lowest since January 1986. Today, the government
+is set to cut its forecast for gross domestic product this financial
+year to minus 1.8 per cent. A few months ago, it was predicting 1.9
+per cent growth.
+
+The economics of the gift voucher scheme are perhaps a little more
+rational than those of Friedman's free dollar bills. Like more
+orthodox methods of stimulating an economy, such as printing money or
+cutting taxes, recipients of the dollar bills could choose to save the
+benefit rather than spend it immediately. But because the vouchers
+would have a limited shelf life, people would have to spend them
+quickly, giving a fast, if ultimately illusory, boost to the economy...</prE>
+<hR>
+And here another article on this same matter:
+<prE>
+A yen for spending ~ 6 October 1998
+
+In most places handing out wads of crisp new notes is a fine way to
+get things moving. But not in Japan. The government there is so
+desperate to revive the economy that it is looking for a way to force
+people to spend the cash as well. Its latest idea is to give Y30,000
+($223) gift vouchers to all Japanese inhabitants, with an expiry date
+by which they must be spent. The plan sounds bizarre, but does have a
+certain logic.
+
+None of the Japanese government's measures for fiscal reflation is
+working. Its plans for a massive infrastructure boost are being
+thwarted by an unenthusiastic response from local governments, which
+are already over-indebted. And in a country where infrastructure is
+already well-developed, any new spending that does happen may boost
+demand, but will do little to improve the economy's long-term growth
+potential.
+
+The tax cuts being introduced, meanwhile, will probably end up in
+people's bank accounts (or, more likely, under their mattresses),
+rather than being spent. The reasons are not hard to understand.
+Prices in Japan are stable or falling, so that little is lost by
+deferring consumption. Job insecurity is growing. And individuals
+approaching retirement are increasingly concerned about the shaky
+state of the life assurance industry.
+
+Faced with these constraints, handing out money which people are
+forced to spend straight away could be the only way to achieve a quick
+fiscal boost.
+
+The policy may prove administratively impossible. But even if it could
+be done, it would fall well short of a panacea. The main effect would
+probably be to change the timing of consumption, as people brought
+forward their spending plans. After the vouchers were used up,
+spending could quickly fall back.
+
+And the scheme is too small to counteract the deflationary forces in
+the Japanese economy. It might produce a boost of 0.7 per cent of
+gross domestic product. But the International Monetary Fund estimates
+that the Japanese economy is now running at about 8 per cent of GDP
+below full capacity. The painful process of bank restructuring, if it
+ever gets going, can only make matters worse in the short term.
+
+The voucher idea is not crazy, and could help provide a much-needed
+short-term stimulus to a rapidly deteriorating economy. But it needs
+to be part of a much more substantial macroeconomics policy, including
+large-scale monetary expansion by the Bank of Japan. And for the
+economy to return to a reasonable long-term growth path, there is no
+alternative but for Japan's politicians to tackle the structural
+reforms that the country needs.</prE>
+<hR>
+So, the consequence, as I see it, is that we are entering a funny 
+(if scary) future of 
+'obligatory' consumerism. Instead of trying to find an exit from 
+an economic crisis that is evidently INHERENT to the way the 
+society works through a long overdue <u>re-thinking</u> of this same society and 
+its basis and aims, we are hurrying towards the absolute Paradox: 
+"<font color=blue>People don't want to buy crap? My Godness, we are doomed! Let's find out 
+methods to compel them to buy said crap</fonT>".<bR>The rationale behind all this being 
+apparently that the overall gains by the industry (from subsidies, 
+political control through lobbies, overpriced products, workers firing and so on) are of 
+such enormous amplitude that giving 
+people free vouchers to buy their products will nevertheless increase these overall gains 
+even more (unless you'r naïv enough to believe they or their political puppies would really give out 
+money for free :-)<br>Therefore the really scary question is: <u>what they will come out 
+next?</u> (once 
+this pathetical schema too will have failed):<bR><b>Compulsory presence in the mall for at least 
+two family members from 8:30 to 10:30?<br> 
+Tax reductions for heavy consumerists ("Stakhanovian" buyers in parade)?<bR> 
+Compulsory attendance of TV-advertisement for kids and adults?<br>
+Salary paid in time-limited vouchers (so that people HAVE TO spend it)?
+<bR><bR></b>
+And, pray, why are these (allegedly) "free" vouchers not rather given to some of the 
+undernourished 
+people in the 
+third world? Wouldn't you think that the 4/5 of almost-starving poors would better know what to 
+do with it than the 1/5 of consumistic drilled citiziens of the 'affluent' societies?
+<bR>The answer is quite simple: 
+the 'poors' won't get it <u>because</u> it is not a matter of spending, it is 
+a matter of WASTING.<br>In fact the 'poors' would spend the same 
+amount of 
+money, yet they would (unless they have 
+been massively brain-washed)  spend it <u>on more essential things</u>, and 
+not on useless products and gadgets.<bR>
+Apparently we are already so deep buried inside this "stupidity production cave" 
+that  the powers that be can solely come out with an artificial boost of useless consumerism 
+as only solution to their own-made manifest crisis.
+ Ah! Ah! Poor old Karl will get quite some itches in his Londoner grave: He who laughs last laugh best! (Yet 
+there's not much to laugh, come to think of it :-(
+<br><br>
+<center><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=6 WIDTH=503 ALT= red_ball><br><bR></center>
+<center>
+<!-- Begin mover -->
+<table><tr><td><center>
+<a href="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm"><IMG SRC="images/realicra.gif" tppabs="http://members.xoom.com/tsehp_/images/realicra.gif" ALT="reality cracking" ALIGN=BOTTOM 
+WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a></center></td>
+<td><center><a href="reveinfo.htm" tppabs="http://members.xoom.com/tsehp_/reveinfo.htm"><IMG SRC="images/reveinfo.gif" tppabs="http://members.xoom.com/tsehp_/images/reveinfo.gif" 
+ALT="reveinfo" ALIGN=center WIDTH=114 HEIGHT=43 BORDER=1 VSPACE=0 HSPACE=0></a></center></tD></tR>
+<tR>
+<td><center><font color=gray>Reality Cracking</font></center></td>
+<td><center>
+<font color=gray>Reversing Information</b></center></td></tr></table>
+<br>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="aca200.htm#anchorecent" tppabs="http://members.xoom.com/tsehp_/aca200.htm#anchorecent">most recent essays</a>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="coumes.htm" tppabs="http://members.xoom.com/tsehp_/coumes.htm">counter measures</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="botstart.htm" tppabs="http://members.xoom.com/tsehp_/botstart.htm">bots wars</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">CGI antismut</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</a>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="history.htm" tppabs="http://members.xoom.com/tsehp_/history.htm">history of this site</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="javaco1.htm" tppabs="http://members.xoom.com/tsehp_/javaco1.htm">AntiMicro$oft</a>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_fravia</a>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT=13 WIDTH=13 ALT= red_ball><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</a>
+</center>
+<!-- End mover -->
+<HR ALIGN=CENTER WIDTH=100% SIZE=3>
+<!-- Begin signet -->
+ <a href="awards.htm" tppabs="http://members.xoom.com/tsehp_/awards.htm"><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=CENTER 
+BORDER=0 HEIGHT=13 WIDTH=13 ALT= red></a><font color=green>(c) 
+<a href="io13.htm" tppabs="http://members.xoom.com/tsehp_/io13.htm">Reverser</a> 1995, 1996, 1997, 1998. All rights reserved
+<!-- End signet -->
+<hr size=1>
+</body>
+</html><html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>heres002</title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<center><font size="+3">How to install Soft-Ice 3.01 Win95 (trial version)<br></font><font size="+2">
+(useful info)</font>
+
+<h4>by Heres<br>
+<br>
+(19 August 1997, slightly edited by Reverser)</h4>
+<hr>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">Courtesy of Reverser's page 
+of reverse engineering<br><br><i>Well, I think that many will thank Heres for this simple synthesis, or integration, of everything we 
+have learnt so far about the installation of Winice trial version</i></center><hr size="2"><pre>
+<h2>Soft-Ice 3.01 Win95 (14 days trial version)</h2>
+<h3>- HOW TO INSTALL -</h3>
+<hr>
+[You should use Courier New 10 in order to view and print correctly this essay]
+</center>
+<b>1. <u>Check your WIN95 registry</u></b>
+
+  MyPc\HkeyLocalMachine\SOFTWARE\Microsoft\Windows\Help
+
+  OleGUIDHigh         Date Value1
+  OleGUIDLow          Date Value2 
+
+If they are present, delete them...
+
+<b>2. <u>Installation</u></b>
+
+Launch the installation file <i>si301w95.exe</i> and reboot when finished.
+
+
+ See the default WINICE.DAT, but don't touch the necessay setting:
+<i>
+       ;Eval expiration date - DO NOT REMOVE!
+        DATE=XXXXXXXX XXXXXXXX</i>
+
+<b>3. <u>Crack session</u></b>
+
+3a. The Debugger
+
+  FileName:  WINICE.EXE   (795178 bytes)
+  [Offset]   69CB2:    0F 82             --&gt;       EB 1B
+  [Offset]   69CD4:    2B 45 E4          --&gt;       48 40 90
+
+  3b. The Loader
+  FileName:  NMTRANS.DLL  (572416 bytes)
+  [Offset]   E21B:     72                 --&gt;      EB
+  [Offset]   E235:     2B C2              --&gt;      48 40
+
+ 
+     3c. The Nag Screen
+     FileName:  LOADER32.EXE (462368 bytes)
+
+[Offset]   3969B:      E8 38 A1 FE FF      --&gt;      48 40 48 40 90
+
+
+
+<b>4. <u>Setting WINICE.DAT for crack (an example)</u></b>
+
+
+ - PHYSMB=Your physical memory expressed in MB
+ - TRA=92 (recommended)
+ - INIT=&quot;CODE ON; LINES 50; WR 3; WL 2; WW 2; WD 8; WC 24; 
+         WATCH ES:EDI; WATCH DS:ESI; X;&quot;
+
+- EXP=c:\windows\system\kernel32.dll
+- EXP=c:\windows\system\user32.dll
+- EXP=c:\windows\system\gdi32.dll
+
+
+<b><u>Note:</u></b>
+
+I collected this information reading the great essays made by:
+
+  Master +ORC
+  Frog's Print
+  +Rcg
+  The Undertaker
+  ED!SON
+
+  &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  Thanks friends !
+<hr>
+<b><em>Heres</em></b>, August 18th 1997</pre>
+ <font color="green">(c) Heres 1997. All rights reserved</font>
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">
+<a HREF="project2.htm" tppabs="http://members.xoom.com/tsehp_/project2.htm">project 2</a><br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">
+<a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#84" tppabs="http://fravia.org/tppmsgs/msgs0.htm#84">homepage</a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"> 
+<a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#73" tppabs="http://fravia.org/tppmsgs/msgs0.htm#73">links</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0">
+<a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#82" tppabs="http://fravia.org/tppmsgs/msgs0.htm#82">students' essays</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut CGI-scripts</a>
+
+
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_fravia</a><br>
+
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering illegal?</a></center>
+<center><hr ALIGN="CENTER" WIDTH="100%" SIZE="2"></center>
+</body>
+</html>
+<title>cubus2</title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<center><font size="+3">How to crack
+WinHacker95 2.0<br></font>
+<font size="+2">
+(MSVCRT.dll reverse engineering)</font> <br>
+<img SRC="images/stupid.gif" tppabs="http://members.xoom.com/tsehp_/images/stupid.gif" ALT="stupid" ALIGN="BOTTOM" WIDTH="114" HEIGHT="43" BORDER="0" VSPACE="0" HSPACE="0">
+<br>
+
+<h4>by iNCuBuS++<br>
+<br>
+(15 August 1997, slightly edited by Reverser)</h4>
+<hr>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">Courtesy of Reverser's page 
+of reverse engineering<hr><br><i>Well,	here is the email snippet
+ that precedes this essay:<br>
+<pre></center>&gt;&gt; Well, if you had the time... MSVCRT.dll reverse engineering would
+&gt;&gt; surely be interesting...
+
+&gt; I did have the time.... Here's my short essay on how to crack WinHacker95 
+&gt; 2.0. It is intended for Project 7 (&quot;Most Stupid Protection&quot;)</pre><center>
+I don't need to explain you what MSVCRT.DLL (Micro$oft Visual C++ Run Time library) 
+is, do I?<br><br>(A lesson for lazy and hurried shareware programmers :-)</i></center><hr size="3">
+<pre><center><font size="+2">
+Cracking WinHacker95 2.0 by iNCuBuS++</center></font>
+
+      This target is one of those little programs that let you play with
+the system settings buried deep within the system registry... settings 
+that are not otherwise available to the average user.
+It's much like TweakUI, though it has a few options more. Since
+modifying &quot;hidden&quot; settings in the registry is a serious thing, I expected 
+that this piece of shareware would have had a serious protection. 
+Well... I was dead wrong!
+
+      When a programmer writes his program in C++ we can be sure that he's
+either in a hurry to finish his work or he's lazy to put a little more effort 
+in programming in C (not to mention assembler) and debugging his code (he could 
+be both: in a hurry and lazy, since the two things go most together :-) 
+Programming in C or asm would give him the power to control every aspect of 
+his program's functioning (including the protection scheme). But nooo! He just 
+wants easy money - putting together pieces of code someone else has written, 
+coercing them into something that he would call HIS work, in a matter of
+hours. 
+      Working in this way he will have absolutely no idea about <u>what</u> is 
+really inside his program - he just creates and manipulates objects of some &quot;class&quot; 
+from class libraries (like Micro$oft's MFC)filled with bugs and errors and written 
+by somebody else.
+      How COULD such a lazyhurried guy ever write a good protection scheme?
+Well, this program is written in C++ and has the most stupid protection
+scheme I have ever seen! 
+      I was able to extract the serial number from memory in less than 15 minutes 
+and it would have taken me even less if I had known from the beginning that it was 
+so stupid and had skipped doublechecking every step of mine! 
+
+It uses MSVCRT.dll - Micro$oft Visual C++ Run Time library, so it seemed wise
+to me to include MSVCRT's exports in winice.dat as well:
+   <font color="red">
+  EXP=c:\windows\system\msvcrt.dll
+  EXP=c:\windows\system\msvcrt20.dll
+  EXP=c:\windows\system\msvcrt40.dll
+   </font>
+      This particular target uses <font color="blue">msvcrt40.dll</font>. Now, the quickest way to
+check a serial number - from a programmer's perspective - is to use some form of 
+strcmp function to compare the expected serial number with the one entered by the 
+user. 
+      Even in that (predictable and stupid) case it would be logical to encrypt the 
+serial number in some way at least to give us, crackers the hard time decrypting it! 
+Well, in this case it would have been funny if it had not been sad (for programmers, 
+that is it)! Whoever wrote this program, left the serial number untouched for anybody
+to come and get it. 
+      Entered serial number (plain, no encryption whatsoever) is being compared with 
+expected serial number (again, unencrypted) probably using MSVCRT's strcmp function. 
+Getting the expected serial number is as easy as taking the string's address from
+the routine!!! 
+So, we do it this way:
+We start WinHacker95 and a nagscreen appears asking us to register. We enter the ICE
+and do a simple
+
+    bpx GetWindowTextA
+
+Now, we return to WH95, enter something for the user name, company and a serial number 
+and then click on the &quot;Register&quot; button. 
+SoftICE will pop up several times before we get to our serial number. To find the 
+address of the buffer into which our serial number is being read, do
+   <fçnt color="blue">
+    dd ss:esp+4</font>
+
+    That will give you a DWORD hex dump of the stack with all the parameters passed to the
+function. The address of the buffer is the second parameter of the function, thus
+the second dword on the stack. Once we find the serial number that we have entered, 
+we'll set a bpr on its buffer and let the target run. 
+Eventually it will break in the middle of the string comparison routine (inside 
+MSVCRT.dll). It is NOT MSVCRT!strcmp (which I mentioned earlier), but MSVCRT!_mbscmp 
+(at least a part of it). 
+    We couldn't just set bpx on MSVCRT!_mbscmp function because only <u>a part of it</u> 
+is being used, and therefore it wouldn't break into SoftICE when called... a breakpoint 
+can be set only at the function's starting address!
+
+    But, from now on, when we crack password protected M$VC++ programs, we will bpx on 
+both string comparing functions, just to be sure. An even better idea is to bpx on the 
+actual code within the functions that are comparing the data that interest us!
+
+    Anyway, here's the code snippet, from _mbscmp func, used to compare 2 strings:
+
+014F:78005D79 MOV ESI,[ESP+18] ;Addr. of entered serial number buffer 
+014F:78005D7D MOV EAX,[ESP+14] ;Addr. of expected serial number buffer
+014F:78005D81 MOV DL,[EAX]     ;Get a char from one string.
+014F:78005D83 MOV BL,[ESI]     ;Get a char from the other.
+014F:78005D85 MOV CL,DL        ;Save a char from expected serial number.
+014F:78005D87 CMP DL,BL        ;Compare chars.
+014F:78005D89 JNZ 78005DAC     ;Quit further comparing if they do not match
+014F:78005D8B TEST CL,CL       ;Jump if it is the end of expected
+014F:78005D8D JZ 78005DB6      ;serial number string.
+
+    Now, you see how easy it is to get to the right serial number - just look
+at the buffer and write it down! But, be aware that the expected serial number is
+actually CALCULATED from entered user and company name, so it is always different! 
+Of course, it's not important, here, since we can get ANY number tweaking the 
+routine above!
+
+   Well, that's it. Yes, there's nothing more than this. After all, this <u>IS</u> a 
+candidate for &quot;The Most Stupid Protection!&quot;. I just hope that there will be no more 
+of these stupid protections or... ...we will be out of the job ! :)))))
+
+iNCuBuS++
+</pre>
+
+ <font color="green">(c) iNCuBuS++ 1997. All rights reserved</font>
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">
+<a HREF="project7.htm" tppabs="http://members.xoom.com/tsehp_/project7.htm">Project 7</a><br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">
+<a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#84" tppabs="http://fravia.org/tppmsgs/msgs0.htm#84">homepage </a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"> 
+<a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#73" tppabs="http://fravia.org/tppmsgs/msgs0.htm#73">links </a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0">
+<a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity </a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#82" tppabs="http://fravia.org/tppmsgs/msgs0.htm#82">students' essays </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">Academy database </a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut CGI-scripts </a>
+
+
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms </a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_Reverser </a><br>
+
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering illegal? </a></center>
+<center><hr ALIGN="CENTER" WIDTH="100%" SIZE="2"></center>
+</body>
+</html>
+
+
+
+
+
+
+
+<HTML>
+<HEAD>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><TITLE>chaoprot.htm - The New Chaos Protection</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 VLINK=#405040>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%  HEIGHT=" 22">
+<TR><td></td>
+<td>
+<!-- Choose  a TITLE probably wont be changed -->
+<center><FONT SIZE="+2">The New Chaos Protection</fonT><br>
+        <FONT SIZE="+1"></fonT>
+</center>
+</td>
+
+<td> 
+<center><a href="protecti.htm" tppabs="http://members.xoom.com/tsehp_/protecti.htm"><IMG SRC="images/protecti.gif" tppabs="http://members.xoom.com/tsehp_/images/protecti.gif" ALT="protecti"
+ALIGN=CENTER WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0
+HSPACE=0></a>
+<br>
+<font color=gray>Our protections</FonT>
+</center></td></tr>
+<tR>
+<td bgcolor="#FFFFEA"><center>
+<FONT COLOR="890000">
+<!-- CHOOSE A DATE (will probably be changed) -->
+12 November 1998
+</FONT></center>
+</td>
+<td bgcolor="#FFFFEA"><center>by <font size=+3>
+<!-- CHOOSE A HANDLE (wont be changed) -->
+NiKoDeMoS 
+</fonT></center>
+</td>
+<td VALIGN="center" bgcolor="#FFFFEA">
+<center><!--
+<a href="hcu98_3.htm" tppabs="http://members.xoom.com/tsehp_/hcu98_3.htm"><IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/hcu1.gif" ALT="+cracker" ALIGN=BOTTOM
+WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a> -->
+</center>
+</td>
+</tr>
+<TR><td><center><a href="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm"><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM"
+BORDER="0" VSPACE="0" HSPACE="0" width="13" height="13"></a></center></td>
+<TD BGCOLOR="898030"><center>Courtesy of Reverser's page of
+reverse engineering</center>
+</center></TD>
+<td BGCOLOR="898030">
+<center>
+</center></td>
+</TR>
+<!-- this is for the data.....fra_00xx....yymmdd....handle..beg+int...not ass... -->
+<tr><td><font color="#C4C0CF">fra_00xx<bR>98xxxx<br>handle<br>1100<br>NA<br>PC<br></fonT></td><td><i><center>
+Well, I took off the 'advanced' autocertification... we'll see in due time 
+if it is advanced or not. Awaiting your input and 
+your contributions... note that the related 'cryptographic' challenge is 
+in <a href="jeremy1.htm" tppabs="http://members.xoom.com/tsehp_/jeremy1.htm" >jeremy1.htm</a>. There's no need to set a deadline, but let's say that 
+it would be nice to get some input on this <u>before</u> spring 1999...
+</td>
+<td></td>
+</tr>
+<TR><td></td>
+<!-- Leonard Coehn's old song, because we are poets, not only crackers -->
+<TD BGCOLOR="898030"><center></i><b>There is a crack, a crack in everything
+That's how the light gets in</b></center>
+<!-- Leonard Coehn's old song, because we are poets, not only crackers -->
+</center></TD><td></td>
+</TR>
+<TR>
+<td VALIGN= "MIDDLE" bgcolor="#C6E7C6"><font color=blue><center>
+Rating</FONT></FONT></center>
+</TD>
+<td VALIGN = "MIDDLE" bgcolor="#C6E7C6"><font color=blue><center>
+<!-- CHOOSE A RATING (may be changed) -->
+( )<B>Beginner</B> ( )<B>Intermediate</B> ( )<B>Advanced</B> ( )<B>Expert</B></FONT>
+</center></td>
+<td></td>
+</tr>
+</table>
+<!-- END HEAD  -->
+<bR>
+<!-- CORPUS  -->
+
+<!-- CHOOSE A COMMENT (may be changed)  -->
+Welcome to a new era of protection, via the route of chaos.<br>
+The purpose of this essay is really to provide a challenge for you. A follow
+up essay will be done after the results of this challenge are tallied.
+<hR>
+<center>
+   <FONT SIZE="+2">
+<!-- CHOOSE A TITLE (wont probably be changed) -->
+The New Chaos Protection
+   </FONT><BR>
+   <FONT SIZE="+2">
+<!-- CHOOSE A SUBTITLE (wont proabbly be changed) -->
+   </FONT><BR>
+   <FONT COLOR="0B7FC1">
+<!-- REPEAT YOUR CHOSEN HANDLE HERE -->Written by
+NiKoDeMoS
+   </FONT>
+</center><br><br>
+
+<!-- INTRO STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Introduction</fonT>
+</fonT></center></td></tr></table>
+<pre>
+Okay, I've seen a lot of reversing essays and a few protecting essays. I think
+a common approach is to tend towards complexity, especially with the VxD
+routines, etc. This approach is intended to tackle the problem a little
+differently, placing the complexity on the reverser and not the protector.<br>
+To get an idea of what I mean, consider many traditional approaches to
+protecting. Most of the time you can easily find the elaborate routine that
+goes through several iterations of encryption and checksum and cross-check,
+but invariably you either get a comparison (yes, no) or some call to an
+enabling routine. Therefore, all of the previous complexity was lost due
+to the simplicity of the final check. <br>
+This protecting method attempts to go around this downfalls, and provide
+a truly challenging routine. The target isn't too exciting. It's an encrypt
+algorithm that I wrote myself and can be found as a different challenge
+on <a href="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/new_page_1.htm" tppabs="http://www.fravia.org/jeremy1.htm">this page</a> for your sheer
+pleasure. What I did was to take that code and modify it to require a
+registration key. I did this rather quickly, but I'm sure you'll appreciate
+the results. 
+<!-- PASTE HERE YOUR INTRODUCTION -->
+</prE>
+<br><br>
+
+<!-- TOOLS STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Tools required</fonT>
+</fonT></center></td></tr></table>
+SoftIce<br>
+W32Dasm<br>
+Hex-Editor<br>
+Some cheese and crackers, maybe some literature by James Gleick or Benoit
+Mandelbrot.
+<!-- PASTE HERE YOUR REQUIRED TOOLS -->
+<br><br>
+
+<!-- TARGET URL STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Target's URL/FTP</fonT>
+</fonT></center></td></tr></table>
+<!-- DON'T FORGET TO PASTE HERE THE URL/FTP OF YOUR TARGET(S) -->
+<A HREF="http://acrigs.com/FRAVIA/zipped/bestwinp.zip" tppabs="http://members.xoom.com/tsehp_/zipped/bestwinp.zip" >bestwinp.zip</A>
+(Just contains bestwin.exe, prot.dll <-- hmmm, and reg.key (double hmmm))
+<br><br>
+
+<!-- PROGRAM HISTORY STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Program History</fonT>
+</fonT></center></td></tr></table>
+<!-- PASTE HERE YOUR TARGET'S HISTORY (if any) -->
+This program isn't popular, was just written, and doesn't do much! You can
+use it to encrypt/decrypt a file using a new algorithm I'm testing out
+elsewhere. The only thing that I did was develop a prot.dll to protect
+certain functions and use a registration key (hacked code, bad, but gets to
+the point). This is basically used as an example for this new protection
+method. 
+<br><br>
+
+<!-- REAL ESSAY  STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Essay</fonT></fonT>
+</center></td></tr></table>
+<!-- PASTE HERE THE TEXT OF YOUR ESSAY
+     THIS IS OF COURSE THE MOST IMPORTANT PART
+     PLEASE CHECK THE MARGINS WHEN YOU ARE FINISHED!
+     SHOULD NOT BLAST NETSCAPE MARGINS OUT! HAVE A LOOK INSIDE
+     YOUR OWN BROWSER WHEN YOU HAVE FINISHED!  -->
+<pre>
+
+Okay, here we go. Let's describe the challenge as is:
+
+You will get a set of files, being:
+
+BESTWIN.EXE
+PROT.DLL
+REG.KEY
+
+When you fire it up, you'll be presented with a barebones windoze app. You
+can choose the option to set your key (this is the passcode for encrypting
+and decrypting files) and also encrypt a file. You should note that when
+you set the key, you get hit with a "This product must be registered"
+sign. That should be obvious in and of itself. You'll also notice that once
+you select a key, only the encrypt option is available, not the decrypt one!
+So, where to go from here? <br>
+<ol>
+<li>Find the method used for protection, and describe this method as
+specifically as possible
+<li>Find the exact registration key that must be used
+<li>Create a "crippled" version that circumvents any need for a registration
+key (this should be simple, the top two not so easy!)
+</ol>
+The point here is that not too much effort was put in. There is a set reg
+key, whereas a practical implementation would have a different reg key for
+each installation. This can be implemented with the protective method used.
+I can also protect many more functions and reference them with more
+complicated codes, but I want to see what can be done with this bare bones.
+<br>
+
+</prE>
+<br><br>
+
+<!-- FINAL NOTES STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Final Notes</fonT>
+</fonT></center></td></tr></table>
+<pre>
+
+Okay, I think this is a great protection method, IMHO, but you may come back
+within hours and say, "That really stunk." If it appears to be noble enough
+to stand up to scrutiny, the next essay will be a description of the exact
+method used and how anyone can implement it themselves. If the method turns
+out to be a weak, pathetic attempt, then the next essay will be a manifesto
+of whining self-pity and declarations of utter failure. Happy reversing! <Br>
+NiKoDeMoS
+<!-- PASTE HERE YOUR FINAL NOTES (if any) -->
+</pre>
+<br><br>
+
+<!-- OB DUH STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Ob Duh</fonT></fonT>
+</center></td></tr></table>
+ <center>
+   <i>doesn't apply
+   </i>
+</center>
+
+<!-- WAY OUT STARTS HERE -->
+<hr>
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+<!-- EITHER A NICE GIF LIKE THIS -->
+
+<!-- 
+<a href="project3.htm" tppabs="http://members.xoom.com/tsehp_/project3.htm"><IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/project3.gif" 
+ALT="projecT3" ALIGN=CENTER WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a>
+<br>
+<font color=gray>Back to project 3</FonT>
+<br><bR>
+-->
+
+<!-- OR JUST A LINK LIKE THIS -->
+
+<!--
+<IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="project1.htm" tppabs="http://members.xoom.com/tsehp_/project1.htm">Back to Your_chosen_project</A>
+<hr width=33%>
+-->
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm">reality cracking</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="howtosea.htm" tppabs="http://members.xoom.com/tsehp_/howtosea.htm">how to search</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascript wars</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity academy</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut CGI-scripts</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_reverser</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</A>
+</CENTER>
+<hr>
+<!-- THAT'S ALL, THANKS A LOT this will allow automated retrieval -->
+</BODY>
+</HTML>
+<HTML>
+<HEAD>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><TITLE>twdaplog.htm Looking inside your Windows 98</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 VLINK=#405040>
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%  HEIGHT=" 22">
+<TR><td></td>
+<td>
+<center><FONT SIZE="+2">Looking inside your Windows 98 again</fonT>
+        <br>
+        <FONT SIZE="+1">Finding an hidden incredible database inside your computer</fonT>
+        <BR>
+        <BR>
+        <FONT SIZE="+1">Version 2.0</fonT>
+</center>
+</td>
+
+<td>
+<center><a href="project9.htm" tppabs="http://members.xoom.com/tsehp_/project9.htm"><IMG SRC="images/project9.gif" tppabs="http://members.xoom.com/tsehp_/images/project9.gif" ALT="project9" 
+ALIGN=CENTER WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 
+HSPACE=0></a>
+<br>
+<font color=gray>Micro$oft bashing</FonT>
+</center></td></tr>
+<tR>
+<td bgcolor="#FFFFEA"><center>
+<FONT COLOR="890000">
+<!-- CHOOSE A DATE (will probably be changed) -->
+02 December 1998
+</FONT></center>
+</td>
+<td bgcolor="#FFFFEA"><center>by <font size=+3>
+<!-- CHOOSE A HANDLE (wont be changed) -->
+TWD
+</fonT></center>
+</td>
+<td VALIGN="center" bgcolor="#FFFFEA">
+<!--
+<a href="hcu98_3.htm" tppabs="http://members.xoom.com/tsehp_/hcu98_3.htm"><IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/hcu1.gif" ALT="+cracker" ALIGN=BOTTOM 
+WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a>
+-->
+</td>
+</tr>
+<TR><td><center><a href="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm"><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" 
+BORDER="0" VSPACE="0" HSPACE="0" width="13" height="13"></a></center></td>
+<TD BGCOLOR="898030"><center>Courtesy of Reverser's page of 
+reverse engineering</center> 
+</center></TD>
+<td BGCOLOR="898030">
+<center>
+<!-- Your truly+ will edit only if really necessary -->
+slightly edited<br>
+by reverser+</center></td>
+</TR>
+<!-- this is for the data.....fra_00xx....yymmdd....handle..beg+int...not ass... -->
+<tr><td><font color="#C4C0CF">fra_00xx<bR>981202<br>twd<br>0100<br>P9<br>PC<br></fonT></td><td><i><center>
+<!-- Your truly+ comments -->
+A new release of TWD's very interesting logger...
+</i></center></td>
+<td></td>
+</tr>
+<TR><td></td>
+<!-- 
+
+No more crap poems, let's invent something "new" ... (is it really new ???)
+
+-->
+<TD BGCOLOR="898030">
+</i><b>
+<center>
+<br>
+
+Dedicated to my one and only love ... <BR> 
+
+
+<br>
+
+</center>
+
+</b>
+
+<!-- 
+
+What are you looking for ??? (Nothing left to say)
+
+-->
+
+
+</center></TD><td></td>
+</TR>
+<TR>
+<td VALIGN= "MIDDLE" bgcolor="#C6E7C6"><font color=blue><center>
+Rating</FONT></FONT></center>
+</TD>
+<td VALIGN = "MIDDLE" bgcolor="#C6E7C6"><font color=blue><center>
+<!-- CHOOSE A RATING (may be changed) -->
+( )<B>Beginner</B> (x)<B>Intermediate</B> ( )<B>Advanced</B> ( )<B>Expert</B></FONT>
+</center></td>
+<td></td>
+</tr>
+</table>
+<!-- END HEAD  -->
+<bR>
+<!-- CORPUS  -->
+
+<!-- CHOOSE A COMMENT (may be changed)  -->
+<BR>
+This essay is for all the people who whant to know what happens in 
+their computer behind their back.
+<BR>
+
+<hR>
+<center>
+   <FONT SIZE="+2">
+<!-- CHOOSE A TITLE (wont probably be changed) -->
+Looking inside your Windows 98
+   </FONT><BR>
+   <FONT SIZE="+2">
+<!-- CHOOSE A SUBTITLE (wont probably be changed) -->
+Tell me which applications you run and I tell you who you are
+   </FONT><BR>
+   <FONT COLOR="0B7FC1">
+
+<BR>
+
+<!-- REPEAT YOUR CHOSEN HANDLE HERE -->Written by 
+TWD
+   </FONT>
+</center><br><br>
+
+<!-- INTRO STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Introduction</fonT>
+</fonT></center></td></tr></table>
+<pre>
+This is the second part of an essay, written after I found some very interesting 
+details inside YOUR (yeah) Win98. In the <a href="twdaplog.htm" tppabs="http://members.xoom.com/tsehp_/twdaplog.htm">first part</a> I introduced a program, 
+written by myself, which helps to explore your (or any other) Win98 and 
+to see which application were run on this OS. <BR>
+After a LOT of recoding, I release now a <a href="http://acrigs.com/FRAVIA/zipped/applog2.zip" tppabs="http://members.xoom.com/tsehp_/zipped/applog2.zip" >second version</a> of my program.
+</prE>
+<br>
+
+<!-- TOOLS STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Tools required</fonT>
+</fonT></center></td></tr></table>
+
+See <a href="twdaplog.htm" tppabs="http://members.xoom.com/tsehp_/twdaplog.htm">first</a> essay...
+
+<br><br>
+
+<!-- TARGET URL STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Target's URL/FTP</fonT>
+</fonT></center></td></tr></table>
+<!-- DON'T FORGET TO PASTE HERE THE URL/FTP OF YOUR TARGET(S) -->
+http://on.your.computer.com
+<br>
+or
+<BR>
+http://in.your.pcstore.com
+
+<br><br>
+
+<!-- PROGRAM HISTORY STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Program History</fonT>
+</fonT></center></td></tr></table>
+<!-- PASTE HERE YOUR TARGET'S HISTORY (if any) -->
+
+The first buggy version is for sale since June this year.
+
+<br><br>
+
+<!-- REAL ESSAY  STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Essay</fonT></fonT>
+</center></td></tr></table>
+<!-- PASTE HERE THE TEXT OF YOUR ESSAY
+     THIS IS OF COURSE THE MOST IMPORTANT PART
+     PLEASE CHECK THE MARGINS WHEN YOU ARE FINISHED! 
+     SHOULD NOT BLAST NETSCAPE MARGINS OUT! HAVE A LOOK INSIDE
+     YOUR OWN BROWSER WHEN YOU HAVE FINISHED!  -->
+<pre>
+
+Because this is the second part of the essay, I wont repeat anything again. So 
+read <a href="twdaplog.htm" tppabs="http://members.xoom.com/tsehp_/twdaplog.htm">"Part One"</a> before discontinue frustrated.
+<BR>
+
+Obviously, not very much changed. But I totally recoded the "reading" procedure,
+which reads the "applog.ind". This speeds up the whole story, now the facts are 
+sorted by name. (This wasn't possible in the last release, because of speed). 
+
+And there is one additional part, the new "File Access Browser". Sounds good, 
+doesn't it ???
+
+It replaces notepad, when you click on one of the "*.lg*" files.
+It helps to get a better overview, which files are accessed.
+
+Not much to say about this new piece of code. It is selfexplanatory.
+
+
+These are the main enhancements, you can download the new version <a href="http://acrigs.com/FRAVIA/zipped/applog2.zip" tppabs="http://members.xoom.com/tsehp_/zipped/applog2.zip" >here</a>.
+
+and of course I will be awaiting your answers, replies, wishes, silly questions,
+requests and comments ...
+
+
+That's all,
+bye till next time...
+            TWD
+                        
+P.S.: Comments, suggestions, bug reports are always welcomed. Send them to
+
+<A HREF="mailto:twd.rulez@gmx.net?subject=I've got a question...">twd(dot)rulez(at)gmx(dot)net</A>
+</pre>
+<br><br>
+
+<!-- FINAL NOTES STARTS HERE -->
+<TABLE CELLPADDING="1" CELLSPACING="2" BORDER="1" WIDTH= "100%"  HEIGHT="22" >
+<tr><td bgcolor="#C6E7C6"><center><font size=+2><font color=blue>Final Notes</fonT>
+</fonT></center></td></tr></table>
+<pre>
+
+After the last release, I received a lot of funny eMails like this :
+
+...
+>>I am a paranoid as the guy next door, but some of this stuff might have a
+>>decent purpose...
+...
+
+Surely, I wont deny that this bunch of information could eventually have 
+even some sort of "decent purpose", but I can use them to analyze YOU an 
+YOUR SYSTEM nevertheless, and this will tell me (or whoever does it) what 
+kind of user to are.
+The above is only a small excerpt of the eMail, but I had a lot of them in 
+my "Mail/Inbox" and I'm tired of writing the same crap to thousands of 
+people, so I say it here once again :
+
+These information AREN'T USED by Micro$oft, not via Internet, 
+not on a postal way, not by UPS, no way. They remain on your computer, 
+but it is THERE that everybody could have a look at them...
+It's very easy to access and get them (by BO -BackOrifice- or anything 
+similar) so <i>your boss or anybody else</i> can read them since <u>they 
+are there</u>, logged and ready to be served on request... (imagine your 
+boss, when he finds your cherished "naughtysex.zip").
+
+So keep your eyes open...
+</pre>
+<br><br>
+
+<!-- WAY OUT STARTS HERE -->
+<hr>
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+<!-- EITHER A NICE GIF LIKE THIS -->
+
+
+<a href="project9.htm" tppabs="http://members.xoom.com/tsehp_/project9.htm"><IMG SRC="images/project9.gif" tppabs="http://members.xoom.com/tsehp_/images/project9.gif" 
+ALT="project9" ALIGN=CENTER WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a>
+<br>
+<font color=gray>Back to project 9</FonT>
+<br><bR>
+
+
+<!-- OR JUST A LINK LIKE THIS -->
+
+<!--
+<IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="project1.htm" tppabs="http://members.xoom.com/tsehp_/project1.htm">Back to Your_chosen_project</A> 
+<hr width=33%>
+-->
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm">reality cracking</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="howtosea.htm" tppabs="http://members.xoom.com/tsehp_/howtosea.htm">how to search</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascript wars</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity academy</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="new_page_1.htm#36" tppabs="http://members.xoom.com/tsehp_/finished.htm#36">antismut CGI-scripts</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_reverser</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</A>
+</CENTER>
+<hr>
+<!-- THAT'S ALL, THANKS A LOT this will allow automated retrieval -->
+</BODY>
+</HTML><html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>project6</title>
+</head>
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 VLINK=#405040>
+<center><Font size =+5>Reverse engineering Academy<br>+HCU's Project 6</Font><br>~<br>
+<Font size =+3>
+Reverse engineering "function disabled" protections<br>
+</Font><br><a href="project6.htm" tppabs="http://members.xoom.com/tsehp_/project6.htm"><IMG SRC="images/project6.gif" tppabs="http://members.xoom.com/tsehp_/images/project6.gif" ALT="crippled" ALIGN=BOTTOM 
+WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a><br>
+<font color=gray>Crippled</fonT><br><br>
+<i>
+Indeed a very important project, started on 14 July 1997, that should characterize 
+the passage from 'blind' cracking to 'clever' reversing... adding functionalities, 
+re-enabling hidden functionalities... d'you believe there can be something more 
+challenging for good reverse engineers?<br><br>
+The recent popularity of this 
+kind of 
+"function disabled" versions is due to the weakness of all other protection 
+schemes... password protections are almost dead and time protections (of the 
+"Cinderella" sort), are doomed... alas! Crippling protections don't seem to work 
+either! Poor protectors... what should they do?</i></center>
+<br>
+<hr size=2>
+<Center>
+PHASE 1 by Zero: <BR>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="sdzero.htm" tppabs="http://members.xoom.com/tsehp_/sdzero.htm" >Cracking "Save disabled" protections</a><br> 
+by Zero - 16 July 1997<br><br><i>The "dead listing" and the "live" approaches explained
+</i>
+<br>
+
+<hr size=2 width=55%>
+
+
+PHASE 2 by Razzia: <BR>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="razzcripp.htm" tppabs="http://members.xoom.com/tsehp_/razzcripp.htm" >razzia's tutorial for crippled programs</a><br>
+by Razzia - 20 August 1997<br><br><i>The beautiful creation of the "RazziaPad"</i>
+<br>
+
+<hr size=2 width=55%>
+
+
+
+PHASE 3 by PNA: <BR>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="pna2.htm" tppabs="http://members.xoom.com/tsehp_/pna2.htm" >W32Dasm Version 8.0 Save re-enabling</a><FONT COLOR=#FF0000>__NEW!__</FONT><br>
+by PNA - 31 August 1997<br><br><i>How to get our dialogs and our routines inside our targets</i>
+<br>
+
+<hr size=2 width=55%>
+
+
+
+PHASE 4 by reverser+<br>(with an adds on by Frog's Print and another one by reverser+)<BR>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="fraruler.htm" tppabs="http://members.xoom.com/tsehp_/fraruler.htm" >An interesting tool: Screen Ruler</a><br>
+by reverser+ & Frog's Print - 11-15 September 1997<br><br>The "pixel shortcut" method<bR>
+How to transform a target adding functionalities to it<br>
+<br>
+
+<hr size=2 width=55%>    
+
+PHASE 5 by rundus<br>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="rundus4.htm" tppabs="http://members.xoom.com/tsehp_/rundus4.htm" >ARJSHELL DISABLED SAVE FUNCTION</a><br>
+by Rundus  26 September 1997<br><br>A location helds the secret<bR>
+<br>
+
+<hr size=2 width=55%>
+
+PHASE 6 by Quine: <BR>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="quine_51.htm" tppabs="http://members.xoom.com/tsehp_/quine_51.htm" >Extending the IDA Script Language</a><bR>
+by Quine - 27 January 1998<br><br><i>A First Stab</i>
+<br>
+
+<hr size=2 width=55%>
+
+PHASE 7 by -MML-: <BR>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="origin_1.htm" tppabs="http://members.xoom.com/tsehp_/origin_1.htm" >Cracking MicroCal Origin 5.0 in 3 Simple Ways</a><br>
+by Quine - 03 May 1998<br><br><i>A First Stab</i>
+<br>
+
+<hr size=2 width=55%>
+
+<br>
+<br>
+
+<hr size=2>
+<CENTER>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" BORDER=0 VSPACE=0 HSPACE=0 AALIGN="BOTTOM" width="13" height="13">
+
+<A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0>
+<A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm"> anonymity</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</A> 
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="coumes.htm" tppabs="http://members.xoom.com/tsehp_/coumes.htm">counter measures</A>
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13">
+<A HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascript wars</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 
+VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm" tppabs="http://www.fravia.org/ideale.htm">antismut</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 
+VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 
+VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_fravia</A>
+
+<br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 
+VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</A>
+
+
+</CENTER></center>
+<HR SIZE=2>
+
+</body>
+</html>
+<HTML>
+<HEAD>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><TITLE>vao_hype.htm  Reverser's entrance to the Javascript "hyperprotections" section</TITLE>
+<META NAME="keywords" CONTENT="fravia, reversing, protection, java, JavaScript, js, password, authorization, CGI, login, protect, protection, security">
+<META NAME="description" CONTENT="A living workshop about simple methods to bring authorization features into web page without using CGI or any other server side programming"> 
+<META NAME="author" CONTENT="reverser"> 
+</HEAD>
+<body bgcolor= "C0C0C0" text="#001010" vlink="#405040 Alink=#00FF50">
+<!-- FC HP BN1 START -->
+<!-- Please do not remove the line above or the code within this section -->
+<!-- Doing so may cause damage to your pages or insertion of multiple banners-- 
+<center><p>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td colspan="11"><img src="../../www.fortunecity.com/console2/newnav/top.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/top.gif" height="7" width="555"></td></tr>
+<tr><td><img src="../../www.fortunecity.com/console2/newnav/left.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/left.gif" alt="FC Navigation Console" height="60" width="72" border="0" usemap="#fcleft"><map name="fcleft"><area shape="rect" coords="10,43,64,60" href="http://www2.fortunecity.com/cgi-bin/homepage/estate.pl?referer=navbar" target="_top"><area shape="rect" coords="9,21,61,36" href="http://www2.fortunecity.com/cgi-bin/showarea.pl?area=skyscraper&referer=navbar" target="_top"><area shape="rect" coords="8,0,62,15" href="http://www.fortunecity.com/" target="_top"><area shape="rect" href="http://www.fortunecity.com/" target="_top" coords="0,0,49,49"></map></td><td colspan="9"><A HREF="http://ad.doubleclick.net/jump/fc.us468/member/tech;s1=m;s3=tech;pos=1;tag=g;sz=468x60;mtile=1;num=89556?"><IMG SRC="../../a1896.g.akamaitech.net/n/1896/701/0001/216.34.88.210/Banners/ecost/468x60_tombraider.gif-950992307-84499172&950992307-84499172&1246289.gif" tppabs="http://ad.doubleclick.net/ad/fc.us468/member/tech;s1=m;s3=tech;pos=1;tag=g;sz=468x60;mtile=1;num=89556?" border=0 height="60" width="468"></A></td>
+<td><img src="../../www.fortunecity.com/console2/newnav/right.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/right.gif" width="15" height="60"></td></tr>
+<tr><td><img src="../../www.fortunecity.com/console2/newnav/left2.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/left2.gif" height="31" width="72" target="_top"></td><td><img src="../../www.fortunecity.com/console2/newnav/gap1.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/gap1.gif" width="17" height="31"></td><td><a href="http://adex3.flycast.com/server/socket/127.0.0.1:2800/click/FortuneCitycom/NavBar1/89556" target="_top"><img src="../../adex3.flycast.com/server/socket/127.0.0.1:2800/ad/FortuneCitycom/NavBar1/89556.gif" tppabs="http://adex3.flycast.com/server/socket/127.0.0.1:2800/ad/FortuneCitycom/NavBar1/89556" border="0" width="88" height="31"></a></td><td><img src="../../www.fortunecity.com/console2/newnav/gap2.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/gap2.gif" width="24" height="31"></td><td><a href="http://adex3.flycast.com/server/socket/127.0.0.1:2800/click/FortuneCitycom/NavBar2/89556" target="_top"><img src="../../adex3.flycast.com/server/socket/127.0.0.1:2800/ad/FortuneCitycom/NavBar2/89556.gif" tppabs="http://adex3.flycast.com/server/socket/127.0.0.1:2800/ad/FortuneCitycom/NavBar2/89556" border="0" width="88" height="31"></a></td><td><img src="../../www.fortunecity.com/console2/newnav/gap3.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/gap3.gif" width="24" height="31"></td><td><a href="http://adex3.flycast.com/server/socket/127.0.0.1:2800/click/FortuneCitycom/NavBar3/89556" target="_top"><img src="../../adex3.flycast.com/server/socket/127.0.0.1:2800/ad/FortuneCitycom/NavBar3/89556.gif" tppabs="http://adex3.flycast.com/server/socket/127.0.0.1:2800/ad/FortuneCitycom/NavBar3/89556" border="0" width="88" height="31"></a></td><td><img src="../../www.fortunecity.com/console2/newnav/gap4.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/gap4.gif" width="19" height="31"></td><td><a href="http://www2.fortunecity.com/cgi-bin/homepage/navbarforward.cgi?from=nav4&referer=navbare" target="_top"><img src="../../www.fortunecity.com/console2/newnav/button4.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/button4.gif" border="0" width="88" height="31"></a></td><td><img src="../../www.fortunecity.com/console2/newnav/gap5.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/gap5.gif" width="32" height="31"></td><td><img src="../../www.fortunecity.com/console2/newnav/right2.gif.htm" tppabs="http://www.fortunecity.com/console2/newnav/right2.gif" width="15" height="31"></td></tr></table></p>
+</center>
+<!-- WARNING: under no circumstances remove the line below.  Doing so may damage your page.-->
+<!-- FC HP BN1 END -->
+
+<center>
+<a href="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm"><IMG SRC="images/javascri.gif" tppabs="http://members.xoom.com/tsehp_/images/javascri.gif"  ALT="javascri.gif" WIDTH= "114" 
+HEIGHT="43" NATURALSIZEFLAG="0" ALIGN="CENTER"></a><br>
+<Font size=+2>Reverser's entrance to the Javascript "hyperprotections" section</Font>
+<bR>Figure it out... looking at <a href="bab2.htm" tppabs="http://members.xoom.com/tsehp_/bab2.htm">this Bilibin's picture</a> and at the Javascript code :-)<bR>
+</center>
+
+<hr><center>~ <font color=blue>begin encrypted document</font> ~</center>
+<script>
+
+function decode (input, key){
+        var alphabet =   "GYCDEFAHIJKLMNOPQRSTUVWXBZ"
+                       + "gycdefahijklmnopqrstuvwxbz";  
+  
+        key = key . toUpperCase ();        
+        
+        var key_len = key . length;
+        var i;        
+        var adjusted_key = "";
+
+        for (i = 0; i < key_len; i ++)        {
+                var key_char = alphabet . indexOf (key . charAt (i));
+                if (key_char < 0)                        continue;
+                adjusted_key += alphabet . charAt (key_char);        }
+
+        key = adjusted_key;        key_len = key . length;
+        if (key_len == 0)        {                key = "a";
+                key_len = 1;        }        
+	var input_len = input . length;
+        var output = "";        
+	var key_index = 0;        
+	var in_tag = false;
+	for (i = 0; i < input_len; i ++)        {
+                var input_char = input . charAt (i);
+
+                if (input_char == "<")                        in_tag = true;
+                else if (input_char == ">")                   in_tag = false;                
+
+		if (in_tag)
+                {       output += input_char;
+                        continue;                }
+                var input_char_value = alphabet . indexOf (input_char);
+ 
+                if (input_char_value < 0)                
+                {       output += input_char;                        
+                        continue;                }
+                var lowercase = input_char_value >= 26 ? true : false;
+                input_char_value -= alphabet . indexOf (key . charAt (key_index));
+                input_char_value += 26;              
+		if (lowercase)
+                        input_char_value = input_char_value % 26 + 26;
+                else                        input_char_value %= 26;
+
+                output += alphabet . charAt (input_char_value);
+                key_index = (key_index + 1) % key_len;       
+ }
+        return output;}
+
+
+ciphertext = 
+  "<center><Table border=1><TR><td><Font size=+3>Bu ru <font color=red>ihp11pey.fzn</font>...</Font>"+ 
+"</td><tD>...</td><td><center><Font size=+2>Bek zus zikrk!</Font></center></td></tr></table></center>";
+					             
+key = null;while (key == null)
+        key = prompt ("Enter your decryption key to view this document.");
+plaintext = decode (ciphertext, key);document . write (plaintext);</script>
+
+<center>~ <font color=blue>end encrypted document</font> ~</center>
+<hr width=44%>
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm"> homepage</A><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"> 
+<A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm"> links</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0>
+<A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm"> anonymity</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm"> +ORC</A>
+
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm"> students' essays</A>
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm"> tools</A><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm"> cocktails</A><br>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm"> search_forms</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="corporate.htm" tppabs="http://members.xoom.com/tsehp_/corporate.htm"> corporate</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm"> mailFraVia</A><br>
+
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm"> Is reverse engineering legal?</A></CENTER>
+
+<hr size=3>
+</center>
+<!-- Begin signet -->
+ <a href="awards.htm" tppabs="http://members.xoom.com/tsehp_/awards.htm"><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"  ALIGN=CENTER 
+BORDER=0 HEIGHT=13 WIDTH=13 ALT= "red"></a><font color=green>(c) 
+<a href="io13.htm" tppabs="http://members.xoom.com/tsehp_/io13.htm">Reverser</a> 1995, 1996, 1997, 1998, 1999. All rights 
+reversed</fonT>
+<!-- End signet -->
+<hr>
+</body>
+</html> <html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title></title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<a NAME="anchortop"></a>
+<!-- Begin Introdo -->
+<center>
+<a href="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm"><img SRC="images/antism.gif" tppabs="http://members.xoom.com/tsehp_/images/antism.gif" ALT="No_commercial!" ALIGN="BOTTOM" WIDTH="114" HEIGHT="43" BORDER="0" VSPACE="0" HSPACE="0"></a>
+<br>
+<font color="gray">Crackers against Smut</font>
+
+</center>
+
+<font size="+5">
+<center>Reverser's <font color="red">combing</font> page</font></center>
+<center><b>Combing= gathering results that others have collected<br>
+please read also the <a href="sear1197.htm" tppabs="http://members.xoom.com/tsehp_/sear1197.htm">combing and klebing</a> search techniques</b><br>
+<br>~<br>
+By Reverser+, Updated November 1997<br>Page severely under construction... 
+</center><br><hr size="2">
+<!-- Begin whatwewant -->
+<i>
+What is combing?<br>
+Combing is a very effective search strategy: instead of simply searching, you use various other net resources:<br>
+</i><pre>
+<b><font color="green">-</font></b>The continuously updated &quot;Top 100&quot; or &quot;Top 1000&quot; URL-locations<br>
+<b><font color="green">-</font></b>Usenet newsgroups and their various &quot;vigilant filters&quot; and &quot;short range queries&quot;<br>
+<b><font color="green">-</font></b>Relevant site links pages.<br>
+</pre><i>
+Obviously combing is an important technique for whatever interest you may have, quite 
+useful in order to spare an incredible lot of Internet searching hours.
+<br>
+We'll use it here to wage battle against our &quot;commercial smut&quot; enemies, but you would be well advised 
+to learn it and use it for *any* interest you may have...<br>
+<br></i>
+<hr size="53%"><br>
+<center>
+<font size="+3">
+Case study, combing commercial smut depots
+</font><br><i>death to the pornodealers</i><br><hr>
+<br><font color="purple"><font size="+1">
+Warning: you better set the option &quot;autoload images&quot; OFF inside your Netscape 
+settings, else you'll pretty soon regret having accessed this kind of sites... 
+you will not loose anything... NONE of the images they carry is worth loading... 
+should you really want nice &quot;sexually explicit&quot; images (for free of course, and 
+please excuse the 
+pathetic euphemism), then visit the many artists that 
+expose their own work on the net... on the sites we are going to destroy 
+(see how in the <img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a href="ideale3.htm" tppabs="http://members.xoom.com/tsehp_/ideale3.htm" >CGI-reverse engineering</a> page) you'll not even find any &quot;pornography&quot; whatsoever, only fetid smut.<br>
+</font></font></center>
+<br><i>
+Let's start with a typical &quot;combing&quot; approach, I will not hyperlink because 
+I do not want this site spidered along these links, but you may cut and 
+paste the following URLs:</i>
+<pre><font size="+2">Top1000 counter</font>
+http://www.hitbox.com/wc/world2.html          ;TOP1000 &quot;normal&quot;, example for useful combing
+http://www.hitbox.com/wc/adult.html           ;TOP1000 &quot;adult&quot;, main entrance
+http://www.hitbox.com/wc/top10.adult.html     ;top 10 smut commercial
+http://www.hitbox.com/wc/top2100.adult.html   ;top &gt; 2100... understand the &quot;name&quot; 
+                                              ;approach
+<center><br><hr size="2" width="55%"><br></center>
+<font size="+2">Webcounter</font>
+http://www.digits.com/top/both_adult_100.html ;top site has here &quot;only&quot; 540000 a day
+http://www.digits.com/top/comm_adult_100.html ;top site has here &quot;only&quot; 124000 a day
+<center><br><hr size="2" width="55%"><br></center>
+Etcetera... you understand the trick now... here are some other ones
+<font size="+2">various smut counters</font>:
+
+http://www.xxxcounter.com/home/ 
+http://www.web21.com/
+http://www.sexhound.com/index.cgi?from=16818			this one uses CGI! :-)
+<br></pre><i>
+I do not want this page catalogued inside the smut information retrievers, therefore 
+the above links are not hyperlinked... cut and paste them in order to use them.<br>
+<br></i><pre>
+For combing purposes you may also use:
+1) the usual search engines (which give incredible results at time!)
+2) ftp search, looking for &quot;hidden&quot; subdirectories with relevant names
+3) the &quot;big page provider&quot; search engines (like the ones on geocities or mygale)
+</pre>
+<hr size="2" width="55%">
+As you can see from the above short information,<br>
+1.1) many &quot;counters' statistics&quot; betray quite a lot of useful information... if, for 
+instance, 
+you are interested in jellyfishes (it's an example!) you would be well advised, 
+instead of searching the web for ages, to have a quick look at all the pages that 
+inside the counters' statistics, fall under the counter's main categories <font color="purple">&quot;biology&quot;</font> or <font color="purple">&quot;science&quot;</font>... pretty soon 
+you would find the &quot;golden link&quot; you were looking for...<br>
+1.2) We need MANY addresses of SMUT dealers in order to find the 
+many that utilise a CGI-script (or other attackpoints) in order to 
+know &quot;from which site&quot; they got the query... as you'll see on the 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT="13" WIDTH="13" ALT="red"><a href="ideale3.htm" tppabs="http://members.xoom.com/tsehp_/ideale3.htm" >cgi reverse engineering</a> page 
+of this section, this opens the way to their doom!<br>
+2)	As anybody that uses 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT="13" WIDTH="13" ALT="red"></a><a href="http://ftpsearch.unit.no/ftpsearch" >ftp search</a> (&quot;This server is located in 
+Trondheim, Norway&quot;)
+ already knows, the ftp search approach (that fishes hidden directories) can fish incredible (if tricky to interpret) results.<br>
+3)	For other combing purposes (not for smut dealers, of course) you may use also the 
+search systems specific to the big free pages providers...have a search at 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/new_page_1.htm" >http://www.geocities.com/search/</a> and you'll understand 
+what I mean <br><br><font size="+2">
+Combing on the Usenet</font><br>
+<br>
+Usenet combing can work &quot;on the fly&quot; or &quot;regularly&quot; through the &quot;Vigilant&quot; 
+ filter at<br><pre>
+filter@vigilant.bc.ca</pre>
+I'll show you for instance one of my queries:<pre>
+FIND how-to-search tutorial manual
+		NOT spam
+		NOT top position
+		NOT advertising
+		MAX 8</pre>
+Such a query would give you useful information about &quot;searching techniques&quot; on 
+the Web, you may of course construct how many queries you like and *register* 
+(for free) by the vigilant filter, in order to get 
+the results of your usenet queries emailed to you every day or week or 
+month.<br><br>
+Usenet query can also be done through the two big Usenet &quot;depots&quot;: Dejanews and 
+email query, that are explained <img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">elsewhere</a> 
+on my site.<br>
+Many of the main <img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0">
+<a href="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search engines</a> allow such querying 
+too, using the services of either Dejanews or emailquery.
+
+
+</i>
+<br><br>
+<br><center>
+<br></font><!-- End whatwewant -->
+<font size="+3"><center>
+Good luck, good hunt!<br></font>
+</center>
+
+<!-- Begin this section mover -->
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3"><center>
+<a href="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm"><img SRC="images/antism.gif" tppabs="http://members.xoom.com/tsehp_/images/antism.gif" ALT="No_commercial!" ALIGN="BOTTOM" WIDTH="114" HEIGHT="43" BORDER="0" VSPACE="0" HSPACE="0"></a>
+<br>
+<font color="gray">Crackers against Smut</font>
+
+</center>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">Antismut main page</a> 
+<br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="general.htm" tppabs="http://members.xoom.com/tsehp_/general.htm" >A general approach</a>
+<br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="ideale2.htm" tppabs="http://members.xoom.com/tsehp_/ideale2.htm" >source checking</a> i.e. how to exploit 
+their intrinsic weaknesses
+<br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="ideale3.htm" tppabs="http://members.xoom.com/tsehp_/ideale3.htm" >cgi-script one</a> CGI-tricks, page 
+one
+<br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a href="ideale4.htm" tppabs="http://members.xoom.com/tsehp_/ideale4.htm" >cgi-script two</a> CGI-tricks, page 
+two
+<br>
+<!-- End this section mover -->
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<!-- Begin  main mover -->
+<center>
+<font size="+2">Reverser's main site</font>
+<br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</a>   
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anon</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="coumes.htm" tppabs="http://members.xoom.com/tsehp_/coumes.htm">counter measures</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">+HCU Academy</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="stalking.htm" tppabs="http://members.xoom.com/tsehp_/stalking.htm">stalking</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="slaves.htm" tppabs="http://members.xoom.com/tsehp_/slaves.htm">enslavement</a> 
+<br> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</a>  
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_reverser</a> 
+<br>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</a> 
+</center>
+<!-- End main mover -->
+
+
+
+</body>
+</html>
+<html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>joarea1.htm: REALITY CRACKING, Joa's SECT REVERSING</title>
+</head>
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 VLINK=#405040>
+<center><a href="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm"><IMG SRC="images/realicra.gif" tppabs="http://members.xoom.com/tsehp_/images/realicra.gif" 
+ALT="reality cracking" ALIGN=BOTTOM WIDTH=114 HEIGHT=43 BORDER=0 
+VSPACE=0 HSPACE=0></a>
+<br><Font color= gray>Reality cracking</fonT><p>
+<i>Well, this is only a first attempt, yet it touches a very interesting 
+ field, that badly needs a good reversing. Anyone else to follow on this with 
+even more conrete reversing examples? For all those among you interested in 
+ideological/religious reversing, I would advice reading <a href="reacraus.htm" tppabs="http://members.xoom.com/tsehp_/reacraus.htm">&lt;predator>'s 
+comments on an essay by Curious George</a>.<br>Enjoy now this essay by Joa, a 
+master of compression algorhitms reversing (see the <a href="papers.htm" tppabs="http://members.xoom.com/tsehp_/papers.htm">papers</a> 
+section of my site) that's now trying his hand at the fascinating reality 
+cracking project.
+</i><hR></center>
+<prE>
+Hello, hello, this is Joa (JoKo2000@HotMail.com) again. This time i thought 
+about an essay about one of the greatest menaces mankind encounters today: 
+
+                     SECTS CRACKING, A FIRST ATTEMPT
+
+What is it that makes people join sects? And are they really happy? What about 
+ex-members? What about all the terrorizing? 
+Are there sects which are practically good and could/should be joined?
+
+
+Well, for all of you capable of reading german you should search Deja News 
+for my comments on $cientology on the german newsgroup 
+de.soc.weltanschauung.scientology. Especially the link to my 
+Frequently Avoided Question section on one of my friends sites (charlie) is 
+worth a visit.
+
+I thought, $cientology would be something special, something so competent, it 
+was worth a stalking session. But to my disappointment $cientology has much  
+less own specials as a sect as expected. From then on i analyzed some other 
+sects (Mormons, Jehova's Witnesses) and came up with some interesting 
+similarities. Although you crackers+ and realitycrackers+ will be immune to  
+the (sometimes  not so) subtle attacks of sects, i think knowledge of this  
+kind has never harmed anyone.
+
+
+What are sects? From my point of view (not necesserily a lexicon's view) a  
+sect is a group of people united under an aristocratic hierarchy. Only one, 
+sometimes a couple of, guru(s), proclaiming to be struck with the ultimate 
+knowledge of life, death, the universe and the rest (namely 42 ;), collect 
+people like fishermen collect fish. In a lot of cases those gurus are 
+charismatic and of course this charisma comes from their ultimate knowledge. 
+Sometimes the followers will have to live in the area around the guru,  
+sometimes they have to wear certain clothes (Bagwahn). But in every case a 
+person infected with a sect will or has to to something to show the rest of  
+the world that (s)he is a proud member of ???. Sometimes these sects will get 
+so public, that they become state-religions (like the christian religion). 
+Here we have a case where a sect has become so powerful that it's title 
+changes from sect to religion.
+
+
+What do sects want? 
+  More members and your money. End of story. 
+
+
+What do sects give their members?
+  At first - some love-bombing, some respect, some basic teachings of spiritual 
+  techniques. 
+  Then - after the first experiences, when the real knowledge of the guru is at 
+  it's end - only empty promises. Nothing more.
+
+
+What is it that makes people join sects? From some observations i drew the 
+conclusion that there are only a few reasons why a person joins a sect:
+
+    - one is born into a sect     
+    - one's relationship-partner is in the sect 
+    - one wants to do something good 
+    - one is despaired due to some personal problems 
+    - one feels alone 
+    - others (e.g. curiosity)
+
+  A good rule of thumb is: the easier it is to join a sect, the more 
+    difficult it is to flee from it.
+
+  The most told reason is still the personal problems. Not being attractrive 
+  enough, not being rich enough, not being loved enough, not being public 
+  enough, and so on are the most told reasons why people join sects. 
+  Because one doesn't see a perspective and has no ideas on one's own, sooner 
+  or later a visit to a library or an accidental visit from a body-router 
+  will happen. When then the victim tries to read thru all these "Help 
+  yourself within 21 days" books, the battle is already lost. 
+
+    "Oh, let me help you. Once i was in a situation like you. 
+      But i was lucky. One helped me out of this. And i think i can help you!"
+
+  No matter how clichee-like this sounds, phrases like this are still in use. 
+  When one reads thru all those consulting companies ads and re-reads what i 
+  just wrote it's not difficult to assume a (correct) connection between 
+  consulting companies and sects. Be careful when you start to work and some 
+  manager is going to some "communication shop" and after return he doesn't 
+  seem to be himself anymore. In your life you have exactly one freedom: Be a 
+  stalker or be a victim. It's up to you. Being a cracker sharped your 
+  analyzing skills. Now use them. For every personel problem there will be a 
+  personel solution. No outstanding ready-made solution will solve exactly  
+  your problems. 
+
+  But, ah, what about when you want to do something good? Like in the movie 
+  "The Devil's Advocate" with Keanu Reeves? Especially in the end, the devil 
+  has won one round. The urge to be good has some traces of vanity on it. 
+  Imagine you come to a person doing only good things to other people. 
+
+  "Oh, let me help you. I can do this for you".
+
+  "Don't you want to be like this? Being good is soooooo great..."
+
+  "Do you want to be as good as me? I can give you an address where people 
+  like me have regular meetings. Oh, no, nothing monetary. Just a couple of 
+  friends meeting and talking. Do you want to visit us sometime?.You can be 
+  like me (a brainless zombi)..."
+
+  It's incredible, isn't it? And the cloaking with the good deeds has some   
+  advantages for a sect: One can't be accused of terrorizing persons, because 
+  all publicity actions are pushed to the limit of ridiculness. Everybody has 
+  to know that one is sooooo good that it hurts.
+
+    Feeling alone is also one reason for many people in our cold emotionless   
+  society to join a sect. Feeling alone makes one depressive and watching 
+  people being happy in a community wakes the urge to join them. 
+
+
+What happens when you join a sect? 
+The fatal trap snaps when it's (nearly) too late: In the beginning all rookies 
+are bombed with love and happiness. This makes the sect symapthic to the 
+victim. After a while the sect starts to ask the victim for a little share ("We 
+have our costs, you know") and the victim spends happily money for his 
+happy-maker. Then the indoctrination starts. 
+
+    With some basic psychic manipulation tricks the victim's conscious state  
+    is changed a few times. Afterwards the victim is convinced to have found 
+    the only way to happiness. This leads to more thankfulness. SNAP.
+
+    With love and community one is convinced that the outside world is evil  
+    and that there are many persons trying to disrupt the community. 
+    The victim is asked what it wants to do to maintain the community. 
+    Maybe some unpaid standing in some shopping miles with a community-own 
+    press crap? SNAP.
+
+    The victim is depraved of all personal things ("you don't need this here")
+    and some heavy brainwashing happens. Doing only one thing for weeks, 
+    sleep-deprevation, drugs, a lot of sex, not much too eat - breaking all 
+    routines of life is the main goal. Afterwards the victim will feel 
+    strange. 
+    And with all strange feelings they are at first rated positively. 
+    "See, my child? Now you have successfully evaded all worldly stress. 
+    Now go into the world and spread my word. (And give me your money for 
+    my 20th rolls royce)." SNAP.
+
+    The victim can - finally - do what he/she wanted to do for his/her whole 
+    life: Fuck around the clock. Who wouldn't want to join a sect where you 
+    could have sex with whoever you want? However, you want it, whenever you 
+    want it? ("Thank you, master, thank you! How may i, unworthy one, repay  
+    you my just-won freedom?") SNAP.
+
+    There are of course a lot other mechanisms to make a victim addicted to  
+    the sect. In most cases something is done to the victim, the victim 
+    feels good and wants some more... SNAP.
+
+  Beware. Real spiritual knowledge is freely available in every older 
+  non-religion (like wicca, some pagan stuff, in the celtic/druid corner, the 
+  indian stuff, etc.) 
+  When you have to pay for something or have to visit some courses - you are 
+  definitively on the wrong track!
+
+
+Are sect-members really happy?
+  Well, from what i learned from ex-members of some sects - no. The human being 
+  is a hell of trickster when it comes to pretend things. In the first time 
+  they could be happy because of the change of routine in their life. But after 
+  some months there is no step ahead. No visions anymore. Nothing. The new 
+  lifestyle becomes routine. But what a costly one. Time and money leave the 
+  victim faster than it can say "Thanks, master". But because only very few 
+  people will be able to admit to themself that they betrayed themself or 
+  have been betrayed they stay in the sect - in the hope of a further   
+  enlightment in the future; an enlightment, that will never happen.
+  
+
+
+How do i recognize a sect-(wo)man?
+
+  Some points:
+
+  They smile. They smile all along. And all the time. No matter what you 
+  tell them, they smile. This is based on the premise that smiling at you 
+  will make you also smile after some time. And how could you be angry or 
+  critical with a person YOU suddenly smile at, hm? You can check this out 
+  with a good friend. 
+  Just tell him to smile at you. When you finished laughing analyze his face. 
+  Observe the muscles. Do you see it? Yes, some nerves don't obey the will. 
+  This leads to a more mask-like face-expression.
+  Something is not quite right with the smile. BTW, you will see this kind of 
+  smile all the time in the ads. Sometimes it's called "plastic-smile". Now 
+  you know why...
+
+  Everything is so great. It's just wonderful. Just like Christmas, Eastern,   
+  Birthday and Armaggeddon together ;) 
+  
+  Their gurus have superhuman healing powers ("Oh, no. What the press writes 
+  about us, is totally wrong. Our healer has alreay healed 10 million people 
+  from AIDS. Yes, you can check this in the newspapers What? Oh, no. Not in a 
+  normal newspaper. But in our actual newspress...").
+
+  Everyone except them lies. Ex-Members are in the same lineup as Hitler, 
+  Saddam Hussein and Caligula. Deadly terrorists, envying the "community" the 
+  success. Only the "community" has the one and only truth. 
+  Someday i will give it a try and invite some hard-core sect-members for a 
+  teaparty and record the following discussion. But maybe i'd have to call 
+  the police afterwards because of a sudden mass murdering in my garden ;-)
+
+  The speech patterns and phrases change also. 
+  A lot of sect-members on mission are trained in a kind of sell-a-thing 
+  process. You'll notice some patterns like: 
+  - Not letting you completely speak out your sentence 
+  - Answering your question with a sentence that doesn't belong to the topic 
+  - Answering your questions with a counter-question
+  - Confirming all your statements till the point of ridiculness 
+  - Being mostly unable to transport or understand irony, sarcasm, cynism 
+  - (bible-specialized) Being able to recitate nearly the whole bible thus 
+    enabling them to read something contextless from the bible to nearly 
+    every topic possible. 
+    My defence: The Apocryphes. 
+    Especially the books about the nephilim (Jubilee and Enioch). 
+    Here are some stories not known to most bible-freaks. Beat them at their 
+    own game. 
+  - Being unable to accept other attitudes
+  - Being unable to prove something from a neutral point of view 
+  - Expressions and phrases are formulated in an axiom-way:
+    "Our community IS the most friendly of the world"
+    "We ARE the fastest growing church on this planet"
+    "There CAN'T be any doubt about that"
+    "The world IS just 5000 Years old!"
+    Questioning these phrases leaves them as what they are: just hot air.
+  - "You don't have full control of all your powers because you have problems 
+    that hinder you from experiencing all your powers."
+    What a crap. Problems let you grow stronger and are the obstacles to be 
+    jumped over to reach higher levels of inner strength. If man has no 
+    problems he will create some for himself.
+  - "Oh, god wants us to live our lifes here and he will judge our deeds later 
+    in heaven. Then we will finally be happy!"
+    Oh yeah. The old Suffer-Now-Be-Happy-Later-Story. Give all you have to the 
+    sect, coz it doesn't matter coz your life is crap per se and your only hope 
+    is to stay in our "community" coz than you will live happily and forever 
+    coz i say so coz i'm right coz QWER%§"RÄÜA from the planet &E&"§ÄPÜ#D gave 
+    me enlightment and that's why i'm so full of energy - i need another Rolls 
+    Royce or i burst ;). Beware of those circular reasonings. They are not 
+    connected to reality and are only logical within themselfs.
+  - and well, yes, some others
+
+
+Are there sects which are practically good and could/should be joined?
+  Not that i knew of any. Practically all religions and sects have one 
+  Commandment in common: 
+    Though shalt not ask questions!!!
+  If you do, you will be punished for your blasphemic behaviour. No whys or 
+  whens or ifs. Just do as i say (and not as i do). Sad story, this.
+
+  Real spiritual knowledge is kind of anti-religious as there is no guru, no 
+  i-know-it-all-master. You'll recognize immediately the difference, once you 
+  investigated in this.
+
+
+Can one have fun with sects? 
+Despite the evil and destructing power of sects, yes. Humor and ridiculness is 
+a weakpoint in all sects. In bible-specialized sects the theory that god is a 
+communist is always good fun (you know, when the final time has come and 
+everybody will have his own land and will have everything you need to live and 
+a big community and bla bla bla. Sounds like communism to me). Especially 
+Jehova's Witnesses are acting allergic to this theory. Just let them tell you 
+what will happen after the final time and then confront them with this theory. 
+Ah, that face... 
+
+Every sect takes itself to serious. Analyze this mechanism, localize the 
+weakspot and reverse the arguments. Every (i really mean every) sect has 
+logical faults. And a lot of them. That's why most sects want you not to buy 
+newspapers anymore. ("All you need to know is taught to you by our holy 
+allknowing master..."). Most logical faults are connected with their DOs and 
+DON'Ts. 
+
+
+
+If someone is interested how ALL sects and religions work, read Frank Herbert's 
+"Dune" series. It's worth it. Especially the third book.
+
+This was not written to hurt someone's religious feelings, just to plant the 
+seed of doubt ]:->
+
+All right ,
+
+Bye
+
+
+Joa
+</prE>
+<HR ALIGN=CENTER WIDTH=100% SIZE=3>
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+
+<a href="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm"><IMG SRC="images/realicra.gif" tppabs="http://members.xoom.com/tsehp_/images/realicra.gif" 
+ALT="reality cracking" ALIGN=BOTTOM WIDTH=114 HEIGHT=43 BORDER=0 
+VSPACE=0 HSPACE=0></a>
+<br><Font color= gray>Back to Reality cracking</fonT>
+<br><bR>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity</A> 
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</A><br>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascripts wars</A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm" tppabs="http://www.fravia.org/ideale.htm">antismut CGI-scripts</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_reverser</A><br>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</A></CENTER>
+<CENTER><HR ALIGN=CENTER WIDTH=100% SIZE=2></CENTER>
+</body>
+</HTML>
+
+<html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>
+cookie
+</title>
+<!------------------------DO NOT LINK DIRECTLY TO THIS PAGE-------------------------> 
+<!---------------------------(OR DO IT AT YOUR OWN RISK)-------------------------> 
+ <meta Name="keywords" Content="cookie magic http client side netscape cookie magic http client side netscape cookie magic http client side netscape cookie magic http client side netscape cookie magic http client side netscape cookie magic http client side netscape">
+<script>
+<!-- Cloaking device on...
+cookie_name = "FraVia_cookie_on_cookie_page";
+
+function doCookie() {
+	if(document.cookie) {
+		index = document.cookie.indexOf(cookie_name);
+	} else {
+		index = -1;
+	}
+
+	if (index == -1) {
+		document.cookie=cookie_name+"=1; expires=Tuesday, 01-Apr-1997 08:00:00 GMT";
+	} else {
+		countbegin = (document.cookie.indexOf("=", index) + 1);
+		countend = document.cookie.indexOf(";", index);
+		if (countend == -1) {
+			countend = document.cookie.length;
+		}
+		count = eval(document.cookie.substring(countbegin, countend)) + 1;
+		document.cookie=cookie_name+"="+count+"; expires=Tuesday, 01-Apr-1997 08:00:00 GMT";
+	}
+}
+
+function gettimes() {
+    if(document.cookie) {
+        index = document.cookie.indexOf(cookie_name);
+        if (index != -1) {
+            countbegin = (document.cookie.indexOf("=", index) + 1);
+            countend = document.cookie.indexOf(";", index);
+                if (countend == -1) {
+                    countend = document.cookie.length;
+                }
+            count = document.cookie.substring(countbegin, countend);
+            if (count == 1) {
+                return ("<b>"+count+"</b> time before.</b>");
+            } else {
+                return ("<b>"+count+"</b> times before.</b>");
+            }
+        }
+    }
+    return ("<b>0</b> times before.</b></b>");
+}
+
+// Now decloaking -->
+</script>
+
+</head>
+
+<!-- HTML code by Reverser, Yeah, go ahead, steal my code, sucker -->
+<body onLoad="doCookie()">
+<body bgcolor="CCCCCC" text="#001010" vlink="#405040 Alink=#00FF50">
+
+<center>
+<img SRC="images/ms_cross.gif" tppabs="http://members.xoom.com/tsehp_/images/ms_cross.gif" HEIGHT="43" WIDTH="114" ALT="No_Explorer!"></a>
+</center>
+
+
+<center><h2>This page is proudly Microsoft Explorer Hostile</h2>
+<center><i>(not yet...? My *.ocx command will be soon implemented)</i></center>
+<a HREF="http://www.halcyon.com/mclain/ActiveX" >
+<object ID="Exploder1" WIDTH="86" HEIGHT="31" xcodbase="Exploder.ocx" CLASSID="CLSID:DE70D9E3-C55A-11CF-8E43-780C02C10128">
+    <param NAME="_Version" VALUE="65536">
+    <param NAME="_ExtentX" VALUE="2646">
+    <param NAME="_ExtentY" VALUE="1323">
+    <param NAME="_StockProps" VALUE="0">
+Exploder Control!</object></a>
+</center><hr>
+<center><i>This page also crashes Netscape 2 with a divide by zero error</i></center>
+<hr>
+
+<center><h1>Cookies, CGI stuff, Robots and Spiders page</h1></center>
+<center><i>Under heavy construction: started in november</i></center>
+<hr>
+<center><h3><font COLOR="yellow">__Robots &amp; Spiders__</font></h3></center>
+Link to a small harvest robot: <img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" HEIGHT="13" WIDTH="13" ALT="red"></a><a href="http://glimpse.cs.arizona.edu/webglimpse/" >Webglimpse</a> available in late november
+
+<hr size="3">
+
+<!-- Begin Hostile -->
+<a name="anchorhost">
+<center><h3><font COLOR="yellow">__Hostile applets__</font></h3></center>
+you'll get the source code for some nice hostile applets 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" WIDTH="13" HEIGHT="13"></a>
+<a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/new_page_1.htm" >here</a>
+<br>
+Let's have a look at all the applets we are loading &quot;without knowing it&quot; just by browsing around: 
+Open your c:\NAVIGA~1.CACHE directory and, using your hexeditor, 
+have a look at all the <font color="red">*.class</font> files you loaded. Navigator, unfortunately, gives names without meaning to its cache files (using the &quot;real&quot; names 
+of the files should be one of the top priority improvements for the next version), but you'll find the applets names (among many other information) 
+inside the code.
+
+
+<!-- End Hostile -->
+<hr size="3">
+<!-- Begin Cookie -->
+<a name="anchorcook">
+<center><h3><font COLOR="yellow">__Cookies__</font></h3></center>
+<center>Well, what are cookies? Cookies are informations stored by you when you visit 
+a site, designed and useful FOR THE SITE you visited<br>
+A Cookie is a little nugget of information that is sent to your browser from a World Wide Web Server. This block of data can
+be anything, a unique user ID generated by the server, the current date and time, the IP Address of where the browser is
+logged onto the net or any other chunk of data that you want. <br>
+
+After a browser receives a cookie it will then send that cookie (nugget of info) to the server that set it whenever it requests an
+html page. The browser will only send the cookie to the server that originally set it. This means that I (at my server)
+can't tell if you (some browser) have cookies that other sites have set. In other words I can't steal cookies I haven't given you
+by using HTTP protocols.<br><br>
+Cookies can be set either in the HTTP Header or in the Head portion of the HTML document using a META ta

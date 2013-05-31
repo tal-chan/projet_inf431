@@ -79,23 +79,23 @@ public class DynamicAnalysis extends FingerPrint {
 		return alpha * (double)m * (double)m / tmp;
 	}
 	public static void main(String[] args) throws IOException{
-		String file = "Texts/fravia/pages.txt";
+		String infile = "Texts/attaques/attaque_id.txt";
 		String outFile = "dynamicanalysis.csv";
-		Data input = new Data(file,Data.FILE);
+		Data input = new Data(infile,Data.FILE);
 		int b = 7;
 		int w = 10000;
 		int nbr = 1;
 		Writer writer =  new OutputStreamWriter(new FileOutputStream(outFile));
+		int line = 0;
 		try {
 			input.init();
 			DynamicAnalysis da = new DynamicAnalysis(b,w,nbr);
-			int line = 0;
-			for(int j=0;j<5*da.W&&input.hasNext();j++){
+			while(input.hasNext()){
 				for(int i=0;i<100;i++){
 					if (input.hasNext()) da.newElement(input);
 				}
 				writer.write(line+"\t"+da.hyperLogLog()+"\n");
-				
+				System.out.print(line+"\t"+da.hyperLogLog()+"\n");
 				line ++;
 			}
 		} catch (IOException e) {

@@ -1,0 +1,2279 @@
+<html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>anmsscri.htm ~ Reverser's anti-M$IE tricks and scripts</title>
+</head>
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 vlink="#405040 Alink=#00FF50">
+<center>
+<P ALIGN="center"><IMG SRC="images/ms_cross.gif" tppabs="http://members.xoom.com/tsehp_/images/ms_cross.gif" ALT="NO-M$IE" ALIGN=BOTTOM WIDTH=114 
+EIGHT=43 BORDER=0 VSPACE=0 HSPACE=0><br><font color=gray>No M$IE!</fonT>
+<h1>No Micro$oft internet exploder allowed!</h1>
+<i>Welcome to my collection of Anti-M$IE<a href="anmsscri.htm#netsca">&#185</a>  tricks<br>page started on September 1998, 
+last updated: <font color=blue>July 1999</fonT>
+<hr>
+Use these scripts in order to 
+get rid of all people using Micro$oft Internet explorer, or else ameliorate them and contribute.
+<bR>  
+I have pilfered them around the Web and, when necessary, 
+I have slightly changed them.</i><hr noshade width=333 size=3>
+<h3>Instructions:</h3>
+Just copy the script you are interested in -with your mouse- and paste it into 
+your own html pages... 
+<hr noshade width=333 size=3>
+<h2>FUNDAMENTAL SCRIPT</h2>~<br>Screw M$ Explorer once for all on any page<br>
+</i></p></center>
+<pre>
+<font color=blue>&lt;OBJECT CLASSID=#&gt;&lt;/OBJECT&gt;</fonT> inside the &lt;BODY&gt; of any page of your site.</prE>
+<br>(Presented by Carpathia)
+<hr noshade width=333 size=3><center>
+<h2>RECENT SCRIPT</h2>~<br>Screw M$ Explorer's 5 windows settings<br>
+</i></p></center>
+<pre>
+<font color=blue>
+if(parseInt(navigator.appVersion)&gt;3) {
+a=1;
+setInterval("Jump()",10);
+}
+
+function Jump(){
+a=a+.1;
+self.moveBy((Math.random()*a*2 -a),(MathRandom()*a*2)-a);
+}
+
+</fonT>
+</prE>
+<hr><center>
+<h2>FIRST SCRIPT</h2>~<br>Go to Opera please<br>
+</i></p></center>
+<pre>
+&lt;---------begin Cutting Now---------&gt;
+&lt;script LANGUAGE="JavaScript"&gt;&lt;!-- 
+                                var uagent=navigator.userAgent;
+                                if (uagent.indexOf("MSIE") == 25)
+                                {
+                                document.writeln('&lt;META HTTP-EQUIV="REFRESH"
+                                CONTENT="2; URL="http://www.operasoftware.com"&gt;');
+                                }
+                                //--&gt;
+                                &lt;/script&gt;
+&lt;----end Cutting Now------------&gt;
+</pre>
+<hr size="2"><center>
+<h2>SECOND SCRIPT</h2>~<br>MSIE not allowed<br>
+</i></center>
+<prE>
+&lt;---------begin Cutting Now---------&gt;
+&lt;!-- Hide for old browser 
+ // This JavaScript is written by Moh! 
+ // Modified by WiZZiE 
+ // Use it and modify it if you like 
+ // it's for those who don't want their Page be compatible for MS IE 3.0 :)....have fun 
+ // be so nice an leave my Name in the above of that, thx!
+ //--&gt;
+
+ &lt;script language="JavaScript"&gt;&lt;!-- 
+ var uagent=navigator.userAgent;
+
+ if (uagent.indexOf("MSIE") == 25) { alert("STOP ! You are using MS Internet Explorer (TM)!"); 
+ alert("And this page prohibits IE users from viewing it."); 
+     if (confirm("Do you want to go to Opera's's Site in order to dowload Opera?"))
+     {locaction.href="http://www.netscape.com" } 
+     else { ("OK you choose I don't care! Bye bye!... come back when you have another browser!"); self.close(); } } 
+  //--&gt;
+&lt;/script&gt;
+
+
+&lt;------end Cutting Now------------&gt;
+</pre>
+<hr size="2"><center>
+<h2>THIRD SCRIPT</h2>~<br>Compulsory New Browser<br>
+</i></center>
+<pre>
+&lt;---------begin Cutting Now---------&gt;
+&lt;script LANGUAGE="JavaScript"&gt;&lt;!-- 
+                                var uagent=navigator.userAgent;
+                                if (uagent.indexOf("MSIE") == 25)
+                                self.close()
+                                //--&gt;
+                                &lt;/script&gt;
+&lt;----end Cutting Now------------&gt;
+</prE>
+<hr size="2"><center>
+<h2>FOURTH SCRIPT</h2>~<br>Download Opera<br>
+</i></center>
+
+<pre>
+&lt;script&gt;
+&lt;!-- Hide for old browser
+  // This script checks for MSIE, if it is detected, an alert is
+  // issued, and the browser is re-directed.  As it is, this script
+  // will redirect to my Stop Microsoft page.  This can be changed
+  // changing the URL in the location.href line.
+  
+	var uagent=navigator.userAgent;
+	if (uagent.indexOf("MSIE") == 25) {
+		alert("Microsoft's Internet Explorer has been detected.\r\rMSIE is prohibited from entering this site, and you are being directed elsewhere.\r\rJoin the Microsoft Boycott, get Opera.");
+		location.href="http://www.operasoftware.com"
+		}   
+
+// End hide --&gt;
+&lt;/script&gt;
+</prE>
+
+
+
+
+<hr size="2">
+<!-- Begin mover -->
+<center><a href="project9.htm" tppabs="http://members.xoom.com/tsehp_/project9.htm" >
+<IMG SRC="images/project9.gif" tppabs="http://members.xoom.com/tsehp_/images/project9.gif" ALT="M$bashing" ALIGN=BOTTOM WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a>
+<br><font color=gray>Back to Project9</fonT><p>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" BORDER=0 VSPACE=0 
+HSPACE=0 AALIGN="BOTTOM" width="13" height="13"><A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</A>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALIGN=BOTTOM BORDER=0 VSPACE=0 
+HSPACE=0 width="13" height="13"><A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</A> 
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity</A> 
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</A> 
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="botstart.htm" tppabs="http://members.xoom.com/tsehp_/botstart.htm">bots wars</A>
+
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</A> 
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</A>
+<br><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 
+HSPACE=0 width="13" height="13"><A HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</A>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 
+HSPACE=0 width="13" height="13"><A HREF="coumes.htm" tppabs="http://members.xoom.com/tsehp_/coumes.htm">counter measures</A>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</A>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A
+HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut</A>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 
+HSPACE=0 width="13" height="13"><A HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</A>
+
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM
+BORDER=0 VSPACE=0 HSPACE=0 width="13" height="13"><A HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascript wars</A>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 
+HSPACE=0 width="13" height="13"><A HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_fravia</A>
+<br>
+ <IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN=BOTTOM BORDER=0 VSPACE=0 
+HSPACE=0 width="13" height="13"><A HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</A>
+
+<bR></center>
+<!-- End mover -->
+<hr><a name="netsca"></a><b>&#185)</b> 
+Ok: you want to crash Netscape 4.06 Instead (Javascript enabled)?<br>
+<font color=blue>&lt;p style="border: thin solid"&gt;</fonT> in your &lt;BODY&gt; eheh :-)
+<br>
+(Presented by qwerty)
+<hr size="3">
+
+</body>
+</html>
+
+
+
+<head>
+<title>vbzero</title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<center><h2>Cracking visual basic, a lesson for the programmers</h2><h4><i>by Zero</i><br>
+
+<br>(14 July 1997, slightly edited by Reverser+)</h4>
+<hr>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">Courtesy of Reverser's page of reverse engineering
+<br><br><i>Well, Visual Basic cracking can always come at hand... here is another essay 
+by Zero, master of the &quot;save disabled&quot; protections</i></center>
+<br>
+<hr size="2">
+<pre><font size="+2">
+Cracking a Visual Basic program with a decompiler
+</font><font size="+1">
+Cracking Plasmid Toolkit 1.3
+</font>
+Plasmid Toolkit version 1.3 (1996) from Microbe Software can be found at
+<a href="new_page_1.htm" tppabs="http://members.xoom.com/tsehp_/finished.htm">ftp.sunet.se/pub/molbio/ibmpc/ptk-demo.exe</a>.
+The main exe file is PTK13.EXE (1 040 448 bytes).
+
+ This program is pretty useless, even for a DNA hacker like me, but I
+decided to crack it, because the authors of this program were too pushy
+asking for my money and I don't like that. As it turned out, this program is
+also good candidate for the most stupid protection award (IMHO).
+ To make it clear: I can understand if a programmer implements a simple
+protection scheme knowing that it will protect against average users, (even 
+if the more complicated ones will be useless against dedicated crackers :-)
+ What I can't understand is, why they put two locks on the front door and
+let the back door wide open. As you will see, in this case it probably took the
+programmer more time to code and debug the protection routine than us to
+crack it. 
+
+Let's see the target:
+ During installation, we observe that the program installs vbrun300.dll,
+so we have another Visual Basic &quot;toy application&quot;, on our hands. After 
+starting it, the first thing we get is a registration form (nice welcome!) 
+with Name, Company and Licence info required. Pressing the Cancel button
+takes us through a nag screen (which reminds us about the unregistered
+status of the program) to the working area. We load up a sample map and
+quickly discover that the export and save functions have been disabled and 
+that in the middle of our plasmid graphic sits a &quot;unregistered version&quot; sign.
+Upon leaving the program we get another nag screen, reminding us to register
+in order &quot;to enable all functions&quot;.
+ Well, we have here an arsenal of nag functions (and a licence agreement
+that even Micro$oft could envy), all these problems can be cured entering 
+a correct licence number.
+
+Let's crack:
+ This program, written in Visual Basic, means that WDASM is no good, and 
+that debugging with Softice will not be a great fun, either. 
+You could crack the registration as written in the fine essay by Razzia, 
+of course... yet let's see if there is another... a more &quot;relaxed&quot; way. 
+Let's try first of all DoDi's excellent VBdecompiler, an obvious choice. 
+You can get the demo version from his homepage at 
+<a href="FRAVIA_index.htm#241" tppabs="http://members.xoom.com/tsehp_/index.htm#241">http://ourworld.compuserve.com/homepages/DoDi/</a> but it 
+can't decompile large files like ptk13.exe, so I suggest to get the registered
+version of this nice decompiler, somehow :-)
+
+ Let the decompiler operate on the PTK13.EXE file. Surprise! It works nicely
+and we practically have the VB source code in our hands (what a shame!).
+The meaningful variable names are gone, but that's really no problem 
+for us.
+After a little searching, we find the interesting REGFORM.BAS module.
+Ok, let's peek into it! All right, the code deals with the registration,
+and the most interesting part is this:
+
+Sub OKButton_Click () 
+Dim l005A As Integer <font color="purple">&lt;-Flag</font>
+Dim l005C As String
+Dim l0060 As Integer
+l005A% = fn6338(rname, rlicence) <font color="purple">&lt;-Flag set here</font>
+If  (l005A% = 1) Then  
+  gv0668 = Trim$(rlicence.Text) <font color="purple">&lt;-Good guy goes here</font>
+  gv0664 = Trim$(rname.Text)
+  gv066C = Trim$(rcomp.Text)
+  l005C$ = gv0464 &amp; &quot;ptk.ini&quot;
+  l0060% = extfn1050(&quot;Registration&quot;, &quot;Registered User&quot;, gv0664, l005C$)
+  l0060% = extfn1050(&quot;Registration&quot;, &quot;Company&quot;, gv066C, l005C$)
+  l0060% = extfn1050(&quot;Registration&quot;, &quot;Licence Number&quot;, gv0668, l005C$)
+  PFWmenu.Export.Enabled = True <font color="purple">&lt;-Let's enable everything for good guy</font>
+  PFWmenu.save.Enabled = True
+  PFWmenu.save_as.Enabled = True
+  PFWmenu.SaveButton.Enabled = True
+  Unload RegForm
+Else 
+  gv0668 = &quot;&quot; <font color="purple">&lt;-Bad guy goes here</font>
+  rlicence.Text = &quot;&quot;
+  MsgBox &quot;Invalid Licence Number&quot;, 48, &quot;Registration Failure&quot;
+  Exit Sub
+End If
+End Sub
+
+Function fn6338 (p0068, p006C As Variant) As Integer <font color="purple">&lt;-This sets the flag</font>
+Dim l0072 As String
+If  (Len(Trim$(p006C)) &lt;&gt; 16 Or Mid$(Trim$(p006C), 6, 1) &lt;&gt; &quot;-&quot;) Then
+  fn6338 = 0 	
+  Exit Function			
+End If
+l0072$ = fn2030(p0068) <font color="purple">&lt;- Last ten char of the licence is calculated</font>
+If  (UCase$(Mid$(Trim$(p006C), 7, 10)) = l0072$) Then	
+  fn6338 = 1			
+Else
+  fn6338 = 0
+End If
+End Function
+
+ Well, the above snippet talks for itself. The licence code is checked
+with the fn6338 function which gets the name and registration code as 
+input. The code must be 16 char long with the 6th char being a dash.
+ The last ten character of the code are created by the fn2030 function
+which gets the name string as input. Ok, let's search for the fn2030
+function in the decompiled modules. We find it in MODULE5.BAS:
+
+Function fn2030 (p000A As Variant) As String
+Dim l000E As String
+Dim l0010 As String
+Dim l0012 As Integer
+Dim l0014 As String
+Dim l0016 As Integer
+Dim l0018 As String
+Dim l001A As Integer
+Dim l001C As Integer
+Dim l001E As Integer
+l000E$ = Trim$(p000A)
+l000E$ = LCase$(l000E$)
+l0010$ = &quot;&quot;
+For l0012% = 1 To Len(l000E$) <font color="purple">&lt;-Removing spaces</font>
+  l0014$ = Mid$(l000E$, l0012%, 1)
+  If  (l0014$ &lt;&gt; &quot; &quot;) Then
+    l0010$ = l0010$ + l0014$
+  End If
+Next l0012%
+l0016% = Len(l0010$)
+l0018$ = &quot;&quot;
+If  (l0016% &lt;= 10) Then <font color="purple">&lt;-Adjusting the lenght to 10 char</font>
+  l0010$ = &quot;bibblefnord&quot; + l0010$
+  l0010$ = Right$(l0010$, 10)
+End If
+For l0012% = 10 To 1 Step -1 <font color="purple">&lt;-Calculation of code</font>
+  l0014$ = Mid$(l0010$, l0012%, 1)
+  For l001A% = l0012% - 1 To 2 Step -1
+    l001C% = Asc(l0014$) Xor Asc(Mid$(l0010$, l001A%, 1))
+  Next l001A%
+  If  (l001C% &gt; 90 Or l001C% <48) Then l001E%="l001C%" Mod 42 l001E%="l001E%" + 48 If (l001E% &gt; 57 And l001E% < 65) Then l001E%="l001E%" 7 End If l0014$="Chr$(l001E%)" End If l0018$="l0018$" + l0014$ Next l0012% fn2030="l0018$" End Function Finally, here it is, the heart of the code "generator..class" tppabs="http://fravia.org/generator..class" We can see the adjustment of the name string with "<Font color="purple">bibblefnord</font>&quot;, some XORing, etc., but
+in fact we do not need to understand the precise mechanism of the code
+generation to get a good code. We can rip out this function and modify it
+a bit, to get the name input (p000A) from the keyboard and print the result
+to the screen (actually, the &quot;12345-&quot;+result string, keeping in mind what
+the fn6338 function does) and we get a perfect code generator in basic!
+(Before you run the code you might have to tailor it a bit to your basic
+interpreter, like with MS QBasic trim$ must be replaced by consecutive
+Ltrim$ and Rtrim$ functions, etc).
+ I did not write here any valid licence code, because the purpose of this
+essay is not to distribute a crack for this useless program, but to show:
+
+1) The beginner crackers that they can spare a lot of work by trying a VB
+decompiler, before attacking with Softice.
+
+2) The shareware VB programmers that it is useless to implement &quot;tricky&quot;
+code generators, if they don't protect against decompilation. Not even
+mentioning that they show their &quot;source code&quot; to the whole world. 
+(&quot;Antidecompiler&quot; tools can be found on Dodi's homepage).
+
+Finally, I would like to thank +ORC and his' students for the fine essays
+and Reverser+ for his amazing WEB site. 
+
+Written by ZER0
+
+</pre>
+<br>
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#84" tppabs="http://fravia.org/tppmsgs/msgs0.htm#84"> homepage</a><img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"> 
+<a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#73" tppabs="http://fravia.org/tppmsgs/msgs0.htm#73"> links</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0">
+<a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm"> anonymity</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm"> +ORC</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/index.htm#82" tppabs="http://fravia.org/tppmsgs/msgs0.htm#82"> students' essays</a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm"> tools</a><img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm"> cocktails</a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm"> search_forms</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="corporate.htm" tppabs="http://members.xoom.com/tsehp_/corporate.htm"> corporate</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm"> mailFraVia</a><br>
+
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm"> Is reverse engineering legal?</a></center>
+<center><hr ALIGN="CENTER" WIDTH="100%" SIZE="2"></center>
+
+</body>
+</html><HTML>
+<HEAD>
+    
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><TITLE>Diary Link 97 Crack</TITLE>
+</HEAD>
+<BODY TEXT="#001010" BGCOLOR="#C0C0C0" VLINK="#405040">
+&nbsp;
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" 22" >
+<CAPTION><!-- this is for the data.....fra_00xx....yymmdd....handle..beg+int...not ass... --></CAPTION>
+
+<TR>
+<TD></TD>
+
+<TD><!-- Choose  a TITLE probably wont be changed -->
+<CENTER><FONT SIZE=+2>Diary Link 97</FONT></CENTER>
+
+<CENTER><FONT SIZE=+1>(Menu disable and active by Register Number)</FONT></CENTER>
+</TD>
+
+<TD><!-- Choose  a PROJECT GIF, leave this if unsure -->
+<CENTER><A HREF="file:///C:/Documents%20and%20Settings/Charlie/My%20Documents/My%20Webs/FRAVIA/new_page_1.htm" tppabs="http://www.fravia.org/project7.htm"><IMG SRC="images/stupid.gif" tppabs="http://members.xoom.com/tsehp_/images/stupid.gif" ALT="student" BORDER=0 HEIGHT=40 WIDTH=40 ALIGN=CENTER></A>&nbsp;</CENTER>
+
+<CENTER><FONT COLOR="#808080">Most Stupid Protection</FONT></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="#FFFFEA">
+<CENTER><!-- CHOOSE A DATE (will probably be changed) --><FONT COLOR="#890000">27
+April 1998&nbsp;</FONT></CENTER>
+</TD>
+
+<TD BGCOLOR="#FFFFEA">
+<CENTER>by&nbsp;<!-- CHOOSE A HANDLE (wont be changed) --><FONT SIZE=+3>Kabhoet&nbsp;</FONT></CENTER>
+</TD>
+
+<TD VALIGN=CENTER BGCOLOR="#FFFFEA"><!--
+
+<a href="hcu98_3.htm" tppabs="http://members.xoom.com/tsehp_/hcu98_3.htm"><IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/hcu1.gif" ALT="+cracker" ALIGN=BOTTOM 
+
+WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a>
+
+--></TD>
+</TR>
+
+<TR>
+<TD>
+<CENTER><A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm"><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" BORDER=0  ALIGN=BOTTOM width="13" height="13"></A></CENTER>
+</TD>
+
+<TD BGCOLOR="#898030">
+<CENTER>Courtesy of Reverser's page of reverse engineering</CENTER>
+</TD>
+
+<TD BGCOLOR="#898030">
+<CENTER><!-- Your truly+ will edit only if really necessary -->slightly
+edited</CENTER>
+
+<CENTER>by reverser+</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD><FONT COLOR="#C4C0CF">fra_00xx</FONT>&nbsp;
+<BR><FONT COLOR="#C4C0CF">98xxxx</FONT>&nbsp;
+<BR><FONT COLOR="#C4C0CF">handle</FONT>&nbsp;
+<BR><FONT COLOR="#C4C0CF">1100</FONT>&nbsp;
+<BR><FONT COLOR="#C4C0CF">NA</FONT>&nbsp;
+<BR><FONT COLOR="#C4C0CF">PC</FONT></TD>
+
+<TD>
+<CENTER>I love it: "<font color=blue>I can't register, may be my program is error or what else
+???? Forget it just try another way</fonT>"... right so, +cracker!<bR>Look here, even in a simple 
+"beginner" essay there is <u>always</u> 
+something to learn (even for old hands)... provided that somebody has the "stuff" to teach. 
+Unfortunately, many self-calling (self-styling?) "crackers" don't seem to understand this simple truth :-(</CENTER>
+</TD>
+
+<TD></TD>
+</TR>
+
+<TR>
+<TD></TD>
+
+<TD BGCOLOR="#898030"><!-- Leonard Coehn's old song, because we are poets, not only crackers --><B>There
+is a crack, a crack in everything That's how the light gets in</B></TD>
+
+<TD><!-- Leonard Coehn's old song, because we are poets, not only crackers --></TD>
+</TR>
+
+<TR>
+<TD VALIGN=CENTER BGCOLOR="#C6E7C6">
+<CENTER><FONT COLOR="#0000FF">Rating</FONT></CENTER>
+</TD>
+
+<TD VALIGN=CENTER BGCOLOR="#C6E7C6">
+<CENTER><!-- CHOOSE A RATING (may be changed) --><FONT COLOR="#0000FF">(x)<B>Beginner</B>
+( )<B>Intermediate</B> ( )<B>Advanced</B> ( )<B>Expert</B></FONT>&nbsp;</CENTER>
+</TD>
+
+<TD></TD>
+</TR>
+</TABLE>
+<!-- END HEAD  -->
+<BR><!-- CORPUS  --><!-- CHOOSE A COMMENT (may be changed)  -->Assume that
+everyone who read this know very basic w32dasm and assembly language.
+<BR>
+<HR>
+<CENTER><!-- CHOOSE A TITLE (wont probably be changed) --><FONT SIZE=+2>Dynamic
+Procedure Call,</FONT></CENTER>
+
+<CENTER><!-- CHOOSE A SUBTITLE (wont proabbly be changed) --> And crack
+by the stupid way.....</CENTER>
+
+<CENTER><!-- REPEAT YOUR CHOSEN HANDLE HERE --><FONT COLOR="#0B7FC1">Written
+by Kabhoet</FONT></CENTER>
+&nbsp;
+
+<P><!-- INTRO STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT SIZE=+2><FONT COLOR="#0000FF">Introduction</FONT>&nbsp;</FONT></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<PRE><!-- PASTE HERE YOUR INTRODUCTION --></PRE>
+After publish my first essay, some guys have emailed me and asked me to
+crack this program. This is one of the messages I got:<font color=purple>
+<BR>"Hi, I read your essay at Reverser, very interesting.&nbsp; Thanks for
+the help you give us newbies.&nbsp; I'm trying to work with a file called
+DiaryLink97. This file could be d/l from www.jamesralph.com and its about
+2m in size. I have tried everything I know and still can't crack the protection.
+Maybe you could help me?&nbsp; Its crippled and only lets you download
+one record from your PC to a Casio Diary at a time. You don't need the
+Casio to run or crack the program.&nbsp; Any help would be appreciated.&nbsp;
+Three other gurus have tried but told me that it could'nt be done".</fonT> The
+last words seem to be a story created on the fly, of course. But never mind, I did have
+a look at the program and I think it uses a pretty stupid protection scheme. So let's 
+have a look... stupid protection schemes are interesting for newbyes...
+
+<P><!-- TOOLS STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT SIZE=+2><FONT COLOR="#0000FF">Tools required</FONT>&nbsp;</FONT></CENTER>
+</TD>
+</TR>
+</TABLE>
+- W32Dasm
+<BR>- HIEW(Hacker View) make a patch.<!-- PASTE HERE YOUR REQUIRED TOOLS -->
+
+<P><!-- TARGET URL STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT SIZE=+2><FONT COLOR="#0000FF">Target's URL/FTP</FONT>&nbsp;</FONT></CENTER>
+</TD>
+</TR>
+</TABLE>
+<!-- DON'T FORGET TO PASTE HERE THE URL/FTP OF YOUR TARGET(S) --><A HREF="http://www.jamesralph.com/" >DiaryLink97</A>,
+Please buy it and don't use this crack if you really need this program, else crack it to 
+death... but only if you are just fiddling around for the sake of reversing.
+
+<P><!-- PROGRAM HISTORY STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT SIZE=+2><FONT COLOR="#0000FF">Program History</FONT>&nbsp;</FONT></CENTER>
+</TD>
+</TR>
+</TABLE>
+<!-- PASTE HERE YOUR TARGET'S HISTORY (if any) -->This target lets you
+download records from your PC to your "Casio Diary" (some funny useless gadget, 
+I presume). Of course I don't even have this Casio
+Diary... wouldn't touch such a thing with a badget pole... 
+and therefore this target is completely useless for me.
+<P><!-- REAL ESSAY  STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT COLOR="#0000FF"><FONT SIZE=+2>Essay</FONT></FONT>&nbsp;</CENTER>
+</TD>
+</TR>
+</TABLE>
+<!-- PASTE HERE THE TEXT OF YOUR ESSAY
+
+     THIS IS OF COURSE THE MOST IMPORTANT PART
+
+     PLEASE CHECK THE MARGINS WHEN YOU ARE FINISHED! 
+
+     SHOULD NOT BLAST NETSCAPE MARGINS OUT! HAVE A LOOK INSIDE
+
+     YOUR OWN BROWSER WHEN YOU HAVE FINISHED!  -->
+<BR>You should install the program first and then run the program. You
+will find that in the menu <B>Communication -> Send -></B> there is only
+1 menu can work and the other menu display a message box said "This Evaluation
+Copy can only send single record". And I try to register at Help Menu but
+it said "Error and bla-bla-bla". I can't register, may be my program is
+error or what else ???? Forget it just try another way. Ok, now launch
+the w32dasm and open the program (filename: dlink.exe). After that find
+text "This Evaluation Copy" and .....
+<PRE>:004B5C78 33C0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xor eax, eax
+:004B5C7A 8AC3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov al, bl
+:004B5C7C 66C784460C0700000000&nbsp;&nbsp;&nbsp; mov word ptr [esi+2*eax+0000070C], 0000
+:004B5C86 43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc ebx
+:004B5C87 80FB0A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmp bl, 0A
+:004B5C8A 75EC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jne 004B5C78
+<U>:004B5C8C 6A00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push 00000000
+</U>:004B5C8E 668B0DD4614B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov cx, word ptr [004B61D4]
+:004B5C95 B202&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov dl, 02</PRE>
+
+<PRE>
+* Possible StringData Ref from Code Obj ->"This Evaluation Copy can only "
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->"send single records!
+."
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+:004B5C97 B8E0614B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov eax, 004B61E0
+:004B5C9C E83311F8FF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; call 00436DD4
+:004B5CA1 E900050000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jmp 004B61A6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Goto To End
+
+; If Registered
+<B><I><U>:004B5CA6</U></I></B> A1D4294D00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov eax, dword ptr [004D29D4]&nbsp;
+:004B5CAB 8D98AC020000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea ebx, dword ptr [eax+000002AC]
+:004B5CB1 8D45FC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea eax, dword ptr [ebp-04]
+
+* Possible StringData Ref from Code Obj ->"Send record using communication "
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->"parameters:"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+:004B5CB4 BA1C624B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mov edx, 004B621C
+:004B5CB9 E856D9F4FF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; call 00403614
+:004B5CBE FF75FC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push [ebp-04]
+
+* Possible StringData Ref from Code Obj ->"Port: "
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+:004B5CC1 6854624B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push 004B6254
+:004B5CC6 FF7304&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push [ebx+04]
+:004B5CC9 6864624B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push 004B6264
+:004B5CCE 8D45FC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lea eax, dword ptr [ebp-04]</PRE>
+Don't try to look up and see who call it because you would never find it.
+This program seem to be created by Borland Delphi or other else... But
+Look at :004B5CA1, it said JMP to another place and not execute anything.
+Strange....How come after JMP there is a real McCoy at there. Is that very
+stupid, the compiler or the programmer.
+<BR>So simply using Hiew to change :004B5C8C from Push 000000 to JMP :004B5CA6.
+<BR>It means to jump to the real place if not registered. Easy.......And
+you have activated one of three menu.
+
+<P>All the last step is Seek again and you will find another 2 address
+(004B63CB and 004B6A52).
+<BR>And patch it yourself......
+
+<P><!-- FINAL NOTES STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT SIZE=+2><FONT COLOR="#0000FF">Final Notes</FONT>&nbsp;</FONT></CENTER>
+</TD>
+</TR>
+</TABLE>
+<!-- PASTE HERE YOUR FINAL NOTES (if any) -->
+<BR>And .... Finish. Nothing to say. "Rush with hurry and you will get
+it ".
+
+<P><!-- OB DUH STARTS HERE -->
+<TABLE BORDER CELLSPACING=2 WIDTH="100%" HEIGHT="22" >
+<TR>
+<TD BGCOLOR="#C6E7C6">
+<CENTER><FONT COLOR="#0000FF"><FONT SIZE=+2>Ob Duh</FONT></FONT>&nbsp;</CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<CENTER><I>I wont even bother explaining you that you should BUY this target
+program if you intend to use it for a longer period than the allowed one.
+Should you want to STEAL this software instead, you don't need to crack
+its protection scheme at all: you'll find it on most Warez sites, complete
+and already regged, farewell.</I></CENTER>
+<!-- WAY OUT STARTS HERE -->
+<HR>
+<CENTER><I>You are deep inside reverser's page of reverse engineering, choose
+your way out:</I></CENTER>
+
+<CENTER><!-- EITHER A NICE GIF LIKE THIS --><!-- 
+
+<a href="project3.htm" tppabs="http://members.xoom.com/tsehp_/project3.htm"><IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/project3.gif" 
+
+ALT="projecT3" ALIGN=CENTER WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a>
+
+<br>
+
+<font color=gray>Back to project 3</FonT>
+
+<br><bR>
+
+--><!-- OR JUST A LINK LIKE THIS --><!--
+
+<IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 
+
+BORDER=0 VSPACE=0 HSPACE=0><A HREF="project1.htm" tppabs="http://members.xoom.com/tsehp_/project1.htm">Back to Your_chosen_project</A> 
+
+<hr width=33%>
+
+--><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red"
+ BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM !><A HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALI!
+GN=BOTTOM><A HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students'
+essays</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy
+database</A></CENTER>
+
+<CENTER><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="realicra.htm" tppabs="http://members.xoom.com/tsehp_/realicra.htm">reality
+cracking</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="howtosea.htm" tppabs="http://members.xoom.com/tsehp_/howtosea.htm">how
+to search</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascript
+wars</A></CENTER>
+
+<CENTER><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity
+academy</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut
+CGI-scripts</A>&nbsp;<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_reverser</A></CENTER>
+
+<CENTER><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" BORDER=0 HEIGHT=13 WIDTH=13 ALIGN=BOTTOM><A HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is
+reverse engineering legal?</A></CENTER>
+
+<HR><!-- THAT'S ALL, THANKS A LOT this will allow automated retrieval -->
+</BODY>
+</HTML>
+
+<html>
+<head>
+<title>Cracking VCL programs</title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<center><font size="+3">CRACKING BORLAND'S VCL PROGRAMS</font>
+<br>(High level languages allow high level cracking)
+<h2>by <font color="#5500AA">+trurl</font></h2>
+(24 November 1997)</h4>
+<!--<a href="protecti.htm" tppabs="http://members.xoom.com/tsehp_/protecti.htm"><IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/tough.gif" ALT="our protections" ALIGN=BOTTOM WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a><br><Font color= gray>Our protections</fonT>-->
+<hr>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">Courtesy of reverser's page 
+of reverse engineering<hr>       
+<i>Well, another very interesting essay about Object Oriented cracking... this time tackling Delphi, the well done (if overbloated) porting to window of good old Pascal, by Borland. +trurl  shows us here some very interesting points, and there are some sound lessons for shareware (Delphi) programmers as well.<br>For all those among you that would like to 'have a go' at Delphi, I may remind you that nowadays you'll find THE COMPLETE DELPHI 1 and THE COMPLETE DELPHI 2 for free on many 
+magazine covers' cd-rom  (see the Blackboard) and that, if you want to work seriously with it you'll be able to buy and/or find the COMPLETE DELPHI 3 in any shop and/or on any good warez site on the Net.</i>
+</center>
+<p><hr size="6"><p>
+<a NAME="BackAnchor"></a>
+<b>VCL Cracking</b><p>
+Let's learn something about the innards of new Borland's programming
+tools.
+This knowledge will allow us to speed up cracking sessions, as will
+teach shareware programmers who use Delphi to be more careful and not
+to
+happily expose their &quot;secrets&quot; to +curious eyes B)<br>
+I'm serious about this. If you are a Delphi programmer you'll find
+the way to prevent your apps from being cracked (using this method)
+at the <a HREF="trurlvcl.htm#Programmers">bottom</a> of this text.
+<p>
+VCL stands for &quot;visual component library&quot;, a library used by recent
+Borland visual languages as Delphi and BC++ Builder.
+<p>
+These environments use a proprietary resource format, that
+appear as &quot;RCDATA&quot; when listed by Resource Workshop.
+<p>
+This resources contain &quot;forms&quot;. In Delphi jargon, forms are the
+windows
+of the program. All the info about their design is stored there.
+When a typical Delphi app is starting, the initialisation code creates
+the forms, loading the required information from the resources.<br>
+Sometimes this loading is deferred - forms that aren't used very often
+are created and destroyed as needed.<br>
+This system is the best and the worst of Delphi.<br>
+It allows a very fast way of programming but, for full-length apps,
+it can slow down the loading.
+<p>
+The really interesting part of this information is that the address of
+the routines -called in response to user interactions with the
+elements of
+the form- are bound at run time <b>by name</b>.
+So knowing these names we can find the appropriate addresses.
+<p>
+If you have cracked any Delphi apps, you have surely experienced the
+long
+chain of calls inside the library, from the breakpoints on the API
+calls to
+the &quot;do something&quot; code.<br>
+I hoped that these addresses could help in pinpointing the relevant
+code.
+<p>
++ReZiDeNt suggested me to test this method on a &quot;real world&quot; program:
+Flexed, an HTML editor written in Delphi 2.<br>
+You can download it from its
+<a href="http://www.infoflex.com.au/flexed.htm" >home page.</a>
+<p>
+About the program: I haven't used it. Like Reverser+, I prefer to edit
+html
+in plain text, but now you'll will be able to evaluate for as long as
+you
+need to.<br>
+Remember that if you find it handy, you should pay for it.
+These guys are not M$, just a small company, and probably need
+your support to get their bills paid.
+<p>
+I installed it, without looking for registry or file changes O:)<br>
+Later, I saw that it creates a &quot;C:&quot; key under HKCU and a &quot;flini&quot; file
+in the Windows directory.<br>
+It must also put another mark on the disk, as it's not
+possible to reinstall it after just deleting the files/key mentioned
+above.<br>
+You can use RegMon and FileMon and find out what happens. I'm not
+interested
+since I cracked it completely, as you are about to see :=)
+<p>
+The weeks passed and I hadn't had the time to work on it...
+when I started it, I found a nasty &quot;Your evaluation period has
+expired&quot; message :-(
+<p>
+Hands on! You'll need at least SoftIce for W95, an hexadecimal editor
+and
+a new tool: <font color="blue">frmspy</font>.<br>
+You can use RWS instead, or you could even just browse the exe with
+your
+favourite tool, but using frmspy is quicker and clearer.<br>
+Using WDAsm is helpful too.
+<p>
+The first step is to gather the information about the target exe with
+frmspy. You will see the list of forms, and, after double-clicking on
+them, a reverse engineered text representation of them.
+<p>
+You may be tempted to investigate TVALIDATORDLG, the form where the
+user name and registration key is input. But all you'll find is a mere
+dialog.<br>
+The real work is accomplished from its caller: TSPLASHFORM.
+This is the nag window that appears at the beginning of the program,
+as
+well as when it's shutting down and from the help-&gt;about menu.
+<p>
+You can select TSplashForm and look at the text representation of it.
+A lot of
+information about the buttons and labels will appear. Let's
+concentrate on the
+following part, near the end.
+<p><pre><font color="#220080">
+  <b>object</b> RegButton: TButton
+    Left = 200
+    Top = 176
+    Width = 97
+    Height = 25
+    Caption = 'Register'
+    TabOrder = 1
+    OnClick = RegButtonClick
+  <b>end</b>
+</font></pre><p>
+What's that? This is the button with the caption &quot;Register&quot;. You can
+see
+its size, position... and something with a suggestive name: &quot;OnClick&quot;.
+&quot;OnClick&quot; tell us the name of the routine invoked when the user
+presses this
+button.
+Once we have the name (yes, &quot;nomen est omen&quot; :) we can search for the
+address of this routine. This is because the routine is bound to the
+button at run time by name.
+<p>
+Using Hex Workshop, I looked for &quot;RegButtonClick&quot; and I found it
+twice.
+The second occurrence is the resource itself, the first is within an
+address table:
+<p><pre><font color="#220080">
+000A4990 ____ ____ ____ BC57 4A00 0E52 6567 4275 ______.WJ..RegBu
+000A49A0 7474 6F6E 436C 6963 6B__ ____ ____ ____ ttonClick_______
+</font></pre><p>
+Now look at the magic numbers before the name.
+There is a byte ('0E') indicating the length of &quot;RegButtonClick&quot; (14
+characters)
+and before that an address: 004ABC57.
+<p>
+WDasm seems to think that file is too long and it doesn't disassemble
+this portion of the exe correctly - however, with Softice we can bpx
+on this and...
+right! It stops at the point just when we push the button.
+<p>
+A couple of instructions forward you'll find a CALL. Tracing into it
+you'll
+find a &quot;standard stack frame&quot; in 44ECC8:
+<p><pre><font color="#220080">
+0044ECC8 55     push ebp
+0044ECC9 8BEC   mov ebp, esp
+...
+</font></pre><p>
+This is the kind of thing expected at the beginning of a high level
+routine,
+made by the application programmer. We have avoided the whole chain of
+library calls through the VCL from Windows notifications, and landed
+in the right
+place!
+<p>
+From this point, there are some calls you can easily test by setting
+breakpoints
+on them  - you'll find that their purpose is to show the dialog asking
+for the user name and
+registration key. Then, the key is calculated from the user name and
+compared
+with the one the user entered.
+<p>
+You can enter the name you choose, and anything as the key, after
+BPXing
+44ED69.
+Here, a call to a routine compares two strings.
+D EDX will show the fake key you entered and D EAX will show the
+correct calculated key.
+Easy, isn't it? A ten minute crack by a beginner!!
+<p>
+Err... I'm just learning to use SoftIce so I
+was
+tempted to stop here.
+But, no!! let's drink one of my special whisky cocktails.
+I don't know whether it's more similar to vodka-martini or Wafna's dry
+kerosene... but it worked :*)
+<p>
+The call to the encryption algorithm is a little before, in 44ED58.
+<p>
+I think the following listing is auto-commented enough.
+You shouldn't have any problem understanding it, as I'll explain the
+meaning
+of each library call from it.
+<p>
+<hr>
+<p>
+It begins by aligning the stack, making room for local variables.
+<pre><font color="#220080">:44E714 push ebp
+...
+...
+:44E72D mov dword ptr [ebp-4], eax
+</font></pre>
+32 bit Delphi has a powerful and complex string handling system.
+It doesn't makes copies of the string if it's unnecessary.
+The following call increments the reference counter for the string
+with
+the user name.
+<pre><font color="#220080">:44E730 mov eax, dword ptr [ebp-8]
+:44E733 call 4039A6   ; Inc ref. counter
+</font></pre>
+I'm not sure what's the purpose of this bit is. I suspect it's related
+to the
+structured handling of exceptions (try-except or try-finally blocks)
+as
+it pushes an alternative address for RET.
+<pre><font color="#220080">:44E738 xor eax, eax
+:44E73A push ebp
+:44E73B push 44E858
+:44E740 push dword ptr fs:[eax]
+:44E743 mov dword ptr fs:[eax], esp
+</font></pre>
+This checks that the user name is not empty. If it is, it goes away.
+<pre><font color="#220080">:44E746 cmp dword ptr [ebp-8],0
+:44E74A je 44E826
+
+:44E750 lea eax, dword ptr [ebp-10]
+:44E753 call 403680 ; Clears this string
+
+:44E758 mov eax, dword ptr [ebp-8]
+:44E75B call 4037F4 ; Length of user name?
+:44E760 mov ebx, eax  ; Store it in ebx
+</font></pre>
+Testing length again?
+<pre><font color="#220080">:44E762 test bl, bl
+:44E764 jbe 44E7AE
+</font></pre>
+Strings indexes begin with 1
+<pre><font color="#220080">:44E766 mov [ebp-9],1
+</font></pre>
+This loop filters the string, eliminating all characters except
+letters and
+digits.
+<ul>
+<pre><font color="#220080"><li><b>LOOP:</b>
+</font></pre>
+Load a char and convert it to uppercase
+<pre><font color="#220080">:44E76A movzx esi, byte ptr [ebp-9]
+:44E76E mov eax, dword ptr [ebp-8]
+:44E771 mov al, byte ptr [eax+esi-1]
+:44E775 call 402A20 ; To uppercase
+</font></pre>
+Filters the character, leaving only letters and digits
+<pre><font color="#220080">:44E77A add al, D0
+:44E77C sub al, A
+:44E77E jb 44E786
+:44E780 add al, F9
+:44E782 sub al, 1A
+:44E784 jnb 44E7A7
+</font></pre>
+Redundant, if the character is &quot;valid&quot;, adds it to a new string.
+<pre><font color="#220080">:44E786 mov eax, dword ptr [ebp-8]
+:44E789 mov al, byte ptr [eax+esi-1]
+:44E78D call 402A20 ; To uppercase
+
+:44E792 mov edx, eax
+:44E794 lea eax, dword ptr [ebp-1C]
+:44E797 call 403790 ; Convert char to string
+
+:44E79C mov edx, dword ptr [ebp-1C]
+:44E79F lea eax, dword ptr [ebp-10]
+:44E7A2 call 4037FC ; Adds to the end.
+
+:44E7A7 inc [ebp-9]
+:44E7AA dec bl
+:44E7AC jne 44E76A   ;more?
+<li><b>END LOOP</b>
+</font></pre>
+</ul>
+Now it starts the pseudo-random number generator. As it needs a
+consistent result every time it's called, the &quot;seed&quot; is set
+directly to a fixed number, taken from the address pointed
+by [ebp-4]. The value is 0EEEEH.
+<pre><font color="#220080">:44E7AE mov eax, dword ptr [ebp-4]
+:44E7B1 mov dword ptr [4AE02C], eax
+
+:44E7B6 lea eax, dword ptr [ebp-14]
+:44E7B9 call 403680 ; Clears a string
+</font></pre>
+Get the length of filtered string
+<pre><font color="#220080">:44E7BE mov eax, dword ptr [ebp-10]
+:44E7C1 call 4037F4 ; Length
+:44E7C6 mov byte ptr [ebp-15], al
+</font></pre>
+Prepare the new loop. Result key must be 12 chars length.
+<pre><font color="#220080">:44E7C9 mov [ebp-A], 0
+:44E7CD mov [ebp-9], C
+<ul>
+<li><b>LOOP:</b>
+</font></pre>
+Randomly select one of the characters of the filtered string.
+EAX selects on entry the range of result.
+<pre><font color="#220080">:44E7D1 xor eax, eax
+:44E7D3 mov al, byte ptr [ebp-15]
+:44E7D6 call 402B94 ; Random number
+</font></pre>
+From high level, strings indexes begin with 1
+<pre><font color="#220080">:44E7DB inc eax
+:44E7DC and eax, FF
+</font></pre>
+Now use this character as an inner loop counter to call random routine
+again.
+<pre><font color="#220080">:44E7E1 mov edx, dword ptr [ebp-10]
+:44E7E4 mov bl, byte ptr [edx+eax-1]
+:44E7E8 test bl, bl
+:44E7EA jbe 44E7FD
+<ul>
+<li><b>LOOP:</b>
+</font></pre>
+Range in EAX. 0AH as it's meant to be a digit.
+<pre><font color="#220080">:44E7EC mov eax,A
+:44E7F1 call 402B94  ; Random number
+:44E7F6 mov byte ptr [ebp-A], al
+:44E7F9 dec bl
+:44E7FB jne 44E7EC
+<li><b>END LOOP</b>.</font></pre></ul>
+Take the last generated random number. Convert it to string.
+<pre><font color="#220080">:44E7FD lea edx, dword ptr [ebp-1C]
+:44E800 xor eax, eax
+:44E802 mov al, byte ptr [ebp-A]
+:44E805 call 406354 ; To string
+</font></pre>
+Concatenate the strings.
+<pre><font color="#220080">:44E80A mov edx, dword ptr [ebp-1C]
+:44E80D lea eax, dword ptr [ebp-14]
+:44E810 call 4037FC ; Concatenation
+
+:44E815 dec [ebp-9]
+:44E818 jne 44E7D1 ; more?
+<li><b>END LOOP</b></font></pre>
+</ul>
+Copy string with the key
+<pre><font color="#220080">:44E81A mov eax, edi
+:44E81C mov edx, dword ptr [ebp-14]
+:44E81F call 403714 ; Copy string
+...
+</font></pre>
+The rest is just some cleanup code.
+<p>
+<hr>
+<p>
+Well, once we know how the key is calculated from the asm code, how
+about
+trying to figure out what it looks like in Delphi?<br>
+This is a key generator written in Delphi itself.
+<p>
+If you want to translate it to other language, take a look at 402B94,
+the source of random number generator.
+Remember the &quot;seed&quot; must be initialised to 0EEEEH.
+<p><hr><p>
+<pre>
+<b>function</b> GuessKey( UserName: <b>string</b> ): <b>string</b>;
+<b>var</b>
+  n: Integer;
+  IterateRandom: Integer;
+  Calculated: Integer;
+  Selected: Integer;
+  Filtered: <b>string</b>;
+<b>begin</b>
+  UserName := UpperCase( UserName );
+  Filtered := <font COLOR="purple">''</font>;
+  <b>for</b> n := <font COLOR="green">1</font> <b>to</b> Length(
+UserName ) <b>do</b>
+    <b>if</b> UserName[ n ] <b>in</b> [<font COLOR="purple">'0'</font>..<font COLOR="purple">'9'</font>,<font COLOR="purple">'A'</font>..<font COLOR="purple">'Z'</font>] <b>then</b>
+      Filtered := Filtered + UserName[ n ];
+  Result := <font COLOR="purple">''</font>;
+  <b>if</b> Filtered = <font COLOR="purple">''</font> <b>then</b>
+    Exit;
+  RandSeed := <font COLOR="green">$EEEE</font>;
+  <b>for</b> n := <font COLOR="green">1</font> <b>to</b> <font COLOR="green">12</font> <b>do</b> <b>begin</b>
+    Selected := Ord( Filtered[ Succ( Random( Length( Filtered ) ) ) ]
+);
+    <b>for</b> IterateRandom := <font COLOR="green">1</font> <b>to</b>
+Selected <b>do</b>
+      Calculated := Random( <font COLOR="green">10</font> );
+    Result := Result + IntToStr( Calculated );
+  <b>end</b>;
+<b>end</b>;
+</pre>
+<p><hr><p>
+<a NAME="Programmers"></a>
+<font color="purple"><h3>NOTE FOR DELPHI PROGRAMMERS</h3></font>
+<p>
+How this way of cracking can be avoided?
+<p>
+Easy: don't use automatic methods created by double clicking on the
+button or the object inspector. Write your code somewhere else in your
+program, preferably in another module, and bind it to the button using
+code
+such as:
+<p><pre>
+  RegButton.OnClick := RegButtonClick;
+</pre><p>
+Of course you'll need to enter this code after the form is created and
+before it's called. Best if it's rounded by a lot of unrelated stuff.
+<p>
+This won't necessarily prevent your program from being cracked of course,
+but things will not be as easy as you have seen above O:)<p>
+<center><a href="trurlvcl.htm#BackAnchor">Back to the top</a></center>
+<p>
+<hr>
+<p>
+Thanks to <font COLOR="red">+ReZiDeNt</font> for his help and
+encouragement ;)
+<p>
+...and of course <b>+ORC</b> and <b>Reverser+</b> :)
+<p><hr><p>
+
+<font color="green">(c) <font color="#5500AA">+trurl</font> All rights reversed</font>
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+<!--<IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="protecti.htm" tppabs="http://members.xoom.com/tsehp_/protecti.htm">Our Protections</A>            <hr width=33%>-->
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut CGI-scripts</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_fravia</a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</a></center>
+<center><hr ALIGN="CENTER" WIDTH="100%" SIZE="2"></center>
+</body>
+</html>
+<html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>qvsnatch.htm</title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<center><font size="+3">IDA-Cracking: QuickView Plus 4.5 for Win95</font>
+<br>('grayed' menu options - nag - timelock)
+   <br>
+
+<h4><br>by Snatch<br>
+(5 November 1997, slightly edited by reverser+)</h4><br>
+<!--<IMG SRC="../../fourohfour.xoom.com/Members404Error.xihtml.htm" tppabs="http://members.xoom.com/tsehp_/xtranio.gif" ALT="advanced" ALIGN=BOTTOM WIDTH=114 HEIGHT=43 BORDER=0 VSPACE=0 HSPACE=0></a><br>Advanced cracking series-->
+<hr>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">Courtesy of reverser's page 
+of reverse engineering<br>       
+<br><i>Well, here is another essay by Snatch, 
+once more some sound ida cracking, 
+once more a timelock target:
+ (uses GETPROCADDRESS to call everything). This is typical visual basic. To 
+clear the 'aThelab' question I suggest to you all to play a little more with the 
+amazing (and indeed SCARY POWERFUL) reversing tool by the great reverser at 
+<http://www.numega.com">Numega</a>: Smartcheck (which carries a protection that 
+Ryckman should be ashamed of, and has been quickly reversed by Snatch himself inside <a href="snatch1.htm" tppabs="http://members.xoom.com/tsehp_/snatch1.htm">snatch1.htm</a>. enjoy!
+                                                                                                                                  
+
+
+</i></center><hr size="6"> 
+<pre>
+Cracking QuickView Plus 4.5 for Windows 95
+By Snatch
+
+Recently I came upon this new version of quickview that I thought 
+would replace the one that comes with windows.  It did, it was 
+better!  But there was a 30 day trial limit.  Stupidly, even with 
+a practically fully working IDA pro, I started putting breakpoints 
+and working with softice.  BPX GetLocalTime was fatal.  I wasn't 
+thinking I started stepping through... all of the sudden there was 
+something like: Call [403322].  Oh NO!  My monitor.  What happened!  
+It was blown up and very dark.  After 2 days of testing the video 
+board, etc...  I determined that it was my monitor that had failed.  
+I tested one other monitor but it gave the same results because the 
+drive was set down and this led me to believe that it was something 
+else. 
+OK, to the crack:
+I now loaded up IDA Pro with what monitor I had left and cracked my 
+target.  
+Well it actually took 2 and a half days but who is counting?
+First of all lets crack the irrelevant part.  There is a menu under the 
+help, inso on the web, register quickview plus that is grayed.  
+How do we ungray it?  Lets load up symantec 16 AND 32 BIT resource 
+workshop.  We look through the menu for QVP.DLL(the main program file 
+for quickview).  There is the ID, #25Bh.  Lets goto IDA and search for 
+that: 2 occurences.  
+At 201D6E91 and 201D6984.  
+At 6E91, they are building the menu but at 6984 they are: 
+Gray_option_scheme
+201D6976                 mov     ecx, [esi+108h]
+201D697C                 cmp     eax, 1
+201D697F                 sbb     eax, eax
+201D6981                 neg     eax
+201D6983                 push    eax
+201D6984                 push    25Bh; lets make this 0
+201D6989                 push    ecx
+201D698A                 call    ds:EnableMenuItem ; Enable/disable/grays
+
+We have now applied half of the patching that has to be done :-)
+On to the nag screen!  If we check out the Symantec resource editor once 
+again, we find that the nag screens handle is 77h.  
+Search in IDA and find this:
+
+Nag_screen_scheme
+201DD0BD  cmp     bl, 68h            ; some sort of table for dialogs
+201DD0C0  jnz     short loc_201DD0DA ; lets patch this to make it jump!, 
+201DD0C2  push    ebp                ; then the dialog cannot display.
+201DD0C3  mov     eax, ds:dword_201ECDA8
+201DD0C8  push    offset loc_201DCB70 ; offset of sub when you give the dialog input, 
+201DD0CD  push    0                   ; it will push a 1 when you say continue
+201DD0CF  push    77h
+201DD0D1  push    eax
+201DD0D2  call    ds:DialogBoxParamA
+201DD0D8  jmp     short loc_201DD121
+201DD0DA ; --------------------------------------------------------------_
+201DD0DA
+201DD0DA loc_201DD0DA
+201DD0DA  cmp     bl, 60h  
+
+Now the final patch: the date patch.
+QuickView uses the timelock library and does not load it in its import 
+directory.  Instead it uses GETPROCADDRESS to call everything.  
+In the same sub that the dialogs are shown, they load this DLL.  
+I have done some work in finding that 201EA970 is previously 
+loaded with the address to TIMELOCK!TRIALENVIRONMENTOPEN.  
+This checks the date:   
+
+Date_scheme
+201DD05A       push    offset <font color="red">aThelab</font>     ; I still dont understand this
+201DD05F       call    ds:dword_201EA970  ; our time lock call!
+201DD065       cmp     eax, 1897Ch
+201DD06A       jz      short loc_201DD073 ; good guy with time left
+201DD06C       cmp     eax, 1A143h
+201DD071       jnz     short loc_201DD09E ; bad guy ran out of time
+There are two ways to patch this, 
+1) force the first jump or 
+2) nop the second jump.  
+Lets only change one byte and force the first jump.
+
+Conclusion:
+The patches that we need to apply, discussed above in this essay, 
+are the following, using file offsets:
+Offset 5D85: 5B-&gt;00
+Offset 5D86: 02-&gt;00
+Offset C46A: 74-&gt;EB
+Offset C4C0: 75-&gt;EB
+
+
+Snatch '97
+      </pre> 
+<font color="green">(c) Snatch 1997. All rights reversed</font>
+<hr ALIGN="CENTER" WIDTH="100%" SIZE="3">
+<center><i>You are deep inside reverser's page of reverse engineering,  
+choose your way out:</i></center>
+<br><center>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage</a>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity</a> 
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database</a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut CGI-scripts</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms</a>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_fravia</a><br>
+
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN="BOTTOM" WIDTH="13" HEIGHT="13" BORDER="0" VSPACE="0" HSPACE="0"><a HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering legal?</a></center>
+<center><hr ALIGN="CENTER" WIDTH="100%" SIZE="2"></center>
+</body>
+</html><html>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><META Name="Voluntary Content Rating" content="it's reverser's: great!">
+<title>pepper2.htm: Information Manager - another joke to write Registration Schemes</title>
+</head>
+<BODY BGCOLOR=#C0C0C0 TEXT=#001010 ALINK=#405040 VLINK=#8850AA>
+<center><b><font size=+3>Information Manager - another joke to write Registration Schemes</font></b>
+
+<br><font size=+2>by Pepper [PC]<br>(November 1997)
+<hR>
+Courtesy of reverser's pages of reverse engineering
+<hr></center>
+<prE>
+And here my second "script"
+Pepper [PC]
+===============================================================
+
+Information Manager - another joke to write Registration Schemes.
+Or how MS helps to open a nice program...
+
+Have you ever found a program which resists any attack by WinIce
+and where no Decompiler exists ? Even no other tool works ? No,
+I dont talk about ugly VB 4.0 (thanks to Razzia and others we 
+learned a lot on that stuff). Let me introduce a very interesting
+set of programs:
+
+Information Manager 2.0
+Information Manager ViP 2.0
+Music Manager 2.0
+
+All from the same Software House and using a similar Registration
+Scheme: just enter a RegCode, no Name, nothing else. So it is no
+Shareware to be registered to someone but a Try and Buy program
+and maybe excellent (?) protected. Hunting around with WinIce shows
+a lot but no final solution. So let us check what kind of Language
+is used, perhaps a useful tool, Decompiler or whatever may help.
+
+When breaking into the code we never get into a typcal EXE-File but
+tracing around sometimes we run into MSACCESS. Is that a Language ?
+Yes, it is more than a Database but has implemented a Basic like
+Language. So let us open the Database. It is always a file named
+xxx.MDB and really when we open the main MDB-File using MSACCESS
+we see: there are not only Data Bases but also Messages, Reports
+AND MODULES ! Thats it. A group of modules like xxx.BAS is there.
+Now let us open a Module.
+
+Ahh, not possible. We know MsAccess is a complex program and has
+features for several protection levels (the User's right to open,
+view or modify datas and whatever). Now its time to run WinIce again
+but not on the program to be registered. No, we run WinIce and open
+MSACCESS. Then open the MDB-File and try a few BPX. Fastest success
+is with MessageBeep (DialogBox... also will work). Anyway we jump
+right into MSACCESS close to our ErrorMessage "access to the module
+is not possible".
+
+I used MsAccess 2.0 (16-bit) in Win 3.11 and all addresses are
+from that Version. If using other versions you hopefully will find
+the same principle.
+
+When we break into the ErrorMessage let us jump over (F11) and
+trace until we pass 2 or 3 RET instructions. Then have a look
+some codelines back and you will see a conditional jump:
+
+   MSACCESS(44):203    cmp ax,0
+                       jne ...
+
+Here set a BPX and next time let us jump (JMP instead JNE).
+Wow! We get another Message: Write Protected, but we can
+open and read. Fine, we never asked for more. So let us open
+the Module. Great, we got it all. Lets open one after the
+other and with a Module "Main..." we see something like:
+
+   x = Format(Now, "########")
+   y = (x * 6) / 2
+   z = Hex(y)
+   ... some kind of compare follows ...
+
+The Source Code looks exactly like VB Code and indeed it is
+(both are from MS - thanks to "Billy the Gate"). Now we see
+the trick and why there is no simple RegCode: it is generated
+from the actual Date:
+
+"Now" is today and "Format ########" converts the Date to an
+integer number. Rest is simple. The Compare is done with the
+right 5 digits of "z". A KeyGen is now easy and we may create
+8 digits where the left 3 digits maybe random and the right 5
+are calculated from actual Date.
+
+So far so good. But for further projects we should create a
+"special" tool. And why not also enable full access on any
+MDB-File, also writing ? We may need it for further projects.
+
+The above patch from JNE to JMP only enables to read a file
+if locked in a certain way. For those using MSACCESS 2.0 here
+is a "final" solution. After some more tracing we find that a
+special DLL is used whenever a decision is made wether access
+is allowed or not:
+
+   MSAJT200.DLL
+
+That DLL is a standard one of MS and used for many purposes.
+Changing one single byte is the solution for all our problems:
+
+   MSAJT200.DLL    absolute offset 0x3B0F1 is 0x99
+                                     patch to 0x90
+
+0x99 is CWD and sets a flag for the later instructions. We disable
+that flag by 0x90, the well known NOP. As the DLL is very small
+we make a MSAJT200.PAT and a MSAJT200.ORI and whenever we need
+our "special" tool we copy the PAT to the DLL (the ORI we may use
+to get back our original DLL). Or we write a patcher switching
+between - why not.
+
+I think the most exciting was to see: some difficult looking
+protection is often very weak. Take one night sleep, think a bit
+of the theory and next day there is the AHH! - lets work others
+for us like MS.
+
+Pepper [PC]                                  November 1997
+
+</prE></fonT>
+<hR>
+
+<bR><center><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=88% HEIGHT=6 BORDER=0
+VSPACE=0 HSPACE=0><br><br><i>You'r deep inside reverser's pages of reverse engineering, choose your way out!</I><br>
+<!-- Begin Javascript relocator <font color=gray><b>~</b></fonT> Javascript code by reverser+ -->
+<form name="ReversersForm">
+<script language="JavaScript">
+<!--
+
+function FravPage(list) {
+	      location.href = list.options[list.selectedIndex].value
+}
+
+// -->
+</script>
+<div align="center">
+<center>
+<p center="&lt;center&gt;&lt;/center&gt;">&nbsp;<select name="fraviale" size="1">
+
+<option>Choose another page!</option>
+<option value="index.htm">Main page</option>
+<option value="academy.htm">Software reversing Lab</option>
+<option value="realicra.htm">Reality cracking Lab</option>
+<option value="noanon.htm">Anonymity Lab</option>
+<option value="ideale.htm">Site busting Lab</option>
+<option value="howtosea.htm">How to search Lab</option>
+<option value="sealight.htm">--Search engines (light)</option>
+<option value="searengi.htm">--Search engines (heavy)</option>
+<option value="links.htm">Links</option>
+<option value="tools.htm">Tools</option>
+<option value="javascri.htm">Javascript reversing</option>
+<option value="screamin.htm">Screaming truth</option>
+<option value="entran.htm">Main entrance</option>
+<option value="new_what.htm">What's new on reverser's</option>
+<option value="info.htm">Mail reverser+</option>
+<option value="http://greythorne.home.ml.org">+Greythorne's</option>
+<option value="http://www.InsideTheWeb.com/mbs.cgi/mb186724">Tools of our trade msgboard</option>
+<option value="http://www.InsideTheWeb.com/mbs.cgi/mb155985">Main msgboard</option>
+</select>
+
+<input type="button" value="Let's go!" onclick="FravPage(this.form.elements[0])">
+<br>
+</div>
+
+</form>
+<!-- end Javascript relocator -->
+<bR><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=88% HEIGHT=6 BORDER=0
+VSPACE=0 HSPACE=0><br><br>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0
+VSPACE=0 HSPACE=0><A
+HREF="FRAVIA_index.htm" tppabs="http://members.xoom.com/tsehp_/index.htm">homepage </A><IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0
+VSPACE=0 HSPACE=0>
+<A HREF="links.htm" tppabs="http://members.xoom.com/tsehp_/links.htm">links </A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0>
+<A HREF="noanon.htm" tppabs="http://members.xoom.com/tsehp_/noanon.htm">anonymity </A>
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A HREF="orc.htm" tppabs="http://members.xoom.com/tsehp_/orc.htm">+ORC </A>
+
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A
+HREF="student.htm" tppabs="http://members.xoom.com/tsehp_/student.htm">students' essays </A>
+
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A
+HREF="academy.htm" tppabs="http://members.xoom.com/tsehp_/academy.htm">academy database </A>
+
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A
+HREF="botstart.htm" tppabs="http://members.xoom.com/tsehp_/botstart.htm">bots wars</A>
+
+<bR>
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0 VSPACE=0 HSPACE=0><A
+HREF="ideale.htm" tppabs="http://members.xoom.com/tsehp_/ideale.htm">antismut </A>
+
+<IMG
+SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13 BORDER=0
+VSPACE=0 HSPACE=0><A
+HREF="tools.htm" tppabs="http://members.xoom.com/tsehp_/tools.htm">tools </A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A
+HREF="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">cocktails </A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALT="red" ALIGN=BOTTOM WIDTH=13
+HEIGHT=13
+BORDER=0 VSPACE=0 HSPACE=0><A
+HREF="javascri.htm" tppabs="http://members.xoom.com/tsehp_/javascri.htm">javascript wars </A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0
+VSPACE=0 HSPACE=0><A
+HREF="searengi.htm" tppabs="http://members.xoom.com/tsehp_/searengi.htm">search_forms </A>
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0
+VSPACE=0 HSPACE=0><A
+HREF="info.htm" tppabs="http://members.xoom.com/tsehp_/info.htm">mail_reverser </A><br>
+
+
+<IMG SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif"
+ALT="red" ALIGN=BOTTOM WIDTH=13 HEIGHT=13 BORDER=0
+VSPACE=0 HSPACE=0><A
+HREF="legal.htm" tppabs="http://members.xoom.com/tsehp_/legal.htm">Is reverse engineering illegal?
+</A></CENTER>
+
+</body>
+</HTML>
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///C|/Documents%20and%20Settings/Administrator/My%20Documents/My%20Webs/fravia/Project.vpp"><title>filemon1</title>
+</head>
+<body BGCOLOR="#C0C0C0" TEXT="#001010" VLINK="#405040">
+<center><font size="+3">How to reverse engineer a Windows 95 target</font><br>
+<font size="+2">
+REVERSE ENGINEERING EXERCISES FOR THE MASSES - (2a)</font><br>
+Version 0.01<br>
+
+<br>
+<font Size="+2">by reverser+ (MSRE), August 1997<br><br>
+<img SRC="images/hcu1.gif" tppabs="http://members.xoom.com/tsehp_/images/hcu1.gif" ALT="HCU" ALIGN="BOTTOM" WIDTH="114" HEIGHT="43" BORDER="0" VSPACE="0" HSPACE="0">
+<br>Part A: <font color="purple">Introduction to filemon</font> - 01 August 1997</font>
+
+<hr>
+<img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13">
+Courtesy of Reverser's page of reverse engineering<br>
+<hr>
+<br>
+<font size="+1"><i>Well, a very interesting essay... I wrote it myself! :-) 
+This essay will be divided in 
+four (or more) parts:</i><pre><img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><u><b>A = Introduction to filemon</b></u>
+B = reverse engineering without source code 
+C = Filemon reversed 
+D = Back to Main
+E = VXD vagaries and mysteries</pre><i>
+Although already disponible, this essay is still under construction
+and will be modified and ameliorated until the wording below will disappear (I reckon 
+until mid-september)</i></font>
+<br><br><font size="+3"><font color="magenta">UNDER CONSTRUCTION</font></font><br>
+</center>
+<hr size="2">
+<center>
+<font size="+2">
+REVERSE ENGINEERING EXERCISES FOR THE MASSES - (2a)<br>
+</font><font size="+1">
+How to reverse engineer a Windows 95 program<br>~<br><font><font size="+1"><u>Part A: Introduction to filemon.exe</u><br><br>
+(c) Reverser (MSRE), 1997. All rights reserved<br><br><font size="-1">Print as html document, else use courier 8</font></center>
+</font><hr><center><i>
+Sorry for the language, I'm not a native English speaker.<br>
+Sorry for the &quot;rough&quot; version, it's still under construction... I am publishing this essay in its incomplete form, only because so many have insisted. The complete version will not be ready before mid-September and will contain many changes and improvements .<br>
+This essay is a &quot;quick and dirty&quot; introduction to Windows 95 reverse 
+engineering, it requires almost NO knowledge of windows programming, and a 
+low to  
+moderate knowledge of assembler coding. If you are already a good 
+software reverse engineer this essay may disappoint you, being a little 
+too much on the elementary side, yet I believe that a good comprehension of the basic of this trade is the main secret for advanced reverse 
+engineering.<br> </center></i><br><hr><br>
+<font size="+2"><b>Introduction</b></font><br>
+You may have already read the short essay (divided in two parts) that 
+I published one year ago, reverse engineering Filemanager for Windows 3.1. Since we 
+are all now dealing mostly with Windows 95 programs (it's not our choice 
+- alas - but a Micro$oft's imposition that everybody accepts, against 
+any sound logic :-) it suits us well to examine the &quot;deep&quot; structure 
+of filemon.exe, Version 2.0, by By Mark Russinovich 
+and Bryce Cogswell, a pretty useful program, released with its c source code at 
+the beginning of the year. You may want to download also the LAST version of this 
+good tool (version 3.0), released in July, at <a href="http://www.ntinternals.com/" >http://www.ntinternals.com</a>, 
+where you'll find also its companion utility regmon.exe and the Windows NT versions 
+of both tools with complete c++ source code. Yet for this essay download from 
+my site <u><b>version 2</b></u> of <img SRC="images/bulletr.gif" tppabs="http://members.xoom.com/tsehp_/images/bulletr.gif" ALIGN="BOTTOM" BORDER="0" VSPACE="0" HSPACE="0" WIDTH="13" HEIGHT="13"><a href="http://acrigs.com/FRAVIA/zipped/filsrc.zip" tppabs="http://members.xoom.com/tsehp_/zipped/filsrc.zip">filemon.exe</a> with its source code, this is all what you'll need.<br>
+<br>As usual, when you start a cracking session, first of all run the program, try all  its options (there are not many options inside this target) and, last 
+but not least, 
+print the complete 
+C source code (15 &quot;A4&quot; sheets).
+Since we have already the C source code of this program this lesson 
+will be a &quot;false&quot; reverse engineering exercise: we are not going to 
+find anything hidden or new, nor many secret tricks in here... yet I 
+believe that many of you will find pretty useful our work 
+below, since analogous structures will more or less be present inside 
+<b>UNKNOWN</b> code, inside other targets, that you'll try to reverse engineer on your 
+own.<br>Another (very) interesting point in this program is its use of a virtual 
+device driver (VXD) for the filtering of all file system accesses... VXD reverse 
+engineering is a branch in its own rights, as you will see.<br>Here you go: all 
+the files you'll find inside filsrc.zip:<pre>Searching ZIP: FILSRC.ZIP
+
+ Length  Method   Size  Ratio   Date    Time    CRC-32  Attr  Name
+ ------  ------   ----- -----   ----    ----   -------- ----  ----
+      0  Stored       0   0%  07-03-97  13:16  00000000 --wD  GUI/
+      0  Stored       0   0%  07-03-97  13:16  00000000 --wD  VXD/
+    766  DeflatN    350  55%  28-03-96  08:55  cc319149 --w-  GUI/APPICON.ICO
+  16015  DeflatN   7090  56%  16-03-97  20:47  ce4c6ba6 --w-  GUI/FILEVXD.VXD
+  58368  DeflatN   4905  92%  16-03-97  20:49  75a1fd27 --w-  GUI/FILEMON.NCB
+      0  Stored       0   0%  07-03-97  13:16  00000000 --wD  GUI/RELEASE/
+  38912  DeflatN   1764  96%  16-03-97  20:49  266898dd --w-  GUI/FILEMON.MDP
+   7176  DeflatN   1522  79%  27-11-96  14:34  4ccc82e0 --w-  GUI/FILEMON.MAK
+   4786  DeflatN   1396  71%  16-03-97  20:48  54b79e51 --w-  GUI/FILEMON.RC
+   2312  DeflatN    623  74%  16-03-97  20:13  fea19b03 --w-  GUI/RESOURCE.H
+  22356  DeflatN   6422  72%  16-03-97  20:22  58b0c5ab --w-  GUI/FILEMON.C
+  16015  DeflatN   7090  56%  16-03-97  20:47  ce4c6ba6 --w-  GUI/RELEASE/FILEVXD.VXD
+  38912  DeflatN  18466  53%  16-03-97  20:48  4d4d1cee --w-  GUI/RELEASE/FILEMON.EXE
+    420  DeflatN    255  40%  24-11-96  21:09  bd0b63d3 --w-  VXD/MAKEFILE
+   1199  DeflatN    259  79%  16-03-97  20:47  1c1c6d4c --w-  VXD/FILEVXD.DEF
+   1620  DeflatN    961  41%  16-03-97  20:47  20fd9fad --w-  VXD/FILEVXD.SYM
+   1480  DeflatN    373  75%  16-03-97  20:47  031f6484 --w-  VXD/FILEVXD.EXP
+  16015  DeflatN   7090  56%  16-03-97  20:47  ce4c6ba6 --w-  VXD/FILEVXD.VXD
+   6212  DeflatN   1699  73%  16-03-97  20:47  ce4845f1 --w-  VXD/FILEVXD.MAP
+  15675  DeflatN   6009  62%  16-03-97  20:47  7702cbad --w-  VXD/FILEMON.OBJ
+   1384  DeflatN    364  74%  16-03-97  20:47  1ec43719 --w-  VXD/FILEVXD.LIB
+    313  DeflatN    194  39%  05-12-95  02:01  317f17cc --w-  VXD/FILEVXD.VRC
+    452  DeflatN    283  38%  23-11-96  18:36  0ea560c5 --w-  VXD/FILEVXD.RES
+  82944  DeflatN   5012  94%  16-03-97  20:47  f7db1ed0 --w-  VXD/FILEVXD.PDB
+  84457  DeflatN  12255  86%  24-11-96  04:47  6f9a8ab8 --w-  VXD/TEST.FIL
+  35430  DeflatN   7703  79%  16-03-97  20:45  2fc85672 --w-  VXD/FILEMON.C
+   1139  DeflatN    509  56%  16-03-97  20:24  e642c40b --w-  VXD/IOCTLCMD.H
+   1557  DeflatN    582  63%  16-03-97  20:25  395d7317 --w-  VXD/FILEMON.H
+ ------          ------  ---                                  -------
+ 455915           93176  80%                                       28</pre>
+We'll reverse engineer two files: filemon.exe and filevxd.vxd. We'll begin with filemon.exe. The reverse engineering of this program will be COMPLETE, since its various parts will be useful -for you- in order to learn some of the different aspects and techniques (and tricks) of our trade. Be patient and wade slowly through the code of this target, I'll keep you on the right path.<br> 'Dead listing' reverse engineering, as +ORC calls it, is a slow &quot;puzzle solving&quot; process: the intellectual challenge can be extremely interesting, btw.<br>We will NEVER use Winice in this essay, as it is NOT NECESSARY to use our powerful debugger to understand EVERYTHING a target does, as you'll see reading this essay.
+<hr size="2" width="22%" align="left"><br>
+<font size="+2"><b>Elementary must know, the SaveFile approach</b></font><br>
+<br>
+<br>Some elementary MUST KNOW that you should head before starting a cracking session:<br>
+At the beginning there are no names... only a sea of numbers, hundred of 
+different locations... that's your target &quot;in the wild&quot;, roaming around with unnamed procedures, before you tame it to clarity.<br>
+Soon some little islands will appear... their form still indeterminate... slowly  you'll understand what some procedures of your target (should)  do... for instance here 
+in filemon (as in almost all programs you'll disassemble) it's pretty easy to 
+individuate the &quot;FileSaving&quot; function, using simple search masks inside the 
+dead listing.<br>
+Searching you'll quickly get to this part of your dead listing:<pre>
+:00401CF3 C744244804824000        mov [esp + 48], 00408204 ;&quot;Save File Info...&quot;
+:00401CFB C7442454FC814000        mov [esp + 54], 004081FC ;&quot;*.fil&quot;</pre>
+Now just dead list &quot;back&quot;, to the beginning of this function:<pre>
+:00401C20 81EC7C060000            sub esp, 0000067C  ;correct stack</pre>
+Since this function starts at  :00401C20, we can at once substitute (search and replace) any &quot;<font color="purple">call 00401C20</font>&quot; 
+(which is not a very useful tag for our dead listing perusing) with a much 
+more meaningful tag: &quot;<font color="purple">call 
+00401C20=savefile</font>&quot;.<br>
+Note how our substitution did NOT eliminate the location number, you better 
+keep always such number locations together with your new tags, because during your cracking sessions you will necessarily 
+commit quite 
+a lot of mistakes, that you'll correct later. Keeping the original location 
+numbers together with your new assigned 'provisory' names will help you a lot 
+when needed.<br> 
+Inside 
+filemon's dead listing we will find only two occurrences of a call to our &quot;FileSaving&quot; routine but working
+on your own targets, later, you'll soon discover how abstruse (and puzzling) 
+code 
+snippets will suddenly be comprehensible thank to these - very simple -
+substitutions<br>Let's have a look at the relevant filemon's code:<br>
+This snippet of code calls twice the SaveFile function of our target... 
+by the way, since this kind of routines are typically called from the main menu 
+of the main window (&quot;Save&quot; and &quot;Saveas&quot; inside the &quot;File&quot; main menu option), this snippet will be very probably inside 
+a WM_COMMAND structure... more about this later)... here is the part of code calling 
+SaveFile:<pre>:
+:00401569 6A00                    push 00000000             ;BOOLEAN FALSE
+:0040156B A1B8964000              mov eax, [004096B8]       ;get second par
+:00401570 8BB42458010000          mov esi, [esp + 00000158] ;get HWND hWnd
+:00401577 50                      push eax                  ;push second par
+:00401578 56                      push esi                  ;push HWND hWnd
+:00401579 E8A2060000              call 00401C20=savefile
+:0040157E 83C40C                  add esp, 0000000C
+:00401581 E97E010000              jmp 00401704
+:00401586 6A01                    push 00000001             ;BOOLEAN TRUE
+:00401588 A1B8964000              mov eax, [004096B8]       ;get second par
+:0040158D 8BB42458010000          mov esi, [esp + 00000158] ;get HWND hWnd
+:00401594 50                      push eax                  ;push second par
+:00401595 56                      push esi                  ;push HWND hWnd
+:00401596 E885060000              call 00401C20=savefile
+:0040159B 83C40C                  add esp, 0000000C
+:0040159E E961010000              jmp 00401704</pre>
+You notice that I have already transformed &quot;call 00401C20&quot; in &quot;call 00401C20=savefile&quot;.  
+You may use the same &quot;search and replace&quot; technique also for memory 
+locations you have understood the significance of. Usually you'll be lucky every
+time that a KNOWN return value of a KNOWN windows function will be stored 
+in a specific memory location. This will allow you to prepare easily an immediate 
+&quot;search and replace&quot; of the same location in the whole dead listing, whereby you'll 
+substitute awkward number-locations with your tags, explaining 
+their exact meaning<br>Yet you'll be able to clear the meaning of quite a lot of 
+code even 
+if you DO NOT KNOW the exact meaning of a value stored inside a memory 
+location... the important thing is that you know <b>where that value is 
+used</b>... let's make an example, look at the code above once more.<br>
+This small code snippet let us understand 
+that the &quot;homemade&quot; function SaveFile 
+of our target accepts THREE parameters (note the three pushes before each 
+call).
+<br>One of the three parameters is, clearly, a boolean parameter, either 0 or 1... 
+can you guess what this could be... in a &quot;save 
+file&quot; operation? It's the <b>&quot;saveas&quot;</b> parameter in alternative to &quot;save&quot;, 
+a typical boolean 
+parameter for saving operations... we don't even need the confirmation 
+of the c code...<br>Nice... and the other two parameters? The first one (in the C 
+call, the last one in assembly) is HWND hWnd, of course, and the other 
+one, the &quot;middle&quot; one? We know, from the C source, that's HWND ListBox, 
+but we could ALREADY 
+have searched and replaced all memory locations &quot;<b>[004096B8]</b>&quot; - 
+in the whole dead 
+listing - with something like &quot;<b>[004096B8]=SaveFileSecondPar</b>&quot;, and believe 
+me, this would have made quite a BIG difference in a huge 7-8 megabytes 
+dead listing where you don't even understand what the hell the programmer 
+was trying to do, nor where have been hidden, inside the huge codewoods, the 
+snippets of the target's code you are looking for.<br><br>
+OK, we have finished our quick examination of the small snippet above... would 
+you like to 
+know what it was exactly? It correspond to the following 6 lines of &quot;c&quot; code, 
+placed  inside the main &quot;switch&quot; tree (for WM_COMMAND) of the  MainWndProc:<br>
+<pre>case IDM_SAVE:
+  SaveFile( hWnd, hWndList, FALSE );
+  return 0;
+
+case IDM_SAVEAS:
+  SaveFile( hWnd, hWndList, TRUE );
+  return 0;</pre>
+<br>
+<font size="+2"><b>Let's start cracking: the first function</b></font><br>
+Now let's start together anew, take your sheets with the C source code have 
+a general look, prepare your favourite cocktail (may I suggest a 
+<a href="cocktail.htm" tppabs="http://members.xoom.com/tsehp_/cocktail.htm">traitor</a>?) and then jump with me inside the disassembled 
+target...<br>
+If you just read the disassembled code that follows, with my comments, you'll 
+notice pretty easily how the c source code has been &quot;translated&quot; in assembler.<br>
+The first windows' function in the C source code is ABORT, let's examine first of all its &quot;C&quot; code:<br>
+<pre>/********************************************************************
+*	FUNCTION:	Abort:
+*	PURPOSE:	Handles emergency exit conditions.
+*********************************************************************/
+void Abort( HWND hWnd, TCHAR * Msg )
+{	MessageBox( hWnd, Msg, &quot;filemon&quot;, MB_OK );
+	PostQuitMessage( 1 );
+}</pre>	
+Note the 4 parameters of the Messagebox function: from left to right:
+hWnd, Msg, &quot;progname&quot;, MB_OK... as you'll now see, in assembly they will be pushed in 
+REVERSE ORDER: MB_OK, &quot;progname&quot;, Msg, hWnd,<br>
+And here is the code of our target<br>
+<pre>
+//********************** Start of Code in Object .text **************
+Program Entry Point = 004024E0 (Filemon.exe File Offset:000018E0)
+:00401000 8B442408       mov eax, [esp + 08]       ;get msg in eax
+:00401004 6A00           push 0                    ;push right parameter: MB_OK (=0)
+:00401006 8B4C2408       mov ecx, [esp + 08]       ;get hWnd in ecx
+:0040100A 68C0804000     push 004080C0             ;push StringData &quot;filemon&quot;
+:0040100F 50             push eax                  ;push msg
+:00401010 51             push ecx	              ;push hWnd
+:00401011 FF1590B24400   Call dword ptr [0044B290] ;call USER32.MessageBoxA 
+:00401017 6A01           push 1                    ;push 1 for PostQuit
+:00401019 FF1588B24400   Call dword ptr [0044B288] ;call USER32.PostQuitMessage 
+:0040101F C3             ret			      ;finis
+</pre>
+What does this little introductory example mean from a reverse engineering point 
+of view?
+It means, for a start, that EVERY TIME you find a &quot;call USER32.MessageBoxA&quot; 
+function, in 
+your disassembled listing you may substitute IMMEDIATELY the 4 pushes preceding 
+it 
+with:<br>
+First push: whatever MessageBoxStyle has been called (Here 0 = MB_0K)... see below 
+the complete list<br> 
+Second push: Title of the MsgBox<br> 
+Third push: Msg<br>
+Fourth push: hWnd<br>
+<br>
+You dig it?<br>It's the same old story we already (should) know from dos reverse 
+engineering actually:<br>
+All it happens when passing parameters to a C++ function is that you push the 
+rightmost parameter first, then the next rightmost parameter, and so on, until 
+the leftmost parameter has been pushed. Then the function is called... say you 
+call the C library function strcpy to copy <i>SourceString</i> to 
+<i>DestString</i>... in c++ you would type:<pre>
+strcpy (DestString, SourceString);</pre>
+The same call in assembler works like this<br><pre>
+lea ax,SourceString	;rightmost parameter
+lea bx,DestString	;leftmost parameter
+push ax			;push rightmost first
+push bx			;push next one
+call _strcpy		;copy the string using pre-made code
+add sp,4		;DISCARD used parameters</pre>
+Everything depends from the <font color="red">CALLING CONVENTION!</font><br>
+The <font color="blue"><b>C calling convention</b></font> pushes rightmost first 
+and discards parameters from stack;<br>
+The <font color="blue"><b>Pascal calling convention</b></font> pushes leftmost 
+first and the <i>called</i> program 
+discards the parameter from the stack.<br><br>
+It's therefore quite important to understand first of all wich convention uses your 
+target, which is pretty easy, since you just need to have a look to a known windows 
+function.<br><br>
+<font size="+2"><b>The old good MessageBox function</b></font><br>
+But we are not yet finished with our messagebox function,, I'll use this very 
+function in order to explain you &quot;in the deep&quot; a single Windows' function, it's 
+up to you, obviously, to learn as much as you can about the more important 
+windows' functions... 
+I know, I know, it's an awful operating system, yet we MUST STUDY IT, unfortunately, 
+in order to reverse it whenever we feel like it. In the following example, regarding 
+MessageBox, you'll find a description <u>useful for reverse engineering purposes</u>, 
+the descriptions you'll find inside the WinAPI references of the main languages 
+compilers are similar, but <u>they are aimed at programmers that usually DO NOT 
+need to know how to disassemble their program effectively</u> and therefore are 
+not always useful, nor complete. In fact the basical  
+syntax for messagebox is the following:<br><pre><font color="purple">
+<center><font size="+2">  int MessageBox(hwndParent, lpszText, lpszTitle, fuStyle)
+</font></center>
+
+HWND hwndParent;        /* handle of parent window           */
+LPCSTR lpszText;        /* address of text in message box    */
+LPCSTR lpszTitle;       /* address of title of message box   */
+UINT fuStyle;           /* style of message box              */
+
+
+The MessageBox function creates, displays, and operates a message-box window. 
+The message box contains an application-defined message and title, plus any
+combination of the predefined icons and push buttons described in the fuStyle
+parameter. 
+
+Parameter	Description
+
+hwndParent     Identifies the parent window of the message box to be created. 
+               If this parameter is NULL, the message box will have no parent 
+               window. 
+LpszText       Points to a null-terminated string containing the message to 
+               be displayed. 
+LpszTitle      Points to a null-terminated string to be used for the dialog 
+               box title. If this parameter is NULL, the default title Error 
+               is used. 
+fuStyle	       Specifies the contents and behavior of the dialog box. 
+               This parameter can be a combination of the following values: 
+Value	Meaning
+
+MB_ABORTRETRYIGNORE	The message box contains three push buttons: 
+                       Abort, Retry, and Ignore. 
+<u>This value is 0x00000002L</u>
+
+MB_APPLMODAL	        The user must respond to the message box before 
+                       continuing work in the window identified by the 
+                       hwndParent parameter. However, the user can move 
+                       to the windows of other applications and work in 
+                       those windows. MB_APPLMODAL is the default if 
+                       neither MB_SYSTEMMODAL nor MB_TASKMODAL is 
+                       specified. 
+<u>This value is 0x00000000L</u>
+
+MB_DEFBUTTON1	        The first button is the default. Note that the 
+                       first button is always the default unless MB_DEFBUTTON2 
+                       or MB_DEFBUTTON3 is specified. 
+<u>This value is 0x00000000L</u>
+
+MB_DEFBUTTON2	        The second button is the default. 
+<u>This value is 0x00000100L</u>
+
+MB_DEFBUTTON3	        The third button is the default. 
+<u>This value is 0x00000200L</u>
+
+MB_ICONASTERISK	 Same as MB_ICONINFORMATION. 
+<u>This value is 0x00000040L</u>
+
+MB_ICONEXCLAMATION	 An exclamation-point icon appears in the message box. 
+<u>This value is 0x00000030L</u>
+
+MB_ICONHAND	         Same as MB_ICONSTOP. 
+<u>This value is 0x00000010L</u>
+
+MB_ICONINFORMATION	 An icon consisting of a lowercase letter &quot;I&quot; in a 
+                        circle appears in the message box. 
+<u>This value is 0x00000040L</u>
+
+MB_ICONQUESTION         A question-mark icon appears in the message box. 
+<u>This value is 0x00000020L</u>
+
+MB_ICONSTOP             A stop-sign icon appears in the message box.
+<u>This value is 0x00000010L</u> 
+
+MB_OK	                The message box contains one push button: OK. 
+<u>This value is 0x00000000L</u>
+
+MB_OKCANCEL	         The message box contains two push buttons: OK and Cancel. 
+<u>This value is 0x00000001L</u>
+
+MB_RETRYCANCEL	         The message box contains two push buttons: Retry and Cancel. 
+<u>This value is 0x00000005L</u>
+
+MB_SYSTEMMODAL	         All applications are suspended until the user responds to 
+                        the message box. Unless the application specifies MB_ICONHAND,
+                        the message box does not become modal until after it is
+                        created; consequently, the parent window and other windows
+                        continue to receive messages resulting from its activation. 
+                        System-modal message boxes are used to notify the user of
+                        serious, potentially damaging errors that require immediate
+                        attention (for example, running out of memory). 
+<u>This value is 0x00001000L</u>
+
+MB_TASKMODAL	         Same as MB_APPLMODAL except that all the top-level windows 
+                        belonging to the current task are disabled if the hwndParent
+                        parameter is NULL. This flag should be used when the calling 
+                        application or library does not have a window handle available         
+                        but still needs to prevent input to other windows in the 
+                        current application without suspending other applications.
+<u>This value is 0x00002000L</u>
+
+MB_YESNO	         The message box contains two push buttons: Yes and No. 
+<u>This value is 0x00000004L</u>
+MB_YESNOCANCEL	         The message box contains three push buttons: Yes, No, and             
+                        Cancel. 
+<u>This value is 0x00000003L</u>
+</font></pre>
+As you can see, the possible values are 0,1,2,3,4,5,10,20,30,40,100,200,100, 2000<br>
+(there are also other values, more rare: F, FO, F00, 3000, 8000, C000, 20000... you'll 
+find them out either experimenting a little or reverse engineering a lot :-)
+<pre><font color="blue"><b>Returns</b></font><font color="purple">
+The return value is zero if there is not enough memory to create the message box. 
+Otherwise, it is one of the following menu-item values returned by the dialog box:
+
+Value	    Real value     Meaning
+
+ERROR         (0)	    fcked 
+IDOK          (1)           OK button was selected. 
+IDCANCEL      (2)           Cancel button was selected.
+IDABORT	      (3)           Abort button was selected. 
+IDRETRY	      (4)           Retry button was selected.
+IDIGNORE      (5)           Ignore button was selected. 
+IDYES         (6)           Yes button was selected. 
+IDNO          (7)           No button was selected.
+
+If a message box has a Cancel button, the IDCANCEL value will be returned 
+if either the ESC key is pressed or the Cancel button is selected. If the 
+message box has no Cancel button, pressing ESC has no effect.
+
+Comments
+When a system-modal message box is created to indicate that the system is 
+low on memory, the strings pointed to by the lpszText and lpszTitle 
+parameters should not be taken from a resource file, because an attempt 
+to load the resource may fail. 
+
+When an application calls the MessageBox function and specifies the 
+MB_ICONHAND and MB_SYSTEMMODAL flags for the fuStyle parameter, Windows 
+displays the resulting message box regardless of available memory. 
+When these flags are specified, Windows limits the length of the 
+message-box text to three lines. Windows does not automatically break 
+the lines to fit in the message box, however, so the message string 
+must contain carriage returns to break the lines at the appropriate 
+places. 
+If a message box is created while a dialog box is present, use the 
+handle of the dialog box as the hwndParent parameter. The hwndParent 
+parameter should not identify a child window, such as a control in 
+a dialog box. 
+
+See Also
+
+FlashWindow, MessageBeep</font> 
+</pre>
+<br><br>OK, we have seen &quot;in the deep&quot; a single Windows' function, you would be well 
+advised to prepare yourself some &quot;information sheets&quot;, like the above one, for your 
+own use, about the most important and more frequent windows functions, <u>WITH the 
+values of the constants</u> that windows uses... you'll see how easy it is to 
+understand what an unknown part of a program is doing just examining how it handles 
+the DIFFERENT possible return values...<br>This is obviously not the case here... 
+remember what we are doing, we are just examining an &quot;ABORT&quot; error function, an 
+anormal function that will show the user only a short error message and offer him 
+the OK button to click onto... you could modify the code at<br><pre>:00401004 6A00      push 0        ;push right parameter: MB_OK (=0)</pre>
+into:<pre>:00401004 6A01      push 1        ;push right parameter: MB_OKCANCEL (=1)</pre>
+Yet modifying this code would not make much sense: you would see two push buttons: OK and Cancel, <u>only in the event of an error</u> (a 
+pretty futile reverse engineering exercise :-)<br>
+<br>
+
+<font size="+2"><b>The InitApplication function of filemon</b></font><br>
+Now that we have seen the ABORT function of filemon, let's work on the next 
+routines  of our target... be patient and follow me: if you read carefully 
+this short essay you'll master the rudiments of windows reverse engineering.<br><br>
+The following function, inside our C source code, is WinMain... since WinMAin is a KNOWN function (which usually calls InitInstance and InitApp before entering a ghetmaessage loop), WinMain will be one of the LAST code snippets that 
+we'll reverse, we'll see first a lot of other, more or less &quot;home-made&quot; procedures that  we'll &quot;solve&quot; first (once more: we have the c 
+source code of this target, yet my aim is to teach you how to reverse engineer targets you 
+DO NOT have the source code of, we'll soon operate AS IF we did not have any source code at all, bear with me :-)<br>
+We'll pass to the next procedure, the one after Winmain. This is a standard InitApp procedure (as you'll see in the FOURTH) part of this lesson) here is its C source code:
+<pre>/****************************************************************************
+*    FUNCTION: InitApplication(HANDLE)
+*    PURPOSE: Initializes window data and registers window class
+****************************************************************************/
+BOOL InitApplication( HANDLE hInstance )
+{    WNDCLASS  wc;
+	// Fill in window class structure with parameters that describe the
+	// main (statistics) window. 
+	wc.style		= 0;                     
+	wc.lpfnWndProc		= (WNDPROC)MainWndProc; !!!!
+	wc.cbClsExtra		= 0;              
+	wc.cbWndExtra		= 0;              
+	wc.hInstance		= hInstance;       
+	wc.hIcon		= LoadIcon( hInstance, &quot;ICON&quot; );
+	wc.hCursor		= LoadCursor( NULL, IDC_ARROW );
+	wc.hbrBackground	= GetStockObject( LTGRAY_BRUSH ); 
+	wc.lpszMenuName	= &quot;LISTMENU&quot;;  
+	wc.lpszClassName	= &quot;filemonClass&quot;;
+	if ( ! RegisterClass( &amp;wc ) )
+		return FALSE;
+	return TRUE;
+}
+
+FUNCTION: InitApplication(HANDLE)
+* Referenced by a CALL at Address:0040102B  
+BOOL InitApplication( HANDLE hInstance)</pre> 
+This function fills in the window class structure with parameters that describe the
+main (statistics) window of our target... it's one of the main &quot;initializing&quot; functions of our target<pre>
+:004010B0 8B442404            mov eax, [esp + 04] 	;get hInstance
+:004010B4 83EC28              sub esp, 00000028
+:004010B7 C744240000000000    mov [esp], 00000000
+:004010BF 89442410            mov [esp + 10], eax
+:004010C3 56                  push esi                  ;save esi
+:004010C4 C744240890114000    mov [esp + 08], 00401190  ;See below what is this 
+:004010CC C744240C00000000    mov [esp + 0C], 00000000
+:004010D4 C744241000000000    mov [esp + 10], 00000000
+:004010DC 68E4804000          push 004080E4             ;StringData &quot;ICON&quot;
+:004010E1 50                  push eax                  ;push hInstance
+:004010E2 FF15F4B24400        Call dword ptr [0044B2F4] ;USER32.LoadIconA
+:004010E8 89442418            mov [esp + 18], eax       ;save return value
+:004010EC 68007F0000          push 00007F00             ;7F=IDC_ARROW
+:004010F1 6A00                push 00000000             ;NULL
+:004010F3 FF15F8B24400        Call dword ptr [0044B2F8] ;USER32.LoadCursorA
+:004010F9 8944241C            mov [esp + 1C], eax       ;save return value
+:004010FD 6A01                push 1                    ;1=LTGRAY_BRUSH 
+:004010FF FF15CCB14400        Call dword ptr [0044B1CC] ;GDI32.GetStockObject
+
+:00401105 C7442424D8804000    mov [esp + 24], 004080D8 ;StringData &quot;LISTMENU&quot;
+:0040110D C7442428C8804000    mov [esp + 28], 004080C8 ;StringData  &quot;filemonClass&quot;  
+:00401115 89442420            mov [esp + 20], eax      ;save return in esp+20
+:00401119 8D442404            lea eax, [esp + 04]      ;get WNDCLASS wc</pre><font color="purple">if ( ! RegisterClass( &amp;wc ) )<br>
+		return FALSE;<br>
+              return TRUE<pre>
+:0040111D 50                  push eax                  ;push WNDCLASS wc
+:0040111E FF15FCB24400        Call dword ptr [0044B2FC] ;USER32.RegisterClassA 
+:00401124 663D0100            cmp ax, 0001              ;did we get it through?
+:00401128 5E                  pop esi
+:00401129 1BC0                sbb eax, eax              ;if zero return false
+:0040112B 83C428              add esp, 00000028
+:0040112E 40                  inc eax                   ;else return true
+:0040112F C3                  ret</pre>
+Well, let's see what happens when we get back from this procedure:
+<pre>
+:WinMain of filemon calls InitApplication
+:00401020 83EC1C              sub esp, 0000001C
+:00401023 53                  push ebx
+:00401024 56                  push esi
+:00401025 8B742428            mov esi, [esp + 28]
+:00401029 57                  push edi
+:0040102A 56                  push esi
+:0040102B E880000000          call 004010B0  ;call InitApplication(HANDLE) 
+:00401030 83C404              add esp, 4 	;correct esp
+:00401033 85C0                test eax, eax  ;was it zero?
+:00401035 750B                jne 00401042 	; if InitApplication(hInstance) OK
+                                             ; continue WinMain
+:00401037 33C0                xor eax, eax  	;else return FALSE
+:00401039 5F                  pop edi
+:0040103A 5E                  pop esi
+:0040103B 5B                  pop ebx
+:0040103C 83C41C              add esp, 1C
+:0040103F C21000              ret 10		
+</pre>
+Therefore the above snippet is:<pre>
+if (! InitApplication(hInstance))
+		return FALSE;</pre>
+Which is a part of WinMain, btw.<br><br>
+<font size="+2"><b>The trick for finding MainWndProc</b></font><br>
+God, I realize now that I should begin to explain the whole WNDCLASS structure... 
+please 
+study it yourself... if you bought (as you should have done) the COMPLETE Borland 
+C++ Version 
+4.52 for less than 4 UK pounds (see <a href="blackbo.htm" tppabs="http://members.xoom.com/tsehp_/blackbo.htm">here</a>), you'll have 
+all 
+important specs at your fingertips from the huge API helpfiles (7 million bytes 
+for Win32 and 3 million 
+bytes for Win31).<br>I'll explain here only part of the API calls... The most 
+important element here, for us, is that WNDCLASS' member lpfnWndProc 
+<font color="blue">POINTS TO THE CALLBACK WINDOW PROCEDURE!</font><br> 
+Let's approach the above code (of InitApplication) slowly... What was the value &quot;401190&quot; at 10C4?<pre>
+:004010C4 C744240890114000        mov [esp + 08], 00401190</pre>
+That is the location of the MainWndProc!<br>Windows is so kind to tell us, in 
+many 
+occasions, WHERE the &quot;obligatory&quot; functions of an unknown program start!<br>If 
+Peter 
+Urbanik, the author of Wdasm, would listen to us, instead of uselessly updating 
+his program every 
+couple of weeks, he would work on this to get a spectacular tool for reverse 
+engineering!<br>OK, every single WNDCLASS call of a windows program carries 
+inside itself
+the location of the caller... in this case (as in most initialization parts of code) 
+WNDCLASS is called at initialization by a little initialization routine (here in 
+filemon called InitInstance) which is in turn called by the main &quot;homemade&quot; 
+procedure of our target, here in filemon called MainWndProc... nice to know, 
+isn't it?<br>There is more: since WNDCLASS has a parameter lpszClassName, which 
+points to a null-terminated string that specifies the name of the window class  
+(in the case of filemon 
+&quot;filemonClass&quot;), it's pretty easy to find all occurrences of WNDCLASS inside any  
+unknown target just examining its strings (and you can use good old Frattaroli's <a href="http://acrigs.com/FRAVIA/zipped/strings.zip" tppabs="http://members.xoom.com/tsehp_/zipped/strings.zip">strings.zip</a>to do it) ... nice isn't it?<br>
+<br>What have we more up there? Let's see<pre>
+:004010EC 68007F0000          push 00007F00 ;IDC_ARROW</pre>
+hCursor	Identifies the class cursor. This member must be a handle to a cursor 
+resource. There are many resources of each type, for the joy of a good reverse 
+engineer...<br>
+Here you go! experiment a little (change it with Hexworkshop inside filemon.exe, play 
+with your targets! In this specific case you wont see much, though, because this 
+is the &quot;ghost&quot; &quot;loaded&quot; cursor of filemon... you should change the SetCursor 
+function's parameter to change the cursor of an application)<pre>
+32512 (0x7F00) = IDC_ARROW	;that's what we have
+32513 (0x7F01) = IDC_IBEAM	;Text I-beam cursor.
+32514 (0x7F02) = IDC_WAIT	;that's the hourglass
+...
+32560		= IDC_APPSTARTING</pre>
+Another parameter:<pre>
+:004010FD 6A01                push 00000001 ;LTGRAY_BRUSH</pre>
+Since GRAY BRUSH is 2 and DARKGRAY BRUSH is 3, you may experiment as well with 
+some colors... If you substitute :004010FD 6A01 with :004010FD 6A03 you'll indeed 
+see (for a moment) your DKGRAY_BRUSH &quot;behind&quot; the filling of the main window of 
+filemon, once more this is the &quot;initializing&quot; routine, which is called at the 
+beginning of our target's life, many parameter will be &quot;reconfirmed&quot; later on.<br>
+What's more up there? Yes: RegisterWindowClass... once created, the WNDCLASS data 
+must be &quot;registered&quot; in order to pass to the subsequent CreateWindow function...
+Let's have a look at the code of WinMain that will be performed if the InitApplication 
+routine returns successful...<pre>
+:WinMain after InitApplication
+:00401042 8B442438          mov eax, [esp + 38]
+:00401046 50                push eax
+:00401047 56                push esi
+:00401048 E8E3000000        call 00401130=InitInstance
+:0040104D 83C408            add esp, 00000008
+:00401050 85C0              test eax, eax
+:00401052 750B              jne 0040105F ;if InitInstance successful
+                                         ;continue WinMain
+:00401054 33C0              xor eax, eax ;else return FALSE
+:00401056 5F                pop edi
+:00401057 5E                pop esi
+:00401058 5B                pop ebx
+:00401059 83C41C            add esp, 0000001C
+:0040105C C21000            ret 0010</pre>
+
+<br>
+<font size="+2"><b>A Windows is born</b></font><br Let's go on with the next procedure: InitInstance.<br>This huge operating system  
+will now perform its most characteristic work: create a Window. Prepare yourself 
+another 
+cocktail, this will take quite a while...
+<pre>/****************************************************************************
+*    FUNCTION:  InitInstance(HANDLE, int)
+*    PURPOSE:  Saves instance handle and creates main window
+****************************************************************************/
+HWND InitInstance( HANDLE hInstance, int nCmdShow )
+{	HWND hWndMain;
+	hInst = hInstance;
+	hWndMain = CreateWindow( 
+&quot;filemonClass&quot;, &quot;Win95 File Monitor&quot;, WS_OVERLAPPEDWINDOW,
+CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+NULL, NULL, hInstance, NULL );
+
+	// if window could not be created, return &quot;failure&quot; 
+	if (! hWndMain)
+		return NULL;
+	
+	// make the window visible; update its client area; and return &quot;success&quot;
+	ShowWindow(hWndMain, nCmdShow);
+	UpdateWindow(hWndMain); 
+	return hWndMain;      
+}</pre>
+This HWND &quot;hWndMain&quot; translates to:<pre> CreateWindow (...)
+:00401130 8B442404        mov eax, [esp + 04] ;get hInstance
+:00401134 56              push esi            ;save esi
+:00401135 6A00            push 00000000       ;last NULL lpvparameter
+:00401137 A3E8994000      mov [004099E8], eax ;save hInstance (HEY! A memory loc!)
+:0040113C 50              push eax            ;push hInstance
+:0040113D 6A00            push 00000000 ; NULL hmenu
+:0040113F 6A00            push 00000000 ; NULL hwndparent
+:00401141 6800000080      push 80000000 ; CW_USEDEFAULT 
+:00401146 6800000080      push 80000000 ; CW_USEDEFAULT 
+:0040114B 6800000080      push 80000000 ; CW_USEDEFAULT 
+:00401150 6800000080      push 80000000 ; CW_USEDEFAULT 
+:00401155 680000CF00      push 00CF0000 ; WS_OVERLAPPEDWINDOW 
+:0040115A 68EC804000      push 004080EC ; &quot;Win95 File Monitor&quot; 
+:0040115F 68C8804000      push 004080C8 ; &quot;filemonClass&quot;
+:00401164 6A00            push 00000000 
+:00401166 FF15E8B24400    Call dword ptr [0044B2E8]; USER32.CreateWindowExA, Ord:55h 
+:0040116C 8BF0            mov esi, eax  ;get the handle to the new window in esi
+:0040116E 85F6            test esi, esi ;test it
+:00401170 7504            jne 00401176  ;if created OK, continue to showwindow
+:00401172 33C0            xor eax, eax  ;else return NULL (i.e. FALSE)
+:00401174 5E              pop esi
+:00401175 C3              ret</pre>
+<br>
+Ok, let's have a look at this important function:<br><pre><font color="purple">
+HWND CreateWindow(lpszClassName, lpszWindowName, dwStyle, x, y, nWidth, nHeight, 
+hwndParent, hmenu, hinst, lpvParam)
+
+LPCSTR lpszClassName;       /* address of registered class name        */
+LPCSTR lpszWindowName;      /* address of window text                  */
+DWORD dwStyle;              /* window style                            */
+int x;                      /* horizontal position of window           */
+int y;                      /* vertical position of window             */
+int nWidth;                 /* window width                            */
+int nHeight;                /* window height                           */
+HWND hwndParent;            /* handle of parent window                 */
+HMENU hmenu;                /* handle of menu or child-window identifier */
+HINSTANCE hinst;            /* handle of application instance          */
+void FAR* lpvParam;         /* address of window-creation data         */
+</font><br>
+lpszClassName      is &quot;filemonClass&quot; (what we have registered)
+lpszWindowName     is &quot;Win95 File Monitor&quot; (what you see in the main window of
+                   filemon)
+dwStyle            is WS_OVERLAPPEDWINDOW = 00CF0000 (which creates an overlapped
+                   window having the WS_OVERLAPPED, WS_CAPTION, WS_SYSMENU,
+                   WS_THICKFRAME, WS_MINIMIZEBOX, and WS_MAXIMIZEBOX styles)
+int x              is CW_USEDEFAULT</pre>
+This value specifies the initial x-position of the window. For an overlapped or pop-up 
+window, the x parameter is the initial x-coordinate of the window's upper-left corner, 
+in screen coordinates. For a child window, x is the x-coordinate of the upper-left 
+corner of the window in the client area of its parent window. If, like here in filemon, 
+this value is CW_USEDEFAULT, Windows selects the default position for the window's 
+upper-left corner and ignores the y parameter. CW_USEDEFAULT is valid only for 
+overlapped windows... if you firmly believe that Mark Russinovich and Bryce 
+Cogswell should have let their program appear in the top left corner of the 
+screen instead of using the default position then go ahead! Modify whatever 
+you want!<pre>Int y               is CW_USEDEFAULT, as above for the y-position	
+nWidth              is CW_USEDEFAULT</pre> 
+This value specifies the width, in device units, of the window. For overlapped windows, 
+the nWidth parameter is either the window's width (in screen coordinates) or 
+CW_USEDEFAULT. If nWidth is CW_USEDEFAULT, like here in filemon, Windows selects 
+a default width and height for the window (the default width extends from the 
+initial x-position to the right edge of the screen, and the default height extends 
+from the initial y-position to the top of the icon area). CW_USEDEFAULT is valid only 
+for overlapped windows.<pre>nHeight	             is CW_USEDEFAULT, as above for the 
+height
+hwndParent	      is NULL. This value identifies the parent or owner window of the
+                     window being created. Overlapped windows must NOT have a parent
+                     (hParent must be NULL)
+hMenu                is NULL, handle of menu identifier
+hInstance            is the value in eax, and identifies the instance of the module to
+                      be associated with the window.
+LpvParam             is the WM_CREATE param
+</pre>
+
+Well, what returns CreateWindow? The return value is the handle of the new window if 
+the function is successful. Otherwise, it is NULL. Everything is OK with old good 
+filemon, let's continue...<br><br>
+
+A window has been &quot;made&quot; it's name is hWndMain let's show it to the world<pre>
+:ShowWindow(hWndMain, nCmdShow); make the window visible &amp; update its client area
+:00401176 8B44240C        mov eax, [esp + 0C] ;get nCmdShow
+:0040117A 50              push eax            ; nCmdShow
+:0040117B 56              push esi            ; hWndMain (handle was in esi)
+:0040117C FF15ECB24400    Call dword ptr [0044B2EC] ;USER32.ShowWindow, Ord:022Ch
+ 
+UpdateWindow(hWndMain);
+:00401182 56              push esi ; hWndMain (handle was in esi)
+:00401183 FF15F0B24400    Call dword ptr [0044B2F0] ;USER32.UpdateWindow, Ord:024Fh 
+:00401189 8BC6            mov eax, esi ;return to WinMain with hWndMain in eax
+:0040118B 5E              pop esi ;let's have the old esi back
+:0040118C C3     
