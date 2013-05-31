@@ -48,7 +48,7 @@ public class StaticAnalysis extends FingerPrint {
 		return sa.hyperLogLog();
 	}
 	/*
-	 * similarity - Computes the similarity between the data chunk and another data chunk
+	 * similarity - Computes the similarity between several data chunks
 	 * 	using a fingerprint of each data chunk
 	 */
 	public static double similarity(StaticAnalysis fp1, StaticAnalysis fp2) {
@@ -58,21 +58,7 @@ public class StaticAnalysis extends FingerPrint {
 		double union = fp_union.hyperLogLog();
 		return (((thishll+fphll)/union) - 1);
 	}
-
-
-	public static StaticAnalysis[] groupStaticAnalysis(Data[] data, int b) throws IOException{
-		int l = data.length;
-		StaticAnalysis[] fgprints = new StaticAnalysis[l];
-		for (int i=0;i<l;i++){
-			fgprints[i] = new StaticAnalysis (data[i],b);
-		}
-		return fgprints;
-	}
-
-	/*
-	 * groupSimilarities - compares a set of fingerprints two at a time.
-	 */
-	public static double [][] groupSimilarities(StaticAnalysis[] fp){
+	public static double [][] similarity(StaticAnalysis[] fp){
 		int l = fp.length;
 		double [][] sim = new double [l][l];
 		for (int i=0;i<l;i++){
@@ -85,13 +71,21 @@ public class StaticAnalysis extends FingerPrint {
 
 		return sim;
 	}
+
+
 	/*
 	 * similarPairs - prints out the similarity between files in a directory,
 	 * comparing them two at a time.
 	 */
 	public static void similarPairs(String directory, int b, int k) throws IOException{
 		Data[] data = Data.extractData(directory, new Settings(Settings.TEXT, k));
-		double[][] sim = groupSimilarities(groupStaticAnalysis(data, b));
+		StaticAnalysis[] fgprints = new StaticAnalysis[data.length];
+
+		for (int i=0;i<data.length;i++){
+			fgprints[i] = new StaticAnalysis (data[i],b);
+		}
+
+		double[][] sim = similarity(fgprints);
 		int l = sim.length;
 		for (int i=0;i<l;i++){
 			for(int j=0;j<i;j++){
