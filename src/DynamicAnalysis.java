@@ -83,14 +83,7 @@ public class DynamicAnalysis extends FingerPrint {
 		String file = "Texts/fravia/pages.txt";
 		String outFile = "dynamicanalysis.csv";
 		Data input = new Data(file,Data.FILE);
-		input.init();
-		int words=0;
-		while(input.hasNext()){
-			input.nextElement();
-			words++;
-		}
-		System.out.println(words);
-		/*int b = 7;
+		int b = 7;
 		int w = 10000;
 		int nbr = 1;
 		Writer writer =  new OutputStreamWriter(new FileOutputStream(outFile));
@@ -109,7 +102,7 @@ public class DynamicAnalysis extends FingerPrint {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 
 	}
 }
