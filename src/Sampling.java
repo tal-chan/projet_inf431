@@ -2,6 +2,7 @@ import java.io.IOException;
 
 /*
  * Sampling - taking a sample of representative elements.
+ * size - number of elements in the sample
  */
 
 public class Sampling {
@@ -13,6 +14,9 @@ public class Sampling {
 		size = k;
 		bag = new SamplingBag (k);
 	}
+	/*
+	 * printSample - prints a sample on standard output.
+	 */
 	public void printSample()throws IOException{
 		input.init();
 		bag.init();

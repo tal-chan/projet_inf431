@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * Data - implements an input data flow, read either from a file or an URL.
+ * type - indicates whether the field name is a file name or an URL.
+ */
 
 
 public class Data {
@@ -13,12 +16,13 @@ public class Data {
 	private String name;
 	private final int type;
 	private MyReader stream;
-
+	
 	public Data (String name, int type, Settings s) {
 		this.name = name;
 		this.type = type;
 		stream = new MyReader(s);
 	}
+	//Constructs data with default settings (type = TEXT, k = 1).
 	public Data (String name, int type) {
 		this.name = name;
 		this.type = type;
@@ -43,21 +47,19 @@ public class Data {
 		}
 	}
 
-
 	/*
 	 * nextElement - reads the next element in the file.
-	 * e - the last element read.
-	 * 
 	 */
 
 	Element nextElement () {
 		return stream.next();
 	}
-
+	/*
+	 * hasNext() - checks if data stream still has an element to provide
+	 */
 	boolean hasNext(){
 		return stream.hasNext();
 	}
-
 	/*
 	 * extractData - reading files from a directory or URL lists and storing in a Data[]
 	 */

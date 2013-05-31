@@ -1,6 +1,7 @@
 /*
- * CountingBag - using the count field in Element class,
- * keeps track of occurrences of the elements of the sample.
+ * CountingBag - data structure implementing sampling algorithm,
+ * while keeping track of the number of occurrences of each element in the sample,
+ * using the count field in Element class. 
  */
 public class CountingBag extends SamplingBag {
 	public CountingBag(int k){

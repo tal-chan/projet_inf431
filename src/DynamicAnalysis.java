@@ -3,8 +3,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
-
-
 public class DynamicAnalysis extends FingerPrint {
 	int W;
 	int nbr;

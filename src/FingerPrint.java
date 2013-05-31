@@ -45,8 +45,8 @@ public class FingerPrint {
 	}
 
 	/*
-	 * newElement - Function to call to inspect a new element. The fingerprint is
-	 * 		updated.
+	 * newElement - Function to call to inspect a new element.
+	 * The fingerprint is updated.
 	 */
 	public void newElement (Data d) throws IOException {
 		Element el = d.nextElement();
@@ -67,7 +67,7 @@ public class FingerPrint {
 
 	/*
 	 * hyperLogLog - Quick count of the number of distinct elements of the data chunk from its fingerprint.
-	 * 	return a negative number if b is too high
+	 * 	returns a negative number if b is too high
 	 */
 	public double hyperLogLog () {
 		float tmp = 0;

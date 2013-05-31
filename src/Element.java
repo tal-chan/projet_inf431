@@ -1,4 +1,9 @@
-
+/*
+ * Element - a representation of an element of the input data
+ * Content - the element as read from the input data
+ * ContentHash - a hash of the element
+ * count - a counter, for statistical sampling purposes 
+ */
 public class Element {
 	private String Content;
 	private int ContentHash;
@@ -25,10 +30,10 @@ public class Element {
 	public int getCount() {
 		return count;
 	}
-	public void incrCount(){
+	protected void incrCount(){
 		count ++;
 	}
-	public void decrCount(){
+	protected void decrCount(){
 		count --;
 	}
 }

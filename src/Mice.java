@@ -12,6 +12,10 @@ public class Mice {
 		size = n;
 		bag = new CountingBag (n);
 	}
+	/*
+	 * getMiceProportion - extracts a sample from input and returns the proportion of mice
+	 * occurrences - number of occurrences of the mice
+	 */
 	public double getMiceProportion(int occurrences) throws IOException{
 		double res=0;
 		input.init();
