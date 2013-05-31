@@ -81,7 +81,7 @@ public class StaticAnalysis extends FingerPrint {
 		return sim;
 	}
 
-	public void similarPairs(String directory, int b, double th) throws IOException{
+	static public void similarPairs(String directory, int b, double th) throws IOException{
 		Data[] data = Data.extractData(directory);
 		double[][] sim = groupSimilarities(groupStaticAnalysis(data, b));
 		int l = sim.length;
@@ -94,7 +94,7 @@ public class StaticAnalysis extends FingerPrint {
 		}
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void testHyperLogLog(String[] args) throws IOException {
 		String name = "Texts/fravia/pages.txt";
 		Data data = new Data(name, Data.FILE);
 		long t0, t1;
@@ -105,7 +105,7 @@ public class StaticAnalysis extends FingerPrint {
 		System.out.printf("Execution took %fms\n", (double)(t1-t0));
 		t0=t1;
 		
-		for (int b=13; b<=16; b++) {
+		for (int b=4; b<=16; b++) {
 			StaticAnalysis test = new StaticAnalysis(data, b);
 			System.out.printf("Estimated number of different words for b=%d : %f.\n", b, test.hyperLogLog());		
 
@@ -113,5 +113,15 @@ public class StaticAnalysis extends FingerPrint {
 			System.out.printf("Execution took %fms\n", (double)(t1-t0));
 			t0=t1;
 		}	
+	}
+
+	
+	public static void testSimilarities(String[] args) throws IOException {
+		similarPairs("Texts/Shakespeare", 9, -1);
+	}
+	
+		
+	public static void main(String[] args) throws IOException {
+		testSimilarities(args);
 	}
 }

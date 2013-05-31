@@ -1,9 +1,12 @@
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.filechooser.FileFilter;
 
 
 
@@ -61,14 +64,24 @@ public class Data {
 	/*
 	 * extractData - reading files from a directory or URL lists and storing in a Data[]
 	 */
-
 	public static Data[] extractData(String name){
 		File directory = new File(name);
 		File[] files = directory.listFiles();
 		int l = files.length;
-		Data[] data = new Data[l];
+		int nbr=0;
 		for (int i=0;i<l;i++){
-			data[i] = new Data(files[i].getAbsolutePath(),Data.FILE);
+			if (!files[i].isDirectory()) {
+				nbr++;
+			}
+		}
+
+		Data[] data = new Data[nbr];
+		int nbr2=0;
+		for (int i=0;i<l;i++){
+			if (!files[i].isDirectory()) {
+				data[nbr2] = new Data(files[i].getAbsolutePath(),Data.FILE);
+				nbr2 ++;
+			}
 		}
 		return data;
 	}
@@ -144,6 +157,6 @@ public class Data {
 					list.add(i, hash);
 				}*/
 		}
-	return list.size();
-}
+		return list.size();
+	}
 }
