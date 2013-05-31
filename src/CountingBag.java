@@ -1,5 +1,6 @@
 /*
- * CountingBag - 
+ * CountingBag - using the count field in Element class,
+ * keeps track of occurrences of the elements of the sample.
  */
 public class CountingBag extends SamplingBag {
 	public CountingBag(int k){

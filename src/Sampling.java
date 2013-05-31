@@ -24,7 +24,7 @@ public class Sampling {
 	}
 	public static void main(String [] args) throws IOException{
 		String name = "Texts/Shakespeare/other_pieces/";
-		String txt = "hamlet.txt";
+		String txt = "macbeth.txt";
 		Data input = new Data(name+txt,Data.FILE);
 		Sampling sample = new Sampling (input,15);
 		sample.printSample();
