@@ -40,8 +40,13 @@ public class StaticAnalysis extends FingerPrint {
 				newElement(d);
 			}
 	}
-
-	
+	/*
+	 * hyperLogLog
+	 */
+	public static double hyperLogLog (Data input, int b) throws IOException {
+		StaticAnalysis sa = new StaticAnalysis(input,b);
+		return sa.hyperLogLog();
+	}
 	/*
 	 * similarity - Computes the similarity between the data chunk and another data chunk
 	 * 	using a fingerprint of each data chunk
