@@ -34,7 +34,7 @@ public class StaticAnalysis extends FingerPrint {
 		}
 	}
 
-	public void compute (Data d) throws IOException {
+	private void compute (Data d) throws IOException {
 			d.init();
 			while(d.hasNext()) {
 				newElement(d);
