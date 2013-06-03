@@ -95,7 +95,7 @@ public class StaticAnalysis extends FingerPrint {
 	}
 	
 	private static void testHyperLogLog(String[] args) throws IOException {
-		Data data = new Data(args[1], Data.FILE);
+		Data data = new Data(args[0], Data.FILE);
 		long t0, t1;
 		
 		t0 = System.currentTimeMillis();
