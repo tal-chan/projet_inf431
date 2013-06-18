@@ -188,7 +188,9 @@ public class HashTest {
 			int hash = data.nextElement().GetHash();
 		}
 		int[] count = hashCount(name, nbr);
-		System.out.println(chi2(count));
-		System.out.println(averageRandomChi2(1000, nbr));
+		System.out.println("Chi2 using hash function : " + chi2(count));
+		System.out.println("Average Chi2 on 1000 tests : " + averageRandomChi2(1000, nbr));
+		
+		time();
 	}
 }

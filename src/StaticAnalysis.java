@@ -116,11 +116,12 @@ public class StaticAnalysis extends FingerPrint {
 
 
 	private static void testSimilarities(String[] args) throws IOException {
-		similarPairs("Texts/chunks", 10, 3);
+		similarPairs("Texts/chunks", 10, 1);
 	}
 	
 		
 	public static void main(String[] args) throws IOException {
 		testHyperLogLog(args);
+		//testSimilarities(args);;
 	}
 }
