@@ -121,7 +121,7 @@ public class StaticAnalysis extends FingerPrint {
 	
 		
 	public static void main(String[] args) throws IOException {
-		testHyperLogLog(args);
-		//testSimilarities(args);;
+		//testHyperLogLog(args);
+		testSimilarities(args);;
 	}
 }

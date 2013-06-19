@@ -45,6 +45,7 @@ public class MyReader {
 		switch(set.type){
 		case Settings.TEXT:
 			scan.useDelimiter("[\\s!\"#\\$%\\&\'\\(\\)\\*\\+,-./:;\\<\\=\\>\\?@\\[\\]\\^_`\\{\\|\\}~]");
+			//scan.useDelimiter("\\s");
 			break;
 		default:
 			break;

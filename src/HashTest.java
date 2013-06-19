@@ -138,7 +138,7 @@ public class HashTest {
 	 * time - Evaluates the time took by the hash calculation.
 	 */
 	static double time () throws IOException {
-		int nbr = 10000;
+		int nbr = 1000;
 
 		long t0 = System.currentTimeMillis();
 		Data data1 = new Data("vocab.txt", Data.FILE);
